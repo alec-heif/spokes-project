@@ -22,9 +22,7 @@ h1 {
 /* This parent can be any width and height */
 .intro_buttons_block {
   text-align: center;
-
-  /* May want to do this if there is risk the container may be narrower than the element inside */
-  white-space: nowrap;
+  height: 500px;
 }
  
 /* The ghost, nudged to maintain perfect centering */
