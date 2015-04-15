@@ -12,6 +12,7 @@ html, body {
   margin: 0;
   border: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .intro_buttons {
@@ -21,6 +22,7 @@ html, body {
   margin-right: auto;
   width: 100%;
   text-align: center;
+  height: 100%;
   padding-bottom: 20px;
   background-color: rgba(157, 201, 172, 0.7);
 }
