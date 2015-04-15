@@ -97,16 +97,14 @@ $(function() {
 		return false;
 	}
 
-	// checks if two arrays have any elements that match
+	// checks if all elements in array2 are in array1
 	function matches_arrays(array1,array2){
-		for(var i=0;i<array1.length;i++){
-			for(var j=0;j<array2.length;j++){
-				if(array1[i] == array2[j]){
-					return true;
-				}
+		for(var j=0;j<array2.length;j++){
+			if(array1.indexOf(array2[j]) == -1){
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 
 	// determines if a trail matches the given constraints
@@ -126,13 +124,15 @@ $(function() {
 		}
 
 
+		var matches = true;
 		["attractions","scenery","surface","difficulty"].forEach(function(key){
-			if(c[key] != undefined){
-				if(!matches_arrays(trail[key],c[key])){
-					return false;
-				}
+			if(!matches_arrays(trail[key],c[key])){
+				matches = false;
 			}
 		});
+		if(!matches){
+			return false;
+		}
 
 		if(c["distance"] != undefined){
 			var location = get_current_location();
@@ -155,20 +155,14 @@ $(function() {
 		var c = {};
 		c["keyword"] = $('#search_field').val();
 		c["length"] = $( "#length_slider" ).slider('values');
-		if(false){
-			c["attractions"] = undefined;
-		}
-		if(false){
-			c["scenery"] = undefined;
-		}
-		if(false){
-			c["surface"] = undefined;
-		}
-		if(false){
-			c["difficulty"] = undefined;
-		}
-		if(false){
-			c["distance"] = undefined;
+		["attractions","scenery","surface","difficulty"].forEach(function(key){
+			c[key] = [];
+			$('input[name='+key+']:checked').each(function() {
+			    c[key].push($(this).val());
+			});
+		});
+		if($('input[name=location]').is(':checked')){
+			c["distance"] = $('#location_distance').val();
 		}
 		return c;
 	}
