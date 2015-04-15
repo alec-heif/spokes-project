@@ -1,3 +1,44 @@
 .intro_splash {
-	background-image: url("content/images/intro_splash1.jpg");
+  background-image: url("content/images/intro_splash1.jpg");
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+
+/* Centering buttons, from https://css-tricks.com/centering-in-the-unknown/ */
+/* This parent can be any width and height */
+.intro_buttons_block {
+  text-align: center;
+
+  /* May want to do this if there is risk the container may be narrower than the element inside */
+  white-space: nowrap;
+}
+ 
+/* The ghost, nudged to maintain perfect centering */
+.intro_buttons_block:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+}
+
+/* The element to be centered, can also be of any width and height */ 
+.intro_buttons {
+  display: inline-block;
+  vertical-align: middle;
+  width: 300px;
 }
