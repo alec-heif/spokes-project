@@ -1,0 +1,87 @@
+.content{
+	float:left;
+	overflow-y:scroll;
+	width:79%;
+}
+
+.trail-panel{
+	margin:20px;
+	height:275px;
+	cursor:pointer;
+}
+
+.trail-image-div{
+	height:100%;
+	width:900px;
+	display:inline-flex;
+}
+
+.trail-image{
+	height:100%;
+	width:34%;
+}
+
+.trail-summary-div{
+	height:100%;
+	width:17.5%;
+	float:right;
+	padding:10px;
+}
+
+.trail-name{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.sidebar{
+	float:right;
+	width:300px;
+	height:100%;
+	margin-bottom: 0px !important
+}
+
+#search{
+	padding: 0px !important;
+	background-color: #efefef;
+    border: 1px solid #3e444c;
+    border-radius: 5px;
+    color: #606060;
+    display:inline-flex;
+    width:100%;
+}
+
+#search_img{
+	height:37px;
+	width:37px;
+}
+
+#search_field{
+    font-size: 18px;
+	height:37px;
+	width:155px;
+}
+
+#search_button{
+	font-size:22px;
+	height:37px !important;
+}
+
+.panel-sub{
+	padding-left: 10px;
+	border-color: rgba(0, 0, 0, 0.6);
+	border: 1px solid;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+	padding-bottom: 24px;
+	padding-right: 20px;
+}
+
+#length_display{
+	border:0;
+	font-weight:bold;
+}
+
+.checkbox_div{
+	width:32%;
+	display:inline-block;
+}

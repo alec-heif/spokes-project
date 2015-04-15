@@ -1,0 +1,6 @@
+// {name:string, length:float, difficulty: array, surface: array, scenery: array, explorer: string, description: string, img_src: array, attractions: array, lattitude: float, longitude: float}
+
+explore_data = {
+	"Lakeside Trail":{"name":"Lakeside Trail","length":15.7,"difficulty":["easy"],"surface":["mountain"],"scenery":["nature"],"explorer":"Rob Miller","description":"asdfjkl;asdfjkl;","img_src":["http://cdn2-www.playstationlifestyle.net/assets/uploads/2013/03/Gabe-Newell.jpg","http://people.csail.mit.edu/rcm/headshot-hires.jpg","content/images/map.png"],"attractions":[],"lattitude":0,"longitude":0}
+
+}
