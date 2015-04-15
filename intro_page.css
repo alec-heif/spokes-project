@@ -104,6 +104,9 @@ input[type="reset"].style2:hover,
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: rgba(157, 201, 172, 0.7);
+  /*background-color: rgba(157, 201, 172, 0.7);*/
+  color: rgb(245, 98, 24);
+  text-shadow: 0px 0px 4px #000;
 }
 
 #color_upper {
