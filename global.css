@@ -11,11 +11,25 @@ html, body {
 
 #topbar {
   height: 60px;
-  color: white;
-  background-color: black;
+  background-color: #9DC9AC;
   width: 100%;
   margin-left: 0;
   margin-right: 0;
+}
+
+#logo_image {
+  width: 80px;
+  display: inline;
+  margin-left: 10px;
+}
+
+#logo {
+  font-size: 40px;
+  font-family: "Lobster", cursive;
+  background-color: rgba(157, 201, 172, 0.7);
+  /*background-color: rgba(157, 201, 172, 0.7);*/
+  color: rgb(245, 98, 24);
+  text-shadow: 0px 0px 4px #000;
 }
 
 .main {
