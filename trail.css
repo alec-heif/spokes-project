@@ -1,33 +1,36 @@
+/*
+
 .map, .images, .overview, .description, .comments {
-	background-color: #bbb;
+  background-color: #bbb;
     margin: 10px;
     padding: 10px;
 }
 
 .map, .images {
-	display: inline-block;
+  display: inline-block;
 }
 
 .map_image, .trail_image {
-	height: 200px;
-	width: 300px;
-	margin: 5px;
+  height: 200px;
+  width: 300px;
+  margin: 5px;
 }
 
 .author, .distance, .rating, .attributes {
-	display: inline-block;
-	margin-right: 2em;
-	margin-left: 2em;
+  display: inline-block;
+  margin-right: 2em;
+  margin-left: 2em;
 }
 
 .comment_author_image {
-	height: 100px;
+  height: 100px;
 }
 
 .comment_author_image, .comment_text {
-	display: inline-block;
-	vertical-align: top;
+  display: inline-block;
+  vertical-align: top;
 }
+/*
 
 /* for star rating. from http://code.stephenmorley.org/html-and-css/star-rating-widget/ */
 .rating:not(old){

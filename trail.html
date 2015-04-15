@@ -1,58 +1,80 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="global.css" />
 <link rel="stylesheet" href="trail.css" />
 
-<div class="trail_detail">
+<!-- <div class="trail_detail"> -->
   <div class="map">
-    <img class="map_image" src="content/images/map.png"/>
-  </div>
-
-  <div class="images">
-    <img class="trail_image" src="content/images/77_mass_ave.jpg"/>
-    <img class="trail_image" src="content/images/faneuil_hall.jpg"/>
+    <img src="content/images/map.png"/>
   </div>
 
   <div class="overview">
-    <div class="trail_name">
-      Red Road Trail
-    </div>
-    <div class="author">
-      explored by <span class="author-name">Jeff</span>
-    </div>
-    <div class="distance">
-      24.7 miles
-    </div>
-    <div class="rating">
-      <!-- from http://code.stephenmorley.org/html-and-css/star-rating-widget/ -->
-      <input id="rating5" type="radio" name="rating" value="5">
-      <label for="rating5">5</label>
-      <input id="rating4" type="radio" name="rating" value="4">
-      <label for="rating4">4</label>
-      <input id="rating3" type="radio" name="rating" value="3">
-      <label for="rating3">3</label>
-      <input id="rating2" type="radio" name="rating" value="2">
-      <label for="rating2">2</label>
-      <input id="rating1" type="radio" name="rating" value="1">
-      <label for="rating1">1</label>
-    </div>
+    <div class="trail_name">Red Road Trail</div>
+    <div class="distance">24.7 miles</div>
     <div class="attributes">
-      <span class="difficulty">easy</span>
-      <span class="surface">paved</span>
-      <span class="scenery">nature</span>
+      easy &middot; paved &middot; nature
     </div>
+    <div style="clear:both"></div>
+    <div class="description">
+      <p>A leisurely, scenic route around the banks of the Oakerville River. Hear the croaking of the frogs as you ride.</p>
+    </div>
+
+    <div class="author">
+      explored by <a class="author_name" href="">Jeff</a>
+    </div>
+  </div>
+  <div style="clear:both"></div>
+  <hr/>
+
+  <div class="images">
+    <div class="subheading">photos</div>
+    <img class="trail_image" src="content/images/77_mass_ave.jpg"/>
+    <img class="trail_image" src="content/images/faneuil_hall.jpg"/>
+    <a class="button" href="">upload photos</a>
   </div>
 
-  <div class="description">
-    <p>A leisurely, scenic route around the banks of the Oakerville River. Hear the croaking of the frogs as you ride.</p>
-  </div>
 
   <div class="comments">
+    <div class="subheading">comments</div>
     <div class="comment">
       <img class="comment_author_image" src="content/icons/avatar_default.png">
       <div class="comment_text">
-      <p>Really fun!
-      </p>
+        Really fun!
+      </div>
+      <div class="author">
+        3 days ago by <a class="author_name" href="">Alice</a>
       </div>
     </div>
+    <div class="comment">
+      <img class="comment_author_image" src="content/icons/avatar_default.png">
+      <div class="comment_text">
+        pretty sweet, chill, dank, totally non-heinous
+      </div>
+      <div class="author">
+        2 weeks ago by <a class="author_name" href="">Bob</a>
+      </div>
+    </div>
+    <div class="comment">
+      <img class="comment_author_image" src="content/icons/hipster.jpg">
+      <div class="comment_text">
+        This is a long comment. American Apparel tilde yr +1 distillery, pour-over next level cold-pressed YOLO dreamcatcher selvage Brooklyn flexitarian butcher. Heirloom bespoke kogi, Portland butcher 8-bit kitsch swag. Kale chips VHS Tumblr fanny pack. Semiotics scenester 3 wolf moon bicycle rights. Hoodie cornhole flexitarian Echo Park Truffaut, DIY YOLO gastropub McSweeney's 90's Kickstarter. Drinking vinegar aesthetic lumbersexual locavore dreamcatcher, Vice organic cred. Four loko artisan put a bird on it, fashion axe iPhone you probably haven't heard of them raw denim 3 wolf moon paleo literally Wes Anderson keytar Schlitz. Lorem ipsum dolor sit amet, sed contra audentior ito.
+      </div>
+      <div class="author">
+        1 year ago by <a class="author_name" href="">3edgy5me</a>
+      </div>
+    </div>
+
+    <div class="blank comment">
+      <img class="comment_author_image" src="content/icons/avatar_default.png">
+      <div class="comment_text">
+        <textarea placeholder="Your comment..."></textarea>
+      </div>
+    </div>
+    <a class="button" href="">post comment</a>
   </div>
-</div>
+
+<div style="clear: both"></div>
+
+<hr/>
+
+<!-- </div> -->
