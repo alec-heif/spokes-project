@@ -9,15 +9,24 @@ $(function() {
 		var div = document.createElement('div');
 		div.className = "panel panel-default trail-panel";
 
-		var img_div = document.createElement('div');
-		img_div.className = "panel panel-default trail-image-div";
+		var img_accordion_div = document.createElement('div');
+		//img_accordion_div.className = "panel panel-default trail-image-div";
+		img_accordion_div.id = "image_accordion_" + trail["id"];
 		for(var i=0;i<trail["img_src"].length;i++){
+			var img_div = document.createElement('div');
 			var img = document.createElement('img');
 			img.className = "trail-image";
 			img.src = trail["img_src"][i];
 			img_div.appendChild(img);
+			$(img_div).zAccordion({
+				timeout: 4000,
+				slideWidth: 600,
+				width: 960,
+				height: 270
+			});
+			img_accordion_div.appendChild(img_div);
 		}
-		div.appendChild(img_div);
+		div.appendChild(img_accordion_div);
 
 		var summary_div = document.createElement('div');
 		summary_div.className = "panel panel-default trail-summary-div";
