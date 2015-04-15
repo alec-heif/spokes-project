@@ -1,20 +1,31 @@
 <!DOCTYPE html>
+<html>
+<head>
 <meta charset="utf-8">
+<link rel="stylesheet" href="global.css" />
 <link rel="stylesheet" href="intro_page.css" />
+
 <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="topbar.js"></script>
+<title>Spokes</title>
+</head>
 
-<div class="intro_splash">
-  <div id="color_upper">
+<body>
+  <div class="intro_splash">
+    <div id="color_upper">
+    </div>
+
+    <div class="logo1">
+      Spokes
+      <img class="logo_image1" src="content/icons/bicycle_color.png" />
+    </div>
+
+    <div class="intro_buttons">
+      <div><button type="button" id="btn_find" class="button style2" onclick="location.href = 'explore.html'">Find a route</button></div>
+      <div><button type="button" id="btn_create" class="button style2">Create a route</button></div>
+    </div>
+
   </div>
-
-  <div id="logo">
-    Spokes
-    <img id="logo_image" src="content/icons/bicycle_color.png" />
-  </div>
-
-  <div class="intro_buttons">
-    <div><button type="button" id="btn_find" class="button style2" onclick="location.href = 'explore.html'">Find a route</button></div>
-    <div><button type="button" id="btn_create" class="button style2">Create a route</button></div>
-  </div>
-
-</div>
+</body>
+</html>

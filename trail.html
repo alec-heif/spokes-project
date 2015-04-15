@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 
 <head>
+  <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-  <meta charset="utf-8">
+  <script src="topbar.js"></script>
+  
   <link rel="stylesheet" href="global.css" />
   <link rel="stylesheet" href="trail.css" />
   <title>Red Road Trail | Spokes</title>
 </head>
-<script>
-
-$(function(){
-  $("body").prepend('<div id="topbar"><a href="intro_page.html"><div id="logo">Spokes<img id="logo_image" src="content/icons/bicycle_color.png"/></div></a>Alice | log out</div>');
-});
-
-</script>
 
 <body>
 <div class="main">
-  <div class="map">
+  <div class="map left_col">
     <img src="content/images/map.png"/>
   </div>
 
-  <div class="overview">
+  <div class="right_col">
     <div class="trail_name">Red Road Trail</div>
     <div class="distance">24.7 miles</div>
     <div class="attributes">
@@ -47,7 +42,7 @@ $(function(){
   <div style="clear:both"></div>
   <hr/>
 
-  <div class="images">
+  <div class="images left_col">
     <div class="subheading">photos</div>
     <img class="trail_image" src="content/images/77_mass_ave.jpg"/>
     <img class="trail_image" src="content/images/faneuil_hall.jpg"/>
@@ -55,7 +50,7 @@ $(function(){
   </div>
 
 
-  <div class="comments">
+  <div class="comments right_col">
     <div class="subheading">comments</div>
     <div class="comment">
       <img class="comment_author_image" src="content/icons/avatar_default.png">
