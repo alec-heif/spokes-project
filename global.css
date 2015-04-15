@@ -17,24 +17,53 @@ html, body {
   margin-right: 0;
 }
 
-#logo_image {
+
+#topbar .logo_image {
   width: 80px;
   display: inline;
   margin-left: 10px;
 }
 
-#logo {
+#topbar .logo_text {
+  display: inline-block;
   font-size: 40px;
   font-family: "Lobster", cursive;
-  background-color: rgba(157, 201, 172, 0.7);
-  /*background-color: rgba(157, 201, 172, 0.7);*/
   color: rgb(245, 98, 24);
   text-shadow: 0px 0px 4px #000;
 }
 
+#topbar .logo {
+  float: left;
+}
+
+#topbar .username {
+  float: right;
+  line-height: 60px;
+}
+
+#topbar .topbar_main {
+  width: 86%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .main {
   padding: 10px;
+  width: 86%;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.left_col {
+  width: 47%;
+  float: left;
+}
+
+.right_col {
+  float:right;
+  width: 47%;
+}
+
 
 a, a:visited {
   color: #F56218;
@@ -59,10 +88,7 @@ img {
   width: 100%;
 }
 
-.map {
-  width: 49%;
-  float: left;
-}
+
 
 .thumbnail {
   background-repeat: no-repeat;
@@ -79,11 +105,6 @@ img {
   border-bottom: 1px dotted #aaa;
 }
 
-
-.overview {
-  float:right;
-  width: 49%;
-}
 
 .description p {
   margin-top: 10px;
@@ -111,19 +132,12 @@ img {
 }
 
 
-.images {
-  float:left;
-  width: 49%;
-}
 
 .images img {
   margin-bottom: 10px;
 }
 
-.comments {
-  float:right;
-  width: 49%;
-}
+
 
 .subheading {
   font-weight: bold;
