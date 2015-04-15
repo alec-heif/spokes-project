@@ -1,6 +1,7 @@
 .intro_splash {
   background-image: url("content/images/intro_splash1.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -109,6 +110,7 @@ input[type="reset"].style2:hover,
   top: 30%;
   width: 100%;
   height: 110px;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: rgba(145, 145, 103, 0.7);
 }
