@@ -40,3 +40,63 @@ h1 {
   vertical-align: middle;
   width: 300px;
 }
+
+#btn_find, #btn_create {
+  margin: 5px;
+  width: 200px;
+}
+
+/* Button from http://html5up.net/ Overflow*/    
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.button
+{
+  -webkit-appearance: none;
+  position: relative;
+  display: inline-block;
+  border: 0;
+  background: #35b88f;
+  color: #fff;
+  text-shadow: 0 0 0.5px rgba(255,255,255,0.25);
+  cursor: pointer;
+  text-decoration: none;
+  outline: 0;
+  padding: 1em 3em 1em 3em;
+  text-align: center;
+  border-radius: 3em;
+  font-weight: 400;
+  -moz-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
+  -webkit-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
+  -o-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
+  -ms-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
+  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+.button:hover
+{
+  background: #45c89f;
+}
+
+input[type="button"].style2,
+input[type="submit"].style2,
+input[type="reset"].style2,
+.button.style2
+{
+  color: #3a3939;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #fff;
+}
+
+input[type="button"].style2:hover,
+input[type="submit"].style2:hover,
+input[type="reset"].style2:hover,
+.button.style2:hover
+{
+  background: rgba(255,255,255,0.1);
+  color: #fff !important;
+  text-shadow: 0 0 0.5px rgba(255,255,255,0.25) !important;
+}
