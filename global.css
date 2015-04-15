@@ -4,12 +4,12 @@
 }
 
 a, a:visited {
-  color: #080;
+  color: #F56218;
   font-weight: bold;
   text-decoration: none;
 }
 a:hover {
-  color: #0c0;
+  color: #FF9D2E;
 }
 
 a.button {
@@ -17,7 +17,7 @@ a.button {
   text-align: center;
   padding-top: 12px;
   padding-bottom: 12px;
-  border: 1px solid #0c0;
+  border: 1px solid #F56218;
   max-height: 30px;
   border-radius: 30px;
 }
@@ -29,7 +29,13 @@ img {
 .map {
   width: 49%;
   float: left;
-  border: 5px solid #aaa;
+}
+
+.thumbnail {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 33%;
+  height: 200px;
 }
 
 .trail_name {
@@ -39,6 +45,7 @@ img {
   border-bottom: 1px dotted #aaa;
 }
 
+
 .overview {
   float:right;
   width: 49%;
@@ -47,6 +54,7 @@ img {
 .description p {
   margin-top: 10px;
   margin-bottom: 10px;
+  text-align: justify;
 }
 
 .distance {
@@ -93,9 +101,11 @@ img {
 
 .comment {
   border: 1px solid #aaa;
+  border-radius: 15px;
   min-height: 70px;
   margin-bottom: 10px;
   position: relative;
+  background-color: #FFFEEE;
 }
 
 .comment_text {
@@ -105,6 +115,7 @@ img {
 }
 
 .comment_author_image {
+  border-radius: 15px;
   width: 70px;
   height: 70px;
   float: left;
@@ -119,8 +130,11 @@ img {
 }
 
 .comment textarea {
-  width: calc(100% - 82px);
-  height: 48px;
+  border-radius: 15px;
+  border: 1px solid #aaa;
+  padding: 6px;
+  width: calc(100% - 90px);
+  height: 40px;
   resize: none;
 }
 .blank.comment .comment_text {
