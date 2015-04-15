@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="spokes.css" />
+	<link rel="stylesheet" href="explore.css" />
+	<script src="explore.js"></script>
+
+	<script src="explore_data.json"></script>
+</head>
+<body>
+
+	<div id="content" class="content"></div>
+
+
+	<div class="panel panel-default sidebar">
+
+		<div id="search" class="panel-sub">
+			<img id="search_img" src="search.png">
+			<input id="search_field" type="text" placeholder="search keyword"><br>
+			<button class="btn btn-default" id="search_button">SEARCH</button>
+		</div>
+
+		<div id="length" class="panel-sub">
+			<h1>Length:</h1>
+			<p id="length_display"></p>
+			<div id="length_slider"></div>
+		</div>
+
+		<div id="attractions" class="panel-sub">
+			<h1>Attractions:</h1>
+			<div class="checkbox_div"><input type="checkbox" name="attractions" value="food"> Food</div>
+			<div class="checkbox_div"><input type="checkbox" name="attractions" value="shop"> Bike Shop</div>
+			<div class="checkbox_div"><input type="checkbox" name="attractions" value="park"> Park</div><br>
+			<div class="checkbox_div"><input type="checkbox" name="attractions" value="drugstore"> Drugstore</div>
+			<div class="checkbox_div"><input type="checkbox" name="attractions" value="campsite"> Campsite</div>	
+		</div>
+
+		<div id="scenery" class="panel-sub">
+			<h1>Scenery:</h1>
+			<div class="checkbox_div"><input type="checkbox" name="scenery" value="nature"> Nature</div>
+			<div class="checkbox_div"><input type="checkbox" name="scenery" value="urban"> Urban</div>
+		</div>
+
+		<div id="surface" class="panel-sub">
+			<h1>Surface:</h1>
+			<div class="checkbox_div"><input type="checkbox" name="surface" value="mountain"> Mountain</div>
+			<div class="checkbox_div"><input type="checkbox" name="surface" value="gravel"> Gravel</div>
+			<div class="checkbox_div"><input type="checkbox" name="surface" value="paved"> Paved</div>
+		</div>
+
+		<div id="location" class="panel-sub">
+			<h1>Location:</h1>
+			<div>
+				<input type="checkbox" name="location">
+				Within
+				<select id="location_distance">
+				  <option value="5">5</option>
+				  <option value="50">50</option>
+				  <option value="500">500</option>
+				  <option value="5000">5000</option>
+				</select>
+				miles of 
+				<span id="location_span">Current City</span>
+			</div>
+		</div>
+
+		<div id="difficulty" class="panel-sub">
+			<h1>Difficulty:</h1>
+			<div class="checkbox_div"><input type="checkbox" name="difficulty" value="easy"> Easy</div>
+			<div class="checkbox_div"><input type="checkbox" name="difficulty" value="medium"> Medium</div><br>
+			<div class="checkbox_div"><input type="checkbox" name="difficulty" value="hard"> Hard</div>
+			<div class="checkbox_div"><input type="checkbox" name="difficulty" value="veryhard"> Very Hard</div>
+		</div>
+
+	</div>
+</body>
