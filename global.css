@@ -3,6 +3,25 @@
   font-size: 14pt;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#topbar {
+  height: 60px;
+  color: white;
+  background-color: black;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.main {
+  padding: 10px;
+}
+
 a, a:visited {
   color: #F56218;
   font-weight: bold;
@@ -34,8 +53,9 @@ img {
 .thumbnail {
   background-repeat: no-repeat;
   background-size: contain;
-  width: 33%;
-  height: 200px;
+  width: 200px;
+  height: 150px;
+  background-position: 50% 50%;
 }
 
 .trail_name {
