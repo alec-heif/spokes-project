@@ -218,3 +218,8 @@ $(function() {
     update_length_slider();
 
   });
+
+  $.get("http://ipinfo.io", function(response) {
+    $('#city').html(response.city + ', ');
+    $('#state').html(response.region);
+  }, "jsonp");
