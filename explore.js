@@ -31,10 +31,12 @@ $(function() {
 		summary_div.appendChild(name_div);
 
 		var summary = document.createElement('div');
-		append(trail["length"]+" miles",summary);
-		["difficulty","terrain","scenery","explorer"].forEach(function(key){
-			append(trail[key],summary);
-		});
+		var attributes_text = trail["length"] + " miles long | "
+			+ trail["difficulty"] + " | "
+			+ trail["terrain"] + " terrain | "
+			+ trail["scenery"] + " scenery | "
+			+ "explored by " + trail["explorer"];
+		append(attributes_text,summary);
 		summary.appendChild(document.createElement('br'));
 		append("Description: ",summary);
 		append(trail["description"],summary);
