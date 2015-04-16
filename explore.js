@@ -43,6 +43,10 @@ $(function() {
 
 		div.appendChild(summary_div);
 
+		var clear_div = document.createElement('div');
+		clear_div.style.clear = "both";
+		div.appendChild(clear_div);
+
 		div.onclick = function(){window.location='trail.html?trail='+trail["name"]}
 		$('#content').append(div);
 
