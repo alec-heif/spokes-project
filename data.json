@@ -173,6 +173,45 @@ data = {
         "nature4.jpg",
         "map5.png"
       ]
+    },
+    {
+      "id":6,
+      "name":"Sherman's March to the Sea",
+      "city":"Atlanta",
+      "state":"Georgia",
+      "length":240,
+      "difficulty":"very hard",
+      "attractions":[],
+      "terrain":"gravel",
+      "scenery":"nature",
+      "description":"We are not only fighting armies, but a hostile people, and must make old and young, rich and poor, feel the hard hand of war, as well as their organized armies. I know that this recent movement of mine through Georgia has had a wonderful effect in this respect. Thousands who had been deceived by their lying papers into the belief that we were being whipped all the time, realized the truth, and have no appetite for a repetition of the same experience.",
+      "explorer":"William T Sherman",
+      "comments": [        
+        {
+          "id":2,
+          "creator":"Robert E Lee",
+          "timestamp":-3316105246,
+          "text":"The South shall rise again!"
+        },
+        {
+          "id":3,
+          "creator":"William T Sherman",
+          "timestamp":-3316105246,
+          "text":"We rode out of Atlanta by the Decatur road, filled by the marching troops and wagons of the Fourteenth Corps; and reaching the hill, just outside of the old rebel works, we naturally paused to look back upon the scenes of our past battles. We stood upon the very ground whereon was fought the bloody battle of July 22d, and could see the copse of wood where McPherson fell. Behind us lay Atlanta, smouldering and in ruins, the black smoke rising high in air, and hanging like a pall over the ruined city. Away off in the distance, on the McDonough road, was the rear of Howard's column, the gun-barrels glistening in the sun, the white-topped wagons stretching away to the south; and right before us the Fourteenth Corps, marching steadily and rapidly, with a cheery look and swinging pace, that made light of the thousand miles that lay between us and Richmond. Some band, by accident, struck up the anthem of John Brown's soul goes marching on; the men caught up the strain, and never before or since have I heard the chorus of Glory, glory, hallelujah! done with more spirit, or in better harmony of time and place."
+        },
+        {
+          "id":1,
+          "creator":"Marcel Williams",
+          "timestamp":1429187654,
+          "text":"I would recommend seeing Savannah instead, it is less burnt."
+        }
+      ],
+      "images": [
+        "sherman1.jpg",
+        "sherman2.jpg",
+        "sherman3.jpg",
+        "sherman_map.png"
+      ]
     }
   ]
 }
