@@ -16,7 +16,7 @@ $(function() {
 		for(var i=0;i<trail["images"].length;i++){
 			var img_div = document.createElement('div');
 			img_div.className = "trail-image";
-			img_div.style.backgroundImage = "url(content/images/" + trail["images"][i] + ".jpg)";
+			img_div.style.backgroundImage = "url(content/images/" + trail["images"][i] + ")";
 			img_accordion_div.appendChild(img_div);
 		}
 		div.appendChild(img_accordion_div);
@@ -70,8 +70,10 @@ $(function() {
 		summary.appendChild(trailDifficulty);
 		summary.appendChild(trailTerrain);
 		summary.appendChild(trailScenery);
-		summary.appendChild(trailExplorer);
+		
 		summary.appendChild(trailDescription);
+
+		summary.appendChild(trailExplorer);
 
 		summary.className = "trail-summary";
 		summary_div.appendChild(summary);

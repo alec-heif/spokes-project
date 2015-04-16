@@ -2,6 +2,7 @@
 	float:left;
 	overflow-y:scroll;
 	width: 65%;
+	height: 800px;
 }
 
 .sidebar {
@@ -12,12 +13,19 @@
 .trail-name {
 	font-weight: bold;
  	font-size: 18pt;
- 	border-bottom: 1px solid #aaa;
+ 	margin-bottom: 10px;
+ 	border-bottom: 1px dotted #aaa;
 }
 
 .trail-panel {
-	border: 1px solid red !important;
 	margin-bottom: 20px;
+	border: 1px solid #aaa;
+	border-radius: 15px;
+}
+
+.trail-image:first-child {
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
 }
 
 .trail-image-div {
@@ -26,7 +34,41 @@
 }
 
 .trail-summary-div {
+	padding-top: 6px;
+	padding-right: 6px;
 	width: 33%;
+	float: right;
+}
+
+.trail-length, .trail-difficulty, .trail-terrain, .trail-scenery {
+	display: inline;
+	float: left;
+}
+.trail-length, .trail-difficulty, .trail-terrain, .trail-scenery {
+	color: #aaa;
+	font-style: italic;
+}
+.trail-length:after,
+.trail-difficulty:after,
+.trail-terrain:after {
+	content: "\00B7";
+	margin-left: 4px;
+	margin-right: 4px;
+}
+.trail-explorer:before {
+	content: "explored by ";
+	font-weight: normal;
+	color: #aaa;
+	font-style: italic;
+}
+
+.trail-description {
+	clear:both;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.trail-explorer {
 	float: right;
 }
 
