@@ -117,6 +117,15 @@
 	height:37px;
 }
 
+.checkbox_div{
+	width:32%;
+	display:inline-block;
+}
+
+.panel-sub{
+	padding-bottom:12px;
+}
+
 /*
 .content{
 	float:left;
@@ -203,11 +212,6 @@
 #length_display{
 	border:0;
 	font-weight:bold;
-}
-
-.checkbox_div{
-	width:32%;
-	display:inline-block;
 }
 
 */
