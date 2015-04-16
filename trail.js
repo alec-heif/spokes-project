@@ -12,13 +12,15 @@ $(function() {
 	$("#distance").text(trail["length"] + " miles");
 
 	var attributes_text =
-			trail["difficulty"] + " | "
-			+ trail["terrain"] + " terrain | "
+			trail["difficulty"] + " \xB7 "
+			+ trail["terrain"] + " terrain \xB7 "
 			+ trail["scenery"] + " scenery";
 	$("#attributes").text(attributes_text);
 
 	$("#description").text(trail["description"]);
 	$("#author_name").text(trail["explorer"]);
+
+
 
 	/*
 	for(var i in trail["comments"]) {
