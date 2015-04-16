@@ -1,7 +1,5 @@
 $(function() {
 
-	// on page load
-	routes = data["routes"];
 
 	function display(trail){
 		var div = document.createElement('div');
@@ -167,10 +165,12 @@ $(function() {
 			return false;
 		}
 
-		// if(!matches_arrays(trail["attractions"],c["attractions"]){
-		// 	return false;
-		// })
 
+		for(var i=0;i<c["attractions"].length;i++){
+			if(trail["attractions"].indexOf(c["attractions"]) == -1){
+				return false;
+			}
+		}
 
 		var matches = true;
 		["scenery","terrain","difficulty"].forEach(function(key){
@@ -219,7 +219,14 @@ $(function() {
 	}
 
 	// updates filter on every user input
+
+	$("input[type=text]").keyup(function(){
+		updateFilter();
+	});
+
+	
     $("input").change(function(){
+    	console.log('hi');
     	updateFilter();
     })
 
