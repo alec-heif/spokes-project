@@ -1,4 +1,4 @@
-{
+data = {
   "users": [
     {
       "user":"aheifetz",
@@ -27,6 +27,7 @@
   "routes": [
     {
       "id":1,
+      "name":"Cambridge Loop",
       "difficulty":"easy",
       "terrain":"paved",
       "scenery":"urban",
@@ -59,6 +60,7 @@
     },
     {
       "id":2,
+      "name":"Red River Trail",
       "difficulty":"easy",
       "terrain":"paved",
       "scenery":"nature",
@@ -85,6 +87,7 @@
     },
     {
       "id":3,
+      "name":"More Windows...",
       "difficulty":"hard",
       "terrain":"mountain",
       "scenery":"nature",
@@ -106,6 +109,7 @@
     },
     {
       "id":4,
+      "name":"Freedom Trail",
       "difficulty":"medium",
       "terrain":"paved",
       "scenery":"urban",
@@ -126,6 +130,7 @@
     },
     {
       "id":5,
+      "name":"Hilly Billy",
       "difficulty":"easy",
       "terrain":"mountain",
       "scenery":"nature",
