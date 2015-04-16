@@ -57,8 +57,9 @@ data = {
         }
       ],
       "images": [
-        "bike2",
-        "urban1"
+        "bike2.jpg",
+        "urban1.jpg",
+        "map1.png"
       ]
     },
     {
@@ -87,8 +88,9 @@ data = {
         }
       ],
       "images": [
-        "bike1",
-        "nature1"
+        "bike1.jpg",
+        "nature1.jpg",
+        "map2.png"
       ]
     },
     {
@@ -111,9 +113,10 @@ data = {
         }
       ],
       "images": [
-        "bike3",
-        "nature2",
-        "nature3"
+        "bike3.jpg",
+        "nature2.jpg",
+        "nature3.jpg",
+        "map3.png"
       ]
     },
     {
@@ -136,8 +139,9 @@ data = {
         }
       ],
       "images": [
-        "bike4",
-        "urban2"
+        "bike4.jpg",
+        "urban2.jpg",
+        "map4.png"
       ]
     },
     {
@@ -160,8 +164,9 @@ data = {
         }
       ],
       "images": [
-        "bike5",
-        "nature4"
+        "bike5.jpg",
+        "nature4.jpg",
+        "map5.png"
       ]
     }
   ]
