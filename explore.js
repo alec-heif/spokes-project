@@ -16,7 +16,7 @@ $(function() {
 		for(var i=0;i<trail["images"].length;i++){
 			var img_div = document.createElement('div');
 			img_div.className = "trail-image";
-			img_div.style.backgroundImage = "url(content/images/" + trail["images"][i] + ".jpg)";
+			// img_div.style.backgroundImage = "url(content/images/" + trail["images"][i] + ".jpg)";
 			img_accordion_div.appendChild(img_div);
 		}
 		div.appendChild(img_accordion_div);
@@ -95,24 +95,24 @@ $(function() {
 		});
 	}
 
-	function append(object,div){
-		if(typeof object == "string"){
-			if(object != ""){
-				div.appendChild(document.createElement('br'));
-				div.appendChild(document.createTextNode(object));
-			}
-		}
-		else{
-			var text = "";
-			for(var i=0;i<object.length;i++){
-				text += object[i] + " ";
-			}
-			if(text != ""){
-				div.appendChild(document.createElement('br'));
-				div.appendChild(document.createTextNode(text));
-			}
-		}
-	}
+	// function append(object,div){
+	// 	if(typeof object == "string"){
+	// 		if(object != ""){
+	// 			div.appendChild(document.createElement('br'));
+	// 			div.appendChild(document.createTextNode(object));
+	// 		}
+	// 	}
+	// 	else{
+	// 		var text = "";
+	// 		for(var i=0;i<object.length;i++){
+	// 			text += object[i] + " ";
+	// 		}
+	// 		if(text != ""){
+	// 			div.appendChild(document.createElement('br'));
+	// 			div.appendChild(document.createTextNode(text));
+	// 		}
+	// 	}
+	// }
 
 
 	// search handler
@@ -120,9 +120,9 @@ $(function() {
 	$('#search_button').click(function(){
 		constraints = get_constraints();
 		$('#content').empty();
-		for(var trail_name in explore_data){
-			if(matches_constraint(explore_data[trail_name],constraints)){
-				display(explore_data[trail_name]);
+		for(var trail_name in data["routes"]){
+			if(matches_constraint(data["routes"][trail_name],constraints)){
+				display(data["routes"][trail_name]);
 			}
 		}
 		if($('#content').children().length == 0){
