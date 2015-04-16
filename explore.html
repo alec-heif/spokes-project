@@ -42,7 +42,6 @@
 		<div id="search" class="panel-sub">
 			<img id="search_img" src="search.png">
 			<input id="search_field" type="text" placeholder="search keyword"><br>
-			<button class="btn btn-default" id="search_button">SEARCH</button>
 		</div>
 
 		<div id="length" class="panel-sub">
@@ -55,22 +54,24 @@
 			<h1>Attractions:</h1>
 			<div class="checkbox_div"><input type="checkbox" name="attractions" value="food"> Food</div>
 			<div class="checkbox_div"><input type="checkbox" name="attractions" value="shop"> Bike Shop</div>
-			<div class="checkbox_div"><input type="checkbox" name="attractions" value="park"> Park</div><br>
+			<div class="checkbox_div"><input type="checkbox" name="attractions" value="park"> Park</div>
 			<div class="checkbox_div"><input type="checkbox" name="attractions" value="drugstore"> Drugstore</div>
 			<div class="checkbox_div"><input type="checkbox" name="attractions" value="campsite"> Campsite</div>	
 		</div>
 
 		<div id="scenery" class="panel-sub">
 			<h1>Scenery:</h1>
-			<div class="checkbox_div"><input type="checkbox" name="scenery" value="nature"> Nature</div>
-			<div class="checkbox_div"><input type="checkbox" name="scenery" value="urban"> Urban</div>
+			<div class="checkbox_div"><input type="radio" name="scenery" value="any" checked> Any</div>
+			<div class="checkbox_div"><input type="radio" name="scenery" value="nature"> Nature</div>
+			<div class="checkbox_div"><input type="radio" name="scenery" value="urban"> Urban</div>
 		</div>
 
-		<div id="surface" class="panel-sub">
-			<h1>Surface:</h1>
-			<div class="checkbox_div"><input type="checkbox" name="surface" value="mountain"> Mountain</div>
-			<div class="checkbox_div"><input type="checkbox" name="surface" value="gravel"> Gravel</div>
-			<div class="checkbox_div"><input type="checkbox" name="surface" value="paved"> Paved</div>
+		<div id="terrain" class="panel-sub">
+			<h1>Terrain:</h1>
+			<div class="checkbox_div"><input type="radio" name="terrain" value="any" checked> Any</div>
+			<div class="checkbox_div"><input type="radio" name="terrain" value="mountain"> Mountain</div>
+			<div class="checkbox_div"><input type="radio" name="terrain" value="gravel"> Gravel</div>
+			<div class="checkbox_div"><input type="radio" name="terrain" value="paved"> Paved</div>
 		</div>
 
 		<div id="location" class="panel-sub">
@@ -85,19 +86,20 @@
 				  <option value="5000">5000</option>
 				</select>
 				miles of 
-        <span id="location_span">
-          <span id="city"></span> 
-          <span id="state"</span>
-        </span>
+		        <span id="location_span">
+		          <span id="city"></span> 
+		          <span id="state"</span>
+		        </span>
 			</div>
 		</div>
 
 		<div id="difficulty" class="panel-sub">
 			<h1>Difficulty:</h1>
-			<div class="checkbox_div"><input type="checkbox" name="difficulty" value="easy"> Easy</div>
-			<div class="checkbox_div"><input type="checkbox" name="difficulty" value="medium"> Medium</div><br>
-			<div class="checkbox_div"><input type="checkbox" name="difficulty" value="hard"> Hard</div>
-			<div class="checkbox_div"><input type="checkbox" name="difficulty" value="veryhard"> Very Hard</div>
+			<div class="checkbox_div"><input type="radio" name="difficulty" value="any" checked> Any</div>
+			<div class="checkbox_div"><input type="radio" name="difficulty" value="easy"> Easy</div>
+			<div class="checkbox_div"><input type="radio" name="difficulty" value="medium"> Medium</div>
+			<div class="checkbox_div"><input type="radio" name="difficulty" value="hard"> Hard</div>
+			<div class="checkbox_div"><input type="radio" name="difficulty" value="veryhard"> Very Hard</div>
 		</div>
 
 	</div>

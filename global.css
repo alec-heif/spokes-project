@@ -20,12 +20,11 @@ html, body {
 
 #topbar .logo_image {
   width: 80px;
-  display: inline;
-  margin-left: 10px;
+  margin-left: 125px;
 }
 
 #topbar .logo_text {
-  display: inline-block;
+  position: absolute;
   font-size: 40px;
   font-family: "Lobster", cursive;
   color: rgb(245, 98, 24);
