@@ -32,14 +32,47 @@ $(function() {
 
 		var summary = document.createElement('div');
 		var attributes_text = trail["length"] + " miles long | "
-			+ trail["difficulty"] + " | "
+			+ trail["difficulty"] + " &middot; "
 			+ trail["terrain"] + " terrain | "
 			+ trail["scenery"] + " scenery | "
 			+ "explored by " + trail["explorer"];
-		append(attributes_text,summary);
+
+		var trailLength = document.createElement('div');
+		trailLength.className = "trail-length";
+		trailLength.innerHTML = trail["length"] + " miles long";
+
+		var trailDifficulty = document.createElement('div');
+		trailDifficulty.className = "trail-difficulty";
+		trailDifficulty.innerHTML = trail["difficulty"];
+
+		var trailTerrain = document.createElement('div');
+		trailTerrain.className = "trail-terrain";
+		trailTerrain.innerHTML = trail["terrain"];
+
+		var trailScenery = document.createElement('div');
+		trailScenery.className = "trail-scenery";
+		trailScenery.innerHTML = trail["scenery"];
+
+		var trailExplorer = document.createElement('a');
+		trailExplorer.className = "trail-explorer";
+		trailExplorer.href = "//#asdf";
+		trailExplorer.innerHTML = trail["explorer"];
+
+		var trailDescription = document.createElement('div');
+		trailDescription.className = "trail-description";
+		trailDescription.innerHTML = trail["description"];
+
+		/*append(attributes_text,summary);
 		summary.appendChild(document.createElement('br'));
 		append("Description: ",summary);
-		append(trail["description"],summary);
+		append(trail["description"],summary);*/
+		summary.appendChild(trailLength);
+		summary.appendChild(trailDifficulty);
+		summary.appendChild(trailTerrain);
+		summary.appendChild(trailScenery);
+		summary.appendChild(trailExplorer);
+		summary.appendChild(trailDescription);
+
 		summary.className = "trail-summary";
 		summary_div.appendChild(summary);
 
