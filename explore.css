@@ -95,25 +95,26 @@
 }
 
 #search_img{
-	height:37px;
 	width:37px;
 }
 
 #search_field{
     font-size: 18px;
-	height:37px;
 	width:155px;
-}
-
-#search_button{
-	font-size:22px;
-	height:37px !important;
 }
 
 #length_slider {
 	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.trail-panel{
+	cursor:pointer;
+}
+
+#search{
+	height:37px;
 }
 
 /*

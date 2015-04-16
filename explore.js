@@ -2,9 +2,6 @@ $(function() {
 
 	// on page load
 	routes = data["routes"];
-	for(var i in routes){
-		display(routes[i]);
-	}
 
 	function display(trail){
 		var div = document.createElement('div');
@@ -114,18 +111,18 @@ $(function() {
 
 	// search handler
 	var constraints;
-	$('#search_button').click(function(){
+	function updateFilter(){
 		constraints = get_constraints();
 		$('#content').empty();
-		for(var trail_name in explore_data){
-			if(matches_constraint(explore_data[trail_name],constraints)){
-				display(explore_data[trail_name]);
+		for(var trail_name in data["routes"]){
+			if(matches_constraint(data["routes"][trail_name],constraints)){
+				display(data["routes"][trail_name]);
 			}
 		}
 		if($('#content').children().length == 0){
-			alert("no trails matched");
+			console.log("no trails matched");
 		}
-	});
+	}
 
 	function find(object,string){
 		if(typeof object == "string"){
@@ -170,11 +167,17 @@ $(function() {
 			return false;
 		}
 
+		// if(!matches_arrays(trail["attractions"],c["attractions"]){
+		// 	return false;
+		// })
+
 
 		var matches = true;
-		["attractions","scenery","terrain","difficulty"].forEach(function(key){
-			if(!matches_arrays(trail[key],c[key])){
-				matches = false;
+		["scenery","terrain","difficulty"].forEach(function(key){
+			if(c[key] != "any"){
+				if(trail[key] != c[key]){
+					matches = false;
+				}
 			}
 		});
 		if(!matches){
@@ -202,11 +205,12 @@ $(function() {
 		var c = {};
 		c["keyword"] = $('#search_field').val();
 		c["length"] = $( "#length_slider" ).slider('values');
-		["attractions","scenery","terrain","difficulty"].forEach(function(key){
-			c[key] = [];
-			$('input[name='+key+']:checked').each(function() {
-			    c[key].push($(this).val());
-			});
+		c["attractions"] = []
+		$('input[name=attractions]:checked').each(function(){
+			c["attractions"].push(this.value);
+		});
+		["scenery","terrain","difficulty"].forEach(function(key){
+			c[key] =  $('input[name='+key+']:checked').val();
 		});
 		if($('input[name=location]').is(':checked')){
 			c["distance"] = $('#location_distance').val();
@@ -214,12 +218,10 @@ $(function() {
 		return c;
 	}
 
-	// click enter on keyword enter
-	$('#search_field').keyup(function(e){
-    	if(e.keyCode == 13){
-	    	$('#search_button').click();
-	    }
-    });
+	// updates filter on every user input
+    $("input").change(function(){
+    	updateFilter();
+    })
 
 	// search slider
 
@@ -250,6 +252,7 @@ $(function() {
 		}
 		$( "#length_display" ).text(start +
 		" miles - " + end + " miles");
+		updateFilter();
     }
 
     update_length_slider();
