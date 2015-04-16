@@ -10,20 +10,12 @@ $(function() {
 		div.className = "panel panel-default trail-panel";
 
 		var img_accordion_div = document.createElement('div');
-		//img_accordion_div.className = "panel panel-default trail-image-div";
+		img_accordion_div.className = "panel panel-default trail-image-div";
 		img_accordion_div.id = "image_accordion_" + trail["id"];
 		for(var i=0;i<trail["img_src"].length;i++){
 			var img_div = document.createElement('div');
-			var img = document.createElement('img');
-			img.className = "trail-image";
-			img.src = trail["img_src"][i];
-			img_div.appendChild(img);
-			$(img_div).zAccordion({
-				timeout: 4000,
-				slideWidth: 600,
-				width: 960,
-				height: 270
-			});
+			img_div.className = "trail-image";
+			img_div.style.backgroundImage = "url(" + trail["img_src"][i] + ")";
 			img_accordion_div.appendChild(img_div);
 		}
 		div.appendChild(img_accordion_div);
@@ -52,6 +44,15 @@ $(function() {
 
 		div.onclick = function(){window.location='trail.html?trail='+trail["name"]}
 		$('#content').append(div);
+
+		$("#image_accordion_" + trail["id"]).zAccordion({
+			startingSlide: 0,
+			auto: false,
+			tabWidth: "15%",
+			width: "100%",
+			height: 300,
+			trigger: "mouseover"
+		});
 	}
 
 	function append(object,div){

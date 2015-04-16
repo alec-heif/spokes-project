@@ -19,6 +19,8 @@
 .trail-image{
 	height:100%;
 	width:34%;
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 .trail-summary-div{
