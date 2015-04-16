@@ -13,7 +13,7 @@ $(function() {
 		for(var i=0;i<trail["images"].length;i++){
 			var img_div = document.createElement('div');
 			img_div.className = "trail-image";
-			// img_div.style.backgroundImage = "url(content/images/" + trail["images"][i] + ".jpg)";
+			img_div.style.backgroundImage = "url(content/images/" + trail["images"][i] + ")";
 			img_accordion_div.appendChild(img_div);
 		}
 		div.appendChild(img_accordion_div);
@@ -28,11 +28,6 @@ $(function() {
 		summary_div.appendChild(name_div);
 
 		var summary = document.createElement('div');
-		var attributes_text = trail["length"] + " miles long | "
-			+ trail["difficulty"] + " &middot; "
-			+ trail["terrain"] + " terrain | "
-			+ trail["scenery"] + " scenery | "
-			+ "explored by " + trail["explorer"];
 
 		var trailLength = document.createElement('div');
 		trailLength.className = "trail-length";
@@ -52,7 +47,7 @@ $(function() {
 
 		var trailExplorer = document.createElement('a');
 		trailExplorer.className = "trail-explorer";
-		trailExplorer.href = "//#asdf";
+		trailExplorer.href = "";
 		trailExplorer.innerHTML = trail["explorer"];
 
 		var trailDescription = document.createElement('div');
@@ -67,8 +62,10 @@ $(function() {
 		summary.appendChild(trailDifficulty);
 		summary.appendChild(trailTerrain);
 		summary.appendChild(trailScenery);
-		summary.appendChild(trailExplorer);
+		
 		summary.appendChild(trailDescription);
+
+		summary.appendChild(trailExplorer);
 
 		summary.className = "trail-summary";
 		summary_div.appendChild(summary);
@@ -259,8 +256,9 @@ $(function() {
     }
 
     update_length_slider();
-
-  });
+    $(".main").css("height",window.innerHeight - 60);
+    $(".content").css("height",window.innerHeight - 60);
+});
 
   $.get("http://ipinfo.io", function(response) {
     $('#city').html(response.city + ', ');
