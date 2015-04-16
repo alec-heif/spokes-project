@@ -1,8 +1,9 @@
 $(function() {
 
 	// on page load
-	for(var trail_name in explore_data){
-		display(explore_data[trail_name]);
+	routes = data["routes"];
+	for(var i in routes){
+		display(routes[i]);
 	}
 
 	function display(trail){
@@ -10,20 +11,12 @@ $(function() {
 		div.className = "panel panel-default trail-panel";
 
 		var img_accordion_div = document.createElement('div');
-		//img_accordion_div.className = "panel panel-default trail-image-div";
+		img_accordion_div.className = "panel panel-default trail-image-div";
 		img_accordion_div.id = "image_accordion_" + trail["id"];
-		for(var i=0;i<trail["img_src"].length;i++){
+		for(var i=0;i<trail["images"].length;i++){
 			var img_div = document.createElement('div');
-			var img = document.createElement('img');
-			img.className = "trail-image";
-			img.src = trail["img_src"][i];
-			img_div.appendChild(img);
-			$(img_div).zAccordion({
-				timeout: 4000,
-				slideWidth: 600,
-				width: 960,
-				height: 270
-			});
+			img_div.className = "trail-image";
+			img_div.style.backgroundImage = "url(content/images/" + trail["images"][i] + ".jpg)";
 			img_accordion_div.appendChild(img_div);
 		}
 		div.appendChild(img_accordion_div);
@@ -38,20 +31,68 @@ $(function() {
 		summary_div.appendChild(name_div);
 
 		var summary = document.createElement('div');
-		append(trail["length"]+" miles",summary);
-		["difficulty","surface","scenery","explorer","attractions"].forEach(function(key){
-			append(trail[key],summary);
-		});
+		var attributes_text = trail["length"] + " miles long | "
+			+ trail["difficulty"] + " &middot; "
+			+ trail["terrain"] + " terrain | "
+			+ trail["scenery"] + " scenery | "
+			+ "explored by " + trail["explorer"];
+
+		var trailLength = document.createElement('div');
+		trailLength.className = "trail-length";
+		trailLength.innerHTML = trail["length"] + " miles long";
+
+		var trailDifficulty = document.createElement('div');
+		trailDifficulty.className = "trail-difficulty";
+		trailDifficulty.innerHTML = trail["difficulty"];
+
+		var trailTerrain = document.createElement('div');
+		trailTerrain.className = "trail-terrain";
+		trailTerrain.innerHTML = trail["terrain"];
+
+		var trailScenery = document.createElement('div');
+		trailScenery.className = "trail-scenery";
+		trailScenery.innerHTML = trail["scenery"];
+
+		var trailExplorer = document.createElement('a');
+		trailExplorer.className = "trail-explorer";
+		trailExplorer.href = "//#asdf";
+		trailExplorer.innerHTML = trail["explorer"];
+
+		var trailDescription = document.createElement('div');
+		trailDescription.className = "trail-description";
+		trailDescription.innerHTML = trail["description"];
+
+		/*append(attributes_text,summary);
 		summary.appendChild(document.createElement('br'));
 		append("Description: ",summary);
-		append(trail["description"],summary);
+		append(trail["description"],summary);*/
+		summary.appendChild(trailLength);
+		summary.appendChild(trailDifficulty);
+		summary.appendChild(trailTerrain);
+		summary.appendChild(trailScenery);
+		summary.appendChild(trailExplorer);
+		summary.appendChild(trailDescription);
+
 		summary.className = "trail-summary";
 		summary_div.appendChild(summary);
 
 		div.appendChild(summary_div);
 
+		var clear_div = document.createElement('div');
+		clear_div.style.clear = "both";
+		div.appendChild(clear_div);
+
 		div.onclick = function(){window.location='trail.html?trail='+trail["name"]}
 		$('#content').append(div);
+
+		$("#image_accordion_" + trail["id"]).zAccordion({
+			startingSlide: trail["images"].length - 1,
+			auto: false,
+			tabWidth: "15%",
+			width: "100%",
+			height: 300,
+			trigger: "mouseover"
+		});
 	}
 
 	function append(object,div){
@@ -134,7 +175,7 @@ $(function() {
 
 
 		var matches = true;
-		["attractions","scenery","surface","difficulty"].forEach(function(key){
+		["attractions","scenery","terrain","difficulty"].forEach(function(key){
 			if(!matches_arrays(trail[key],c[key])){
 				matches = false;
 			}
@@ -164,7 +205,7 @@ $(function() {
 		var c = {};
 		c["keyword"] = $('#search_field').val();
 		c["length"] = $( "#length_slider" ).slider('values');
-		["attractions","scenery","surface","difficulty"].forEach(function(key){
+		["attractions","scenery","terrain","difficulty"].forEach(function(key){
 			c[key] = [];
 			$('input[name='+key+']:checked').each(function() {
 			    c[key].push($(this).val());
@@ -217,3 +258,8 @@ $(function() {
     update_length_slider();
 
   });
+
+  $.get("http://ipinfo.io", function(response) {
+    $('#city').html(response.city + ', ');
+    $('#state').html(response.region);
+  }, "jsonp");

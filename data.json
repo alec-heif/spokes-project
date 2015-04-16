@@ -1,4 +1,4 @@
-{
+data = {
   "users": [
     {
       "user":"aheifetz",
@@ -27,6 +27,10 @@
   "routes": [
     {
       "id":1,
+      "name":"Cambridge Loop",
+      "city":"Cambridge",
+      "state":"Massachusetts",
+      "length":9.7,
       "difficulty":"easy",
       "terrain":"paved",
       "scenery":"urban",
@@ -53,12 +57,17 @@
         }
       ],
       "images": [
-        "bike2",
-        "urban1"
+        "bike2.jpg",
+        "urban1.jpg",
+        "map1.png"
       ]
     },
     {
       "id":2,
+      "name":"Red River Trail",
+      "city":"Cambridge",
+      "state":"Massachusetts",
+      "length":12.5,
       "difficulty":"easy",
       "terrain":"paved",
       "scenery":"nature",
@@ -79,12 +88,17 @@
         }
       ],
       "images": [
-        "bike1",
-        "nature1"
+        "bike1.jpg",
+        "nature1.jpg",
+        "map2.png"
       ]
     },
     {
       "id":3,
+      "name":"More Windows...",
+      "city":"Cambridge",
+      "state":"Massachusetts",
+      "length":25.8,
       "difficulty":"hard",
       "terrain":"mountain",
       "scenery":"nature",
@@ -99,13 +113,18 @@
         }
       ],
       "images": [
-        "bike3",
-        "nature2",
-        "nature3"
+        "bike3.jpg",
+        "nature2.jpg",
+        "nature3.jpg",
+        "map3.png"
       ]
     },
     {
       "id":4,
+      "name":"Freedom Trail",
+      "city":"Cambridge",
+      "state":"Massachusetts",
+      "length":15.2,
       "difficulty":"medium",
       "terrain":"paved",
       "scenery":"urban",
@@ -120,12 +139,17 @@
         }
       ],
       "images": [
-        "bike4",
-        "urban2"
+        "bike4.jpg",
+        "urban2.jpg",
+        "map4.png"
       ]
     },
     {
       "id":5,
+      "name":"Hilly Billy",
+      "city":"Cambridge",
+      "state":"Massachusetts",
+      "length":2.3,
       "difficulty":"easy",
       "terrain":"mountain",
       "scenery":"nature",
@@ -140,8 +164,9 @@
         }
       ],
       "images": [
-        "bike5",
-        "nature4"
+        "bike5.jpg",
+        "nature4.jpg",
+        "map5.png"
       ]
     }
   ]

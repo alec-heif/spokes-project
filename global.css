@@ -46,6 +46,19 @@ html, body {
   margin-right: auto;
 }
 
+.pseudotopbar {
+  height: 60px;
+  background-color: rgba(157, 201, 172, 0.7);
+}
+
+.pseudotopbar .pseudotopbar_main {
+  width: 86%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 60px;
+  text-align: right;
+}
+
 .main {
   padding: 10px;
   width: 86%;
