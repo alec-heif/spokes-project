@@ -87,24 +87,24 @@ $(function() {
 		});
 	}
 
-	function append(object,div){
-		if(typeof object == "string"){
-			if(object != ""){
-				div.appendChild(document.createElement('br'));
-				div.appendChild(document.createTextNode(object));
-			}
-		}
-		else{
-			var text = "";
-			for(var i=0;i<object.length;i++){
-				text += object[i] + " ";
-			}
-			if(text != ""){
-				div.appendChild(document.createElement('br'));
-				div.appendChild(document.createTextNode(text));
-			}
-		}
-	}
+	// function append(object,div){
+	// 	if(typeof object == "string"){
+	// 		if(object != ""){
+	// 			div.appendChild(document.createElement('br'));
+	// 			div.appendChild(document.createTextNode(object));
+	// 		}
+	// 	}
+	// 	else{
+	// 		var text = "";
+	// 		for(var i=0;i<object.length;i++){
+	// 			text += object[i] + " ";
+	// 		}
+	// 		if(text != ""){
+	// 			div.appendChild(document.createElement('br'));
+	// 			div.appendChild(document.createTextNode(text));
+	// 		}
+	// 	}
+	// }
 
 
 	// search handler
@@ -139,15 +139,15 @@ $(function() {
 		return false;
 	}
 
-	// checks if all elements in array2 are in array1
-	function matches_arrays(array1,array2){
-		for(var j=0;j<array2.length;j++){
-			if(array1.indexOf(array2[j]) == -1){
-				return false;
-			}
-		}
-		return true;
-	}
+	// // checks if all elements in array2 are in array1
+	// function matches_arrays(array1,array2){
+	// 	for(var j=0;j<array2.length;j++){
+	// 		if(array1.indexOf(array2[j]) == -1){
+	// 			return false;
+	// 		}
+	// 	}
+	// 	return true;
+	// }
 
 	// determines if a trail matches the given constraints
 	// ensures that all provided constraints are met
@@ -185,9 +185,9 @@ $(function() {
 		}
 
 		if(c["distance"] != undefined){
-			var location = get_current_location();
-			var x = location["latitude"]-trail["latitude"];
-			var y= location["longitude"]-trail["longitude"];
+			console.log(current_location);
+			var x = parseFloat(current_location["latitude"])-trail["latitude"];
+			var y = parseFloat(current_location["longitude"])-trail["longitude"];
 			if(Math.pow(x,2) + Math.pow(y,2) > Math.pow(c["distance"],2)){
 				return false;
 			}
@@ -204,7 +204,7 @@ $(function() {
 	function get_constraints(){
 		var c = {};
 		c["keyword"] = $('#search_field').val();
-		c["length"] = $( "#length_slider" ).slider('values');
+		c["length"] = slider_values;
 		c["attractions"] = []
 		$('input[name=attractions]:checked').each(function(){
 			c["attractions"].push(this.value);
@@ -224,13 +224,14 @@ $(function() {
 		updateFilter();
 	});
 
-	
+
     $("input").change(function(){
-    	console.log('hi');
     	updateFilter();
-    })
+    });
 
 	// search slider
+
+	var slider_values;
 
     $( "#length_slider" ).slider({
       range: true,
@@ -259,6 +260,7 @@ $(function() {
 		}
 		$( "#length_display" ).text(start +
 		" miles - " + end + " miles");
+		slider_values = [start,end];
 		updateFilter();
     }
 
@@ -267,7 +269,9 @@ $(function() {
     $(".content").css("height",window.innerHeight - 60);
 });
 
+  var current_location;
   $.get("http://ipinfo.io", function(response) {
+  	current_location = response.loc.split(',');
     $('#city').html(response.city + ', ');
     $('#state').html(response.region);
   }, "jsonp");
