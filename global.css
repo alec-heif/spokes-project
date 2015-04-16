@@ -118,7 +118,7 @@ img {
 }
 
 
-.description p {
+.description {
   margin-top: 10px;
   margin-bottom: 10px;
   text-align: justify;
@@ -131,8 +131,8 @@ img {
   float: right;
 }
 .distance, .attributes {
-  /*font-style: italic;
-  color: #aaa;*/
+  font-style: italic;
+  color: #aaa;
 }
 
 .author {

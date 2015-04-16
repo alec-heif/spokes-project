@@ -22,24 +22,30 @@ $(function() {
 
 	$("#trail_map").attr("src", "content/images/" + trail["images"][trail["images"].length - 1]);
 
-	/*
+	
 	for(var i in trail["comments"]) {
 		var comment = trail["comments"][i];
 		console.log(comment);
 		var comment_div = document.createElement('div');
-		comment_div.className("comment");
+		comment_div.className = "comment";
 		var comment_text_div = document.createElement('div');
-		comment_text_div.className("comment_text");
-		comment_text_div.text(comment["text"]);
+		comment_text_div.className = "comment_text";
+		comment_text_div.innerHTML = comment["text"];
 		var comment_author_div = document.createElement('div');
-		comment_author_div.className("author");
-		comment_author_div.html(
+		comment_author_div.className = "author";
+		comment_author_div.innerHTML = 
 			moment.unix(comment["timestamp"]).fromNow() + 
 			' by <a class="author_name" href="">'
 			+ comment["creator"]
-			+ '</a>');
+			+ '</a>';
+		var comment_image = document.createElement('img');
+		comment_image.src = "content/icons/avatar_default.png";
+		comment_image.className = "comment_author_image";
+		comment_div.appendChild(comment_image);
+		comment_div.appendChild(comment_text_div);
+		comment_div.appendChild(comment_author_div);
+		$("#comments_list").prepend(comment_div);
 	}
-	*/
 
 
 });
