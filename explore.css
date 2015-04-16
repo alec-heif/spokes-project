@@ -30,6 +30,11 @@
 .trail-image:first-child {
 	border-top-left-radius: 15px;
 	border-bottom-left-radius: 15px;
+  background-size:100% 100%;
+}
+
+.trail-image {
+  background-size:100% 100%;
 }
 
 .trail-image-div {
