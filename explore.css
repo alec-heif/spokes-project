@@ -103,6 +103,14 @@
 	width:85%;
 }
 
+#length h1 {
+	display: inline-block;
+}
+
+#length_display {
+	display: inline;
+}
+
 #length_slider {
 	width: 80%;
 	margin-left: auto;
