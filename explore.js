@@ -31,11 +31,6 @@ $(function() {
 		summary_div.appendChild(name_div);
 
 		var summary = document.createElement('div');
-		var attributes_text = trail["length"] + " miles long | "
-			+ trail["difficulty"] + " &middot; "
-			+ trail["terrain"] + " terrain | "
-			+ trail["scenery"] + " scenery | "
-			+ "explored by " + trail["explorer"];
 
 		var trailLength = document.createElement('div');
 		trailLength.className = "trail-length";
