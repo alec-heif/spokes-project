@@ -1,8 +1,11 @@
+.main {
+	overflow-y: hidden;
+}
+
 .content{
 	float:left;
 	overflow-y:scroll;
 	width: 65%;
-	height: 800px;
 }
 
 .sidebar {
@@ -21,6 +24,7 @@
 	margin-bottom: 20px;
 	border: 1px solid #aaa;
 	border-radius: 15px;
+	cursor: pointer;
 }
 
 .trail-image:first-child {

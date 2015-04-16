@@ -55,7 +55,7 @@ $(function() {
 
 		var trailExplorer = document.createElement('a');
 		trailExplorer.className = "trail-explorer";
-		trailExplorer.href = "//#asdf";
+		trailExplorer.href = "";
 		trailExplorer.innerHTML = trail["explorer"];
 
 		var trailDescription = document.createElement('div');
@@ -258,8 +258,9 @@ $(function() {
     }
 
     update_length_slider();
-
-  });
+    $(".main").css("height",window.innerHeight - 60);
+    $(".content").css("height",window.innerHeight - 60);
+});
 
   $.get("http://ipinfo.io", function(response) {
     $('#city').html(response.city + ', ');
