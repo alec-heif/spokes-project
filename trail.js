@@ -47,7 +47,12 @@ $(function() {
 		$("#comments_list").prepend(comment_div);
 	}
 
-
+	for(var i=0; i < trail["images"].length - 1; i++) {
+		var image = document.createElement('img');
+		image.src = "content/images/" + trail["images"][i];
+		image.className = "trail_image";
+		$("#images_list").append(image);
+	}
 });
 
 function getQueryVariable(variable) {
