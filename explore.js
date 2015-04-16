@@ -1,8 +1,9 @@
 $(function() {
 
 	// on page load
-	for(var trail_name in explore_data){
-		display(explore_data[trail_name]);
+	routes = data["routes"];
+	for(var i in routes){
+		display(routes[i]);
 	}
 
 	function display(trail){
@@ -12,10 +13,10 @@ $(function() {
 		var img_accordion_div = document.createElement('div');
 		img_accordion_div.className = "panel panel-default trail-image-div";
 		img_accordion_div.id = "image_accordion_" + trail["id"];
-		for(var i=0;i<trail["img_src"].length;i++){
+		for(var i=0;i<trail["images"].length;i++){
 			var img_div = document.createElement('div');
 			img_div.className = "trail-image";
-			img_div.style.backgroundImage = "url(" + trail["img_src"][i] + ")";
+			img_div.style.backgroundImage = "url(content/images/" + trail["images"][i] + ".jpg)";
 			img_accordion_div.appendChild(img_div);
 		}
 		div.appendChild(img_accordion_div);
@@ -31,7 +32,7 @@ $(function() {
 
 		var summary = document.createElement('div');
 		append(trail["length"]+" miles",summary);
-		["difficulty","surface","scenery","explorer","attractions"].forEach(function(key){
+		["difficulty","terrain","scenery","explorer"].forEach(function(key){
 			append(trail[key],summary);
 		});
 		summary.appendChild(document.createElement('br'));
@@ -46,7 +47,7 @@ $(function() {
 		$('#content').append(div);
 
 		$("#image_accordion_" + trail["id"]).zAccordion({
-			startingSlide: trail["img_src"].length - 1,
+			startingSlide: trail["images"].length - 1,
 			auto: false,
 			tabWidth: "15%",
 			width: "100%",
@@ -135,7 +136,7 @@ $(function() {
 
 
 		var matches = true;
-		["attractions","scenery","surface","difficulty"].forEach(function(key){
+		["attractions","scenery","terrain","difficulty"].forEach(function(key){
 			if(!matches_arrays(trail[key],c[key])){
 				matches = false;
 			}
@@ -165,7 +166,7 @@ $(function() {
 		var c = {};
 		c["keyword"] = $('#search_field').val();
 		c["length"] = $( "#length_slider" ).slider('values');
-		["attractions","scenery","surface","difficulty"].forEach(function(key){
+		["attractions","scenery","terrain","difficulty"].forEach(function(key){
 			c[key] = [];
 			$('input[name='+key+']:checked').each(function() {
 			    c[key].push($(this).val());
