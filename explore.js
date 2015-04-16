@@ -46,7 +46,7 @@ $(function() {
 		$('#content').append(div);
 
 		$("#image_accordion_" + trail["id"]).zAccordion({
-			startingSlide: 0,
+			startingSlide: trail["img_src"].length - 1,
 			auto: false,
 			tabWidth: "15%",
 			width: "100%",
