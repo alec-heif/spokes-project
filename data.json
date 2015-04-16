@@ -28,6 +28,8 @@ data = {
     {
       "id":1,
       "name":"Cambridge Loop",
+      "city":"Cambridge",
+      "state":"MA",
       "difficulty":"easy",
       "terrain":"paved",
       "scenery":"urban",
@@ -61,6 +63,8 @@ data = {
     {
       "id":2,
       "name":"Red River Trail",
+      "city":"Cambridge",
+      "state":"MA",
       "difficulty":"easy",
       "terrain":"paved",
       "scenery":"nature",
@@ -88,6 +92,8 @@ data = {
     {
       "id":3,
       "name":"More Windows...",
+      "city":"Cambridge",
+      "state":"MA",
       "difficulty":"hard",
       "terrain":"mountain",
       "scenery":"nature",
@@ -110,6 +116,8 @@ data = {
     {
       "id":4,
       "name":"Freedom Trail",
+      "city":"Cambridge",
+      "state":"MA",
       "difficulty":"medium",
       "terrain":"paved",
       "scenery":"urban",
@@ -131,6 +139,8 @@ data = {
     {
       "id":5,
       "name":"Hilly Billy",
+      "city":"Cambridge",
+      "state":"MA",
       "difficulty":"easy",
       "terrain":"mountain",
       "scenery":"nature",
