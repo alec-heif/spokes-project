@@ -53,6 +53,8 @@ $(function() {
 		image.className = "trail_image";
 		$("#images_list").append(image);
 	}
+
+	document.title = trail["name"] + " | Spokes";
 });
 
 function getQueryVariable(variable) {
