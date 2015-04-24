@@ -51,8 +51,11 @@ $(function() {
 		var image = document.createElement('img');
 		image.src = "content/images/" + trail["images"][i];
 		image.className = "trail_image";
-		$("#images_list").append(image);
+		var li = document.createElement('li');
+		li.appendChild(image);
+		$("#images_list").append(li);
 	}
+	$("#images_list").bxSlider();
 
 	document.title = trail["name"] + " | Spokes";
 });
