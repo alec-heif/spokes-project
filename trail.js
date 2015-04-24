@@ -55,7 +55,10 @@ $(function() {
 		li.appendChild(image);
 		$("#images_list").append(li);
 	}
-	$("#images_list").bxSlider();
+	$("#images_list").bxSlider({
+		auto: true,
+		autoControls: true
+	});
 
 	document.title = trail["name"] + " | Spokes";
 });
