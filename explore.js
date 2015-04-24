@@ -9,10 +9,10 @@ $(function() {
 		img_accordion_div.className = "panel panel-default trail-image-div";
 		img_accordion_div.id = "image_accordion_" + trail["id"];
 		for(var i=0;i<trail["images"].length;i++){
-			var img_div = document.createElement('div');
-			img_div.className = "trail-image";
-			img_div.style.backgroundImage = "url(content/images/" + trail["images"][i] + ")";
-			img_accordion_div.appendChild(img_div);
+			var img = document.createElement('img');
+			img.className = "trail-image";
+			img.src = "content/images/" + trail["images"][trail["images"].length - i - 1];
+			img_accordion_div.appendChild(img);
 		}
 		div.appendChild(img_accordion_div);
 
@@ -78,12 +78,13 @@ $(function() {
 		$('#content').append(div);
 
 		$("#image_accordion_" + trail["id"]).zAccordion({
-			startingSlide: trail["images"].length - 1,
+			startingSlide: 0,
 			auto: false,
 			tabWidth: "15%",
 			width: "100%",
 			height: 300,
-			trigger: "mouseover"
+			trigger: "mouseover",
+			invert: true,
 		});
 	}
 
