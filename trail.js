@@ -57,7 +57,9 @@ $(function() {
 	}
 	$("#images_list").bxSlider({
 		auto: true,
-		autoControls: true
+		autoControls: true,
+		adaptiveHeight: true,
+  		mode: 'fade'
 	});
 
 	document.title = trail["name"] + " | Spokes";
