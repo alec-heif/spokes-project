@@ -35,6 +35,7 @@
 
 .trail-image {
   background-size:100% 100%;
+  box-shadow: 0 0 20px #000;
   cursor: pointer !important;
 }
 
