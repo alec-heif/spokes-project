@@ -1,6 +1,5 @@
 $(function() {
 
-
 	function display(trail){
 		var div = document.createElement('div');
 		div.className = "panel panel-default trail-panel";
@@ -43,19 +42,15 @@ $(function() {
 		trailScenery.className = "trail-scenery";
 		trailScenery.innerHTML = trail["scenery"];
 
-		var trailExplorer = document.createElement('a');
+		var trailExplorer = document.createElement('div');
 		trailExplorer.className = "trail-explorer";
-		trailExplorer.href = "";
 		trailExplorer.innerHTML = trail["explorer"];
 
 		var trailDescription = document.createElement('div');
 		trailDescription.className = "trail-description";
 		trailDescription.innerHTML = trail["description"];
 
-		/*append(attributes_text,summary);
-		summary.appendChild(document.createElement('br'));
-		append("Description: ",summary);
-		append(trail["description"],summary);*/
+		
 		summary.appendChild(trailLength);
 		summary.appendChild(trailDifficulty);
 		summary.appendChild(trailTerrain);
@@ -88,25 +83,6 @@ $(function() {
 		});
 	}
 
-	// function append(object,div){
-	// 	if(typeof object == "string"){
-	// 		if(object != ""){
-	// 			div.appendChild(document.createElement('br'));
-	// 			div.appendChild(document.createTextNode(object));
-	// 		}
-	// 	}
-	// 	else{
-	// 		var text = "";
-	// 		for(var i=0;i<object.length;i++){
-	// 			text += object[i] + " ";
-	// 		}
-	// 		if(text != ""){
-	// 			div.appendChild(document.createElement('br'));
-	// 			div.appendChild(document.createTextNode(text));
-	// 		}
-	// 	}
-	// }
-
 
 	// search handler
 	var constraints;
@@ -119,8 +95,13 @@ $(function() {
 			}
 		}
 		if($('#content').children().length == 0){
-			console.log("no trails matched");
+			no_trails_found();
 		}
+		update_hash(constraints);
+	}
+
+	function no_trails_found(){
+		$('#content').append($("<div/>")).addClass('no_trails').html('No Trails Found!');
 	}
 
 	function find(object,string){
@@ -139,16 +120,6 @@ $(function() {
 		}
 		return false;
 	}
-
-	// // checks if all elements in array2 are in array1
-	// function matches_arrays(array1,array2){
-	// 	for(var j=0;j<array2.length;j++){
-	// 		if(array1.indexOf(array2[j]) == -1){
-	// 			return false;
-	// 		}
-	// 	}
-	// 	return true;
-	// }
 
 	// determines if a trail matches the given constraints
 	// ensures that all provided constraints are met
@@ -186,19 +157,15 @@ $(function() {
 		}
 
 		if(c["distance"] != undefined){
-			console.log(current_location);
-			var x = parseFloat(current_location["latitude"])-trail["latitude"];
-			var y = parseFloat(current_location["longitude"])-trail["longitude"];
+			var location = get_lat_long(c["zip"]);
+			var x = parseFloat(location["latitude"])-trail["latitude"];
+			var y = parseFloat(location["longitude"])-trail["longitude"];
 			if(Math.pow(x,2) + Math.pow(y,2) > Math.pow(c["distance"],2)){
 				return false;
 			}
 		}
 
 		return true;
-	}
-
-	function get_current_location(){
-		return {"latitude":0,"longitude":0}
 	}
 
 	// returns search constraints as a dictionary
@@ -214,7 +181,11 @@ $(function() {
 			c[key] =  $('input[name='+key+']:checked').val();
 		});
 		if($('input[name=location]').is(':checked')){
-			c["distance"] = $('#location_distance').val();
+			var zip = $('input[id=zip]').val();
+			if(zip.length == 5 && Number(zip) > 0){
+				c["distance"] = $('#location_distance').val();
+				c["zip"] = zip;
+			}
 		}
 		return c;
 	}
@@ -229,6 +200,10 @@ $(function() {
     $("input").change(function(){
     	updateFilter();
     });
+
+    $("select").change(function(){
+    	updateFilter();
+    })
 
 	// search slider
 
@@ -265,14 +240,77 @@ $(function() {
 		updateFilter();
     }
 
-    update_length_slider();
     $(".main").css("height",window.innerHeight - 60);
     $(".content").css("height",window.innerHeight - 60);
-});
 
-  var current_location;
-  $.get("http://ipinfo.io", function(response) {
-  	current_location = response.loc.split(',');
-    $('#city').html(response.city + ', ');
-    $('#state').html(response.region);
-  }, "jsonp");
+    var current_location;
+	$.get("http://ipinfo.io", function(response) {
+		current_location = response.loc.split(',');
+	$('#zip').val(response.postal);
+	}, "jsonp");
+
+	function get_lat_long(zip){
+		return {"latitude": 0, "longitude": 0}
+	}
+
+	function update_hash(constraints){
+		var hash = [];
+		if(constraints.keyword){
+			hash.push("keyword~"+constraints.keyword);
+		}
+		var length = constraints.length;
+		if(length[0] != 0 || length[1] != "100+"){
+			hash.push("length~"+length[0]+"~"+length[1]);
+		}
+		if(constraints.attractions.length > 0){
+			hash.push("attractions~"+constraints.attractions.join("~"));
+		}
+		if(constraints.scenery != "any"){
+			hash.push("scenery~"+constraints.scenery);
+		}
+		if(constraints.terrain != "any"){
+			hash.push("terrain~"+constraints.terrain);
+		}
+		if(constraints.distance){
+			hash.push("distance~"+constraints.distance+"~"+constraints.zip);
+		}
+		if(constraints.difficulty != "any"){
+			hash.push("difficulty~"+constraints.difficulty);
+		}
+		location.hash = hash.join("|");
+	}
+
+	var hash = location.hash;
+	if(hash){
+		var values = hash.substring(1).split('|');
+		var params;
+		for(var i=0;i<values.length;i++){
+			params = values[i].split('~');
+			if(params[0] == "keyword"){
+				$('#search_field').val(params[1]);
+			}
+			else if(params[0] == "length"){
+				if(Number(params[1]) > 0){
+					$( "#length_slider" ).slider("values",0,params[1])
+				}
+				if(Number(params[2]) > 0){
+					$( "#length_slider" ).slider("values",1,params[2])
+				}
+			}
+			else if(params[0] == "attractions"){
+				for(var i=1;i<params.length;i++){
+					$('input[value='+params[i]+']').attr('checked', true);
+				}
+			}
+			else if(params[0] == "scenery" || params[0] == "terrain" || params[0] == "difficulty"){
+				$('input[value='+params[i]+']').attr('checked', true);
+			}
+			else if(params[0] == "distance"){
+				$('input[name=location]').attr('checked', true);
+			}
+		}
+	}
+
+    update_length_slider();
+
+});

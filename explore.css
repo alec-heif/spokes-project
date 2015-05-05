@@ -8,9 +8,19 @@
 	width: 65%;
 }
 
+.no_trails{
+	color:#F56218;
+	font-weight:bold;
+	font-size:40px;
+	margin-left:20px;
+	margin-top:20px;
+}
+
 .sidebar {
 	float:right;
 	width: 33%;
+	overflow-y:scroll;
+	height: 100%;
 }
 
 .trail-name {
@@ -120,6 +130,15 @@
 
 .trail-panel{
 	cursor:pointer;
+	border: 10px solid transparent;
+}
+
+.trail-panel:hover{
+	border: 10px groove #F56218;
+}
+
+.trail-panel:hover .trail-name{
+	text-decoration: underline;
 }
 
 #search{
@@ -133,6 +152,10 @@
 
 .panel-sub{
 	padding-bottom:12px;
+}
+
+input#zip{
+	width: 60px;
 }
 
 /*
