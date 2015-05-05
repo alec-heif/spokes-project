@@ -80,6 +80,7 @@ $(function() {
 			height: 300,
 			trigger: "mouseover",
 			invert: true,
+			speed: 300
 		});
 	}
 
