@@ -234,14 +234,16 @@ img {
 #attributes {
   background-color: #f6f7f8;
   height: 2em;
-  line-height: 2em;
   position: relative;
+  border-top: 1px solid #888;
+  border-bottom: 1px solid #888;
 }
 
 #distance, #difficulty, #terrain, #scenery {
   padding-left: 1em;
   padding-right: 1em;
-  line-height: 2em;
+  position: relative;
+  top: -0.5em;
 }
 
 div.vertical-rule {
