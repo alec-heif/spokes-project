@@ -10,6 +10,9 @@ html, body {
 }
 
 #topbar {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
   height: 60px;
   background-color: #9DC9AC;
   width: 100%;
@@ -19,12 +22,13 @@ html, body {
 
 
 #topbar .logo_image {
+  position: fixed;
   width: 80px;
   margin-left: 125px;
 }
 
 #topbar .logo_text {
-  position: absolute;
+  position: fixed;
   font-size: 40px;
   font-family: "Lobster", cursive;
   color: rgb(245, 98, 24);
@@ -62,6 +66,7 @@ html, body {
 .main {
   padding: 10px;
   width: 86%;
+  margin-top: 60px;
   margin-left: auto;
   margin-right: auto;
 }
