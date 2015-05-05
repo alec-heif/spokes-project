@@ -130,11 +130,11 @@
 
 .trail-panel{
 	cursor:pointer;
-	border: 10px solid transparent;
+	border: 5px solid transparent;
 }
 
 .trail-panel:hover{
-	border: 10px groove #F56218;
+	border: 5px groove #F56218;
 }
 
 .trail-panel:hover .trail-name{
