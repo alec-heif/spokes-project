@@ -101,7 +101,7 @@ $(function() {
 	}
 
 	function no_trails_found(){
-		$('#content').append($("<div/>")).addClass('no_trails').html('No Trails Found!');
+		$('<div/>').appendTo('#content').addClass('no_trails').html('No Trails Found!');
 	}
 
 	function find(object,string){
