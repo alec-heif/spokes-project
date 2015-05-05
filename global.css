@@ -79,8 +79,8 @@ html, body {
 }
 
 .right_col {
-  float:right;
   width: 47%;
+  float: right;
 }
 
 
@@ -169,12 +169,11 @@ img {
 
 
 .comment {
-  border: 1px solid #aaa;
-  border-radius: 15px;
+  border: 1px solid #888;
   min-height: 70px;
   margin-bottom: 10px;
   position: relative;
-  background-color: #FFFEEE;
+  background-color: #FFF;
 }
 
 .comment_text {
@@ -184,12 +183,12 @@ img {
 }
 
 .comment_author_image {
-  border-radius: 15px;
   width: 70px;
   height: 70px;
   float: left;
   margin-right: 10px;
   margin-bottom: 10px;
+  border-right: 1px solid #888;
 }
 
 .comment .author {
@@ -199,7 +198,6 @@ img {
 }
 
 .comment textarea {
-  border-radius: 15px;
   border: 1px solid #aaa;
   padding: 6px;
   width: calc(100% - 90px);
@@ -261,11 +259,11 @@ a {
 
 #trail_info_block {
   background-color: #fff;
-  width: 70%;
+  width: 80%;
   height: 400px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   position: relative;
   border: 1px solid #888;
 }
@@ -328,4 +326,11 @@ div.vertical-rule {
 
 #map_image {
   width: 100%;
+}
+
+
+#trail_photos_and_comments {
+  width: 80%;  
+  margin-left: auto;
+  margin-right: auto;
 }
