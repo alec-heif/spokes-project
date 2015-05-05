@@ -21,49 +21,48 @@
 
 <body>
 <div class="main">
-  <div class="map left_col">
-    <img id="trail_map" src="content/images/map.png"/>
+  <div id="trail_info_block">
+    <div id="cover">
+      <img id="cover_image" src="content/images/bike1.jpg"/>
+      <div id="trail_name" class="trail_name"></div>
+    </div>
+    <div id="attributes">
+      <span id="distance"></span>
+      <div class="vertical-rule"></div>
+      <span id="difficulty"></span>
+      <div class="vertical-rule"></div>
+      <span id="terrain"></span>
+      <div class="vertical-rule"></div>
+      <span id="scenery"></span>
+    </div>
+    <div id="description">
+    </div>
+    <div id="map">
+      <img id="map_image" src="content/images/map1.png"/>
+    </div>
   </div>
 
-  <div class="right_col">
-    <div id="trail_name" class="trail_name">Red Road Trail</div>
-    <div id="distance" class="distance">24.7 miles</div>
-    <div id="attributes" class="attributes"></div>
-    <div style="clear:both"></div>
-    <div id="description" class="description"></div>
-
-    <div class="author">
-      explored by <a id="author_name" class="author_name" href="">Jeff</a>
+  <div id="trail_photos_and_comments">
+    <div class="images left_col">
+      <div class="subheading">Photos</div>
+      <ul id="images_list"></ul>
+      <a class="button" href="">Upload photos</a>
     </div>
 
-    
-    <!--<hr/>
-    <div class="thumbnails">
-      <div class="thumbnail" style="background: url('content/images/77_mass_ave.jpg')"></div>
-    </div>-->
-  </div>
-  <div style="clear:both"></div>
-  <hr/>
 
-  <div class="images left_col">
-    <div class="subheading">photos</div>
-    <ul id="images_list"></ul>
-    <a class="button" href="">upload photos</a>
-  </div>
+    <div class="comments right_col">
+      <div class="subheading">Comments</div>
 
+      <div id="comments_list"></div>   
 
-  <div class="comments right_col">
-    <div class="subheading">comments</div>
-
-    <div id="comments_list"></div>   
-
-    <div class="blank comment">
-      <img class="comment_author_image" src="content/icons/avatar_default.png">
-      <div class="comment_text">
-        <textarea placeholder="Your comment..."></textarea>
+      <div class="blank comment">
+        <img class="comment_author_image" src="content/icons/avatar_default.png">
+        <div class="comment_text">
+          <textarea placeholder="Your comment..."></textarea>
+        </div>
       </div>
+      <a class="button" href="">Post comment</a>
     </div>
-    <a class="button" href="">post comment</a>
   </div>
 
 <div style="clear: both"></div>

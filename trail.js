@@ -10,13 +10,9 @@ $(function() {
 	}
 	$("#trail_name").text(trail["name"]);
 	$("#distance").text(trail["length"] + " miles");
-
-	var attributes_text =
-			trail["difficulty"] + " \xB7 "
-			+ trail["terrain"] + " terrain \xB7 "
-			+ trail["scenery"] + " scenery";
-	$("#attributes").text(attributes_text);
-
+	$("#difficulty").text(trail["difficulty"]);
+	$("#terrain").text(trail["terrain"]);
+	$("#scenery").text(trail["scenery"]);
 	$("#description").text(trail["description"]);
 	$("#author_name").text(trail["explorer"]);
 
@@ -26,7 +22,7 @@ $(function() {
 	for(var i in trail["comments"]) {
 		var comment = trail["comments"][i];
 		console.log(comment);
-		var comment_div = document.createElement('div');
+		var comment_div = document.createElement('div'); // comment_div = $('<div>').addClass('comment_text');
 		comment_div.className = "comment";
 		var comment_text_div = document.createElement('div');
 		comment_text_div.className = "comment_text";
