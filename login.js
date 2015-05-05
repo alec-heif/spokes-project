@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<link rel="stylesheet" href="global.css" />
-<link rel="stylesheet" href="intro_page.css" />
-
-<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-<script src="firebase-local.js"></script>
-<!-- <script src="topbar.js"></script> -->
-
-<script>
-
 var modalWindows = function(){/*
 <div class="modal" id="loginwindow">
   <div class="modal-wrapper">
@@ -32,7 +17,7 @@ var modalWindows = function(){/*
   </div>
 </div>
 <div class="modal-mask"></div>
-*/}.toString().slice(14,-3)
+*/}.toString().slice(14,-3);
 
 //alert(modalWindows)
 
@@ -106,38 +91,3 @@ $(function(){
   $("body").prepend(modalWindows);
   updateLoginButtons();
 });
-
-
-</script>
-
-<title>Spokes</title>
-</head>
-
-<body>
-
-
-
-  <div class="intro_splash">
-
-    <div class="pseudotopbar">
-      <div class="pseudotopbar_main"><a id="firstlogin">log in</a> | <a id="secondlogin">sign up</a></div>
-    </div>
-
-
-    <div id="color_upper">
-    </div>
-
-
-    <div class="logo1">
-      Spokes
-      <img class="logo_image1" src="content/icons/bicycle_color.png" />
-    </div>
-
-    <div class="intro_buttons">
-      <div><button type="button" id="btn_find" class="button style2" onclick="location.href = 'explore.html'">Find a route</button></div>
-      <div><button type="button" id="btn_create" class="button style2" onclick="alert('Not implemented yet!')">Create a route</button></div>
-    </div>
-
-  </div>
-</body>
-</html>
