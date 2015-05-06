@@ -511,7 +511,7 @@ div.vertical-rule {
 }
 
 #map_div {
-  height: 100%;
+  height: 300px;
 }
 
 #add_map_plus {

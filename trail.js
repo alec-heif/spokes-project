@@ -34,7 +34,9 @@ $(function() {
 			$("#scenery").text(trail["scenery"]);
 			$("#description").text(trail["description"]);
             isCreateMode = false; // make the map not editable.
-			
+			if (!trail.coords || !trail.coords.length) {
+				$("#map").hide();
+			}
 		}
 
 
