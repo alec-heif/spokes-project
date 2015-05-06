@@ -1,8 +1,12 @@
+.main{
+	width:86% !important;
+}
+
 .content{
 	float:left;
 	overflow-y:scroll;
-	width: 60%;
 	height:100%;
+	padding:15px;
 }
 
 .no_trails{
@@ -38,8 +42,9 @@
 .trail-panel {
 	margin-bottom: 20px;
 	border: 5px solid #aaa;
-	border-radius: 15px;
+	/*border-radius: 15px;*/
 	cursor: pointer;
+	box-shadow: 5px 5px 5px;
 }
 
 .trail-panel:hover{
@@ -50,9 +55,13 @@
 	text-decoration: underline;
 }
 
+.trail-image{
+	border-radius:15px;
+}
+
 .trail-image:first-child {
-	border-top-left-radius: 15px;
-	border-bottom-left-radius: 15px;
+	border-top-left-radius: 15px;/*
+	border-bottom-left-radius: 15px;*/
   background-size:100% 100%;
 }
 
