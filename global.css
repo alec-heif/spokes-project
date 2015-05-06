@@ -42,7 +42,7 @@ html, body {
   float: left;
 }
 
-#topbar .username {
+#topbar .username, .pseudotopbar .username {
   float: right;
   line-height: 60px;
   color: #e9eaed;
@@ -295,7 +295,7 @@ img {
 }
 
 
-#topbar .bold, #topbar .bold:hover {
+#topbar .bold, #topbar .bold:hover, .pseudotopbar .bold, .pseudotopbar .bold:hover  {
   font-weight: bold;
   color: #e9eaed;
   cursor: default;
