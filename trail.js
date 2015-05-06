@@ -20,6 +20,8 @@ $(function() {
 	$("#description").text(trail["description"]);
 	$("#author_name").text(trail["explorer"]);
 
+	$("#cover_image").attr("src", "content/images/" + trail["images"][0]);
+	
 	$("#trail_map").attr("src", "content/images/" + trail["images"][trail["images"].length - 1]);
 
 	
