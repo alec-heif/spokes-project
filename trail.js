@@ -16,13 +16,12 @@ $(function() {
         // Get the route coordinates from the trail object and put them on the map.
         console.log("set routeCoords");
         routeCoords = trail.coords;
-        console.log(routeCoords);
-        initialize();
+        console.log(routeCoords);        
 
 		var trail_name = trail.name;
 		document.title = trail_name + " | Spokes";
 		
-		if(trail.explorer === "anonymous" || trail.explorer === (localStorage.getItem("loggedInAs"))){
+		if(is_trail_editable(trail)){
 			$(".editor").show();
 			setEditorValues(trail);
 			//return;
@@ -34,8 +33,13 @@ $(function() {
 			$("#terrain").text(trail["terrain"]);
 			$("#scenery").text(trail["scenery"]);
 			$("#description").text(trail["description"]);
+            isCreateMode = false; // make the map not editable.
 			
 		}
+
+        // Initialize the map.
+        initialize();
+
 		$("#author_name").text(trail["explorer"]);
 		$("#distance").text(trail["length"] + " miles");
 
@@ -352,6 +356,10 @@ function get_trail_by_id(trail_id) {
         }
     }
     return trail;
+}
+
+function is_trail_editable(trail) {
+    return trail.explorer === "anonymous" || trail.explorer === (localStorage.getItem("loggedInAs"));
 }
 /*
 function submitNewTrail() {
