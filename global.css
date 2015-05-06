@@ -320,6 +320,8 @@ a {
 
 #cover_image {
   width: 100%;
+  position: relative;
+  top: -20%;
 }
 
 #attributes {
