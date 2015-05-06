@@ -269,7 +269,7 @@ function initialize() {
       google.maps.event.addDomListener(controlDiv, 'click', function() {
         // Click on done_button
         console.log("Done clicked");
-        if (lineDrawn !== undefined &&  lineDrawn !== null) {
+        if (lineDrawn) {
           // If a path has been drawn, put its coordinates in the global
           // variable routeCoords.
           var path = lineDrawn.getPath();
@@ -286,7 +286,20 @@ function initialize() {
       map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(controlDiv);
       map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(zoomControlDiv);
     }
-    else {
+    else {      
+      var images = ['zoom_in.png', 'zoom_out.png'];
+      var buttons = images.map(createButton);
+      buttons.forEach(function(button) { zoomControlWrapper.appendChild(button); });
+      google.maps.event.addDomListener(buttons[0], 'click', function() {
+        map.setZoom(map.getZoom() + 1);
+      });
+      google.maps.event.addDomListener(buttons[1], 'click', function() {
+        map.setZoom(map.getZoom() - 1);
+      });
+      map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(zoomControlDiv);
+    }
+    if (routeCoords !== undefined && routeCoords !== null && routeCoords.length > 1) {
+      console.log("putting routeCoords in map");
       var latLonCoords = routeCoords.map(function(coord) {
         return (new google.maps.LatLng(coord.lat, coord.lon));
       });
@@ -302,27 +315,21 @@ function initialize() {
       });
       lineDrawn.setMap(map);
       createMarkers();
-      var images = ['zoom_in.png', 'zoom_out.png'];
-      var buttons = images.map(createButton);
-      buttons.forEach(function(button) { zoomControlWrapper.appendChild(button); });
-      google.maps.event.addDomListener(buttons[0], 'click', function() {
-        map.setZoom(map.getZoom() + 1);
-      });
-      google.maps.event.addDomListener(buttons[1], 'click', function() {
-        map.setZoom(map.getZoom() - 1);
-      });
-      map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(zoomControlDiv);
     }
   }, "jsonp");
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+//google.maps.event.addDomListener(window, 'load', initialize);
 
 function getCoords() {
   return routeCoords;
 }
 
 function getMapImage(coords) {
+  if (!coords) {
+    // singlewhitepixel.gif
+    return "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICRAEAOw==";
+  }
   var first = '' + coords[0].lat + ',' + coords[0].lon;
   var last = '' + coords[coords.length-1].lat + ',' + coords[coords.length-1].lon;
   var prepend = 'https://maps.googleapis.com/maps/api/staticmap?center=' + first;

@@ -2,7 +2,7 @@ $(function(){
 $("body").prepend(function(){/*
 <div id="topbar">
   <div class="topbar_main">
-    <a href="index.html">
+    <a href="/spokes-project/">
       <div class="logo">
         <span class="logo_text">Spokes</span>
         <img class="logo_image" src="content/icons/bicycle_color.png"/>

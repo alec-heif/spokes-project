@@ -16,7 +16,7 @@ var modalWindows = function(){/*
     <a onclick="attemptSignup();" class="button" href="javascript:void(0)">sign up</a>
   </div>
 </div>
-<div class="modal-mask"></div>
+<div class="modal-mask" onclick="closeModalWindows()"></div>
 */}.toString().slice(14,-3);
 
 //alert(modalWindows)
@@ -85,6 +85,7 @@ function attemptLogin() {
     $("#loginusername").val("");
     $("#loginpassword").val("");
     updateLoginButtons();
+    location.reload();
   }
 }
 
@@ -99,6 +100,7 @@ function attemptSignup() {
     $("#signupconfirm").val("");
     closeModalWindows();
     updateLoginButtons();
+    location.reload();
   }
 }
 
@@ -106,6 +108,7 @@ function attemptLogout() {
   console.log("logging out");
   localStorage.removeItem("loggedInAs");
   updateLoginButtons();
+  location.reload();
 }
 
 function validateLogin() {

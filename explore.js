@@ -81,6 +81,10 @@ $(function() {
 	// ensures that all provided constraints are met
 	function matches_constraint(trail,c){
 
+		// never display hidden rides, unless they're explored by me.
+		if (trail.publicity === "private" && trail.explorer !== localStorage.getItem("loggedInAs")) {
+			return false;
+		}
 		if(!find(trail,c["keyword"])){
 			return false;
 		}
