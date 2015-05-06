@@ -26,18 +26,21 @@
     <div id="trail_info_block">
       <div id="cover">
         <img id="cover_image"/>
-        <div id="trail_name" class="trail_name"></div>
+        <div id="trail_name" class="trail_name">
+          <input class="editor" placeholder="Trail Name"></input>
+        </div>
       </div>
       <div id="attributes">
-        <span id="distance"></span>
+        <span id="distance"><input class="editor" size="8" placeholder="Distance"></input></span>
         <div class="vertical-rule"></div>
-        <span id="difficulty"></span>
+        <span id="difficulty"><input class="editor" size="8" placeholder="Difficulty"></input></span>
         <div class="vertical-rule"></div>
-        <span id="terrain"></span>
+        <span id="terrain"><input class="editor" size="8" placeholder="Terrain"></input></span>
         <div class="vertical-rule"></div>
-        <span id="scenery"></span>
+        <span id="scenery"><input class="editor" size="8" placeholder="Scenery"></input></span>
       </div>
       <div id="description">
+        <textarea class="editor" placeholder="Description"></textarea>
       </div>
       <div id="map">
         <img id="map_image" src="content/images/map1.png"/>
@@ -51,6 +54,13 @@
         <div id="images_list"></div>
         <a class="button" href="javascript:void(0)" onclick="openImageWindow();">Upload photos</a>
       </div>      
+    </div>
+
+    <div id="save_block" class="editor">
+      <a class="button" href="javascript:void(0)" onclick="">Save</a>
+      <input type="radio" name="publicity" value="published">Publish</input>
+      <br>
+      <input type="radio" name="publicity" value="private" checked="checked">Keep Private</input>
     </div>
 
   </div>

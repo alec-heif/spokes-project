@@ -5,6 +5,11 @@ $(function() {
 
 
 		var trail_name = getQueryVariable("trail");
+        if (trail_name == "create") {
+            create_populate();
+            return;
+        }
+
 		document.title = trail_name + " | Spokes";
 		routes = data["routes"];
 		var trail;
@@ -15,7 +20,7 @@ $(function() {
 			}
 		}
 		if(trail == undefined){
-			window.location = "create.html";
+			//window.location = "create.html";
 		}
 		thisTrail = trail;
 		$("#trail_name").text(trail["name"]);
@@ -172,4 +177,8 @@ function submitComment() {
 	})
 }
 
-
+function create_populate() {
+    document.title = "Create a new Trail | Spokes";
+    console.log("trail.js > create");
+    $(".editor").show();   
+}
