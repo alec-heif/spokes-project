@@ -230,7 +230,7 @@ $(function() {
 	}, "jsonp");
 
 	function get_lat_long(zip){
-		return {"latitude": 0, "longitude": 0}
+		return {"latitude": NaN, "longitude": NaN}
 	}
 
 	function update_hash(constraints){
