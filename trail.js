@@ -43,9 +43,9 @@ $(function() {
 			comment_author_div.className = "author";
 			comment_author_div.innerHTML = 
 				moment.unix(comment["timestamp"]).fromNow() + 
-				' by <a class="author_name" href="">'
+				' by <span class="author_name" href="">'
 				+ comment["creator"]
-				+ '</a>';
+				+ '</span>';
 			var comment_image = document.createElement('img');
 			comment_image.src = "content/icons/avatar_default.png";
 			comment_image.className = "comment_author_image";

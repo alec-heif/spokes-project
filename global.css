@@ -441,3 +441,8 @@ div.vertical-rule {
   text-align: center;
   margin: 10px;
 }
+
+.author_name {
+  font-style: normal;
+  color: black;
+}
