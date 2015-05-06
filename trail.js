@@ -69,15 +69,16 @@ $(function() {
 			var src = trail["images"][key];
 			image.src = src;
 			image.className = "trail_image";
-			var li = document.createElement('li');
-			li.appendChild(image);
-			$("#images_list").append(li);
+			var a = document.createElement('a');
+			a.appendChild(image);
+            a.href = image.src;
+			$("#images_list").append(a);
 			if (isFirst) {
 				$("#cover_image").attr("src", src);
 				isFirst = false;
 			}
 		}
-
+        /*
 		$("#images_list").bxSlider({
 			auto: true,
 			autoControls: true,
@@ -98,6 +99,7 @@ $(function() {
           a.href = image.src;
           $("#images_list").append(a);
       }
+      */
       $("#images_list").magnificPopup({
         delegate: 'a', // child items selector, by clicking on it popup will open
         type: 'image',
