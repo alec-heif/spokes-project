@@ -248,6 +248,7 @@ function initialize() {
         buttons[1].style.backgroundColor = '#fff';
         buttons[2].style.backgroundColor = '#fff';
       }
+      $('#map_instructions').hide();
     }
     if (isCreateMode) {
       var images = ['cursor.png', 'pencil.png', 'eraser.png', 'zoom_in.png', 'zoom_out.png'];
@@ -262,6 +263,7 @@ function initialize() {
           dragMode();
         }
         else {
+          $('#map_instructions').show();
           drawingManager.setMap(map);
           map.setOptions({ draggableCursor: 'crosshair', draggable: true});
           eraser = false;
@@ -271,6 +273,7 @@ function initialize() {
         }
       });
       google.maps.event.addDomListener(buttons[2], 'click', function() {
+        $('#map_instructions').hide();
         map.setOptions({ draggableCursor: 'url(eraser_copy.png), auto', draggable: true});
         eraser = true;
         if(lineDrawn) {
