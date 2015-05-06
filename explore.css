@@ -28,8 +28,10 @@
 	width:430px;
 	height:90%;
 	padding:10px;
-	border: 1px solid;
-	border-radius: 5px;
+	border: 1px solid #888;
+  	box-shadow: 0px 0px 5px #888;
+  	background-color: #fff;
+  	margin-top: 5px;
 }
 
 .trail-name {
