@@ -416,7 +416,7 @@ div.vertical-rule {
 }
 
 .trail_image {
-  width: 150px;
+  width: 45%;
   margin: 5px;
   border: 5px solid rgba(1,1,1,0);
 }
@@ -427,4 +427,10 @@ div.vertical-rule {
 
 #images_list a:focus {
   outline: none;
+}
+
+#images_list {
+  background-color: #fff;
+  border: 1px solid #888;
+  text-align: center;
 }
