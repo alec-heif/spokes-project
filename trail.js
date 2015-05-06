@@ -43,11 +43,8 @@ $(function() {
 
 		//should this go inside the block?
     	var coords = trail.coords;
-    	var url = getMapImage(coords);
-    	$('#map_div').css({'background-image': 'url(' + url + ')', 'background-repeat': 'no-repeat', 'background-size': '100%'});
 
-    //TODO need someone to finish my stuff
-
+        update_map_preview(coords);
 
 		//$("#cover_image").attr("src", /*"content/images/" +*/ trail["images"][trail["images"].keys()[0]]);
 		
@@ -318,8 +315,8 @@ function on_map_done() {
     // Set the trail's coordinates to the coordinates which were just drawn on the map.
     trail.coords = routeCoords;
     var trailRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+thisTrailID);
-    getRouteCityState(coords, function(result) {
-      var length = getRouteLength(coords);
+    getRouteCityState(routeCoords, function(result) {
+      var length = getRouteLength(routeCoords);
       if (result) {
         var city = result.city;
         var state = result.state;
@@ -335,6 +332,7 @@ function on_map_done() {
     trailRef.child('coords').set(routeCoords, function() {
             console.log("map coords saved to firebase.");
     });
+    update_map_preview(routeCoords);
 }
 
 function openMapWindow() {
@@ -365,6 +363,12 @@ function get_trail_by_id(trail_id) {
 
 function is_trail_editable(trail) {
     return trail.explorer === "anonymous" || trail.explorer === (localStorage.getItem("loggedInAs"));
+}
+
+function update_map_preview(coords) {
+    var url = getMapImage(coords);
+    $('#map_div').css({'background-image': 'url(' + url + ')', 'background-repeat': 'no-repeat', 'background-size': '100%'});
+
 }
 /*
 function submitNewTrail() {
