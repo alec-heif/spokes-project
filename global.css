@@ -476,3 +476,15 @@ div.vertical-rule {
 .editor {
   display: none;
 }
+
+#difficulty select {
+  margin: -20px;
+}
+
+#terrain select {
+  margin: -20px;
+}
+
+#scenery select {
+  margin: -20px;
+}
