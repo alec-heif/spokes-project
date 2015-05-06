@@ -376,7 +376,7 @@ function update_map_preview(coords) {
 function update_length(trail) {
     console.log("length " + trail["length"]);
     if(trail["length"]) {
-        $("#distance").text(trail["length"] + " miles");
+        $("#distance").text(trail["length"].toFixed(2) + " miles");
     }
     else {
         $("#distance").text("Length unknown");
