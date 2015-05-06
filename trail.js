@@ -310,7 +310,7 @@ function on_map_done() {
     trail.coords = routeCoords;
     var trailRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+thisTrailID);
     getRouteCityState(routeCoords, function(result) {
-      var length = getRouteLength(routeCoords);
+      var length = getRouteLength(routeCoords).toFixed(2);
       if (result) {
         var city = result.city;
         var state = result.state;
@@ -374,7 +374,7 @@ function update_map_preview(coords) {
 function update_length(trail) {
     console.log("length " + trail["length"]);
     if(trail["length"]) {
-        $("#distance").text(trail["length"].toFixed(2) + " miles");
+        $("#distance").text(trail["length"] + " miles");
     }
     else {
         $("#distance").text("Length unknown");

@@ -145,6 +145,7 @@ function initialize() {
       lineDrawn = polyline;
       drawingManager.setMap(null);
       resetStartEndMarkers();
+      dragMode();
       google.maps.event.addListener(polyline, 'mouseover', function(evt) {
         if (evt.vertex !== undefined && eraser && isCreateMode) {
           map.setOptions({ draggableCursor: 'url(eraser_copy.png) , auto', draggable: false});
@@ -227,6 +228,7 @@ function initialize() {
       });
       markers = [];
     }
+    var buttons;
     function dragMode() {
       destroyMarkers();
       drawingManager.setMap(null);
@@ -234,6 +236,11 @@ function initialize() {
       lineDrawn && lineDrawn.setOptions({editable: true, clickable: true});
       resetStartEndMarkers();
       eraser = false;
+      if (isCreateMode) {
+        buttons[0].style.backgroundColor = '#F56218';
+        buttons[1].style.backgroundColor = '#fff';
+        buttons[2].style.backgroundColor = '#fff';
+      }
     }
     if (isCreateMode) {
       var images = ['cursor.png', 'pencil.png', 'eraser.png', 'zoom_in.png', 'zoom_out.png'];
@@ -241,17 +248,11 @@ function initialize() {
       var actual_buttons = buttons.map(function(c) {return c.firstChild;});
       buttons.forEach(function(button) { zoomControlWrapper.appendChild(button); });
       google.maps.event.addDomListener(buttons[0], 'click', function() {
-        buttons[0].style.backgroundColor = '#F56218';
-        buttons[1].style.backgroundColor = '#fff';
-        buttons[2].style.backgroundColor = '#fff';
         dragMode();
       });
       google.maps.event.addDomListener(buttons[1], 'click', function() {
         if(lineDrawn) {
           dragMode();
-          buttons[0].style.backgroundColor = '#F56218';
-          buttons[1].style.backgroundColor = '#fff';
-          buttons[2].style.backgroundColor = '#fff';
         }
         else {
           drawingManager.setMap(map);
