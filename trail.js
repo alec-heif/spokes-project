@@ -73,3 +73,8 @@ function getQueryVariable(variable) {
     }
     console.log('Query variable %s not found', variable);
 }
+
+
+// preparing comment/photo upload
+var trail_name = getQueryVariable("trail");
+var routesRef = new Firebase('https://spokes-project.firebaseio.com/routes');
