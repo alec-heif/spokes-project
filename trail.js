@@ -53,16 +53,16 @@ $(function() {
 		var image = document.createElement('img');
 		image.src = "content/images/" + trail["images"][i];
 		image.className = "trail_image";
-		var li = document.createElement('li');
-		li.appendChild(image);
-		$("#images_list").append(li);
+		var a = document.createElement('a');
+		a.appendChild(image);
+        a.href = image.src;
+		$("#images_list").append(a);
 	}
-	$("#images_list").bxSlider({
-		auto: true,
-		autoControls: true,
-		adaptiveHeight: true,
-  		mode: 'fade'
-	});
+	$("#images_list").magnificPopup({
+        delegate: 'a', // child items selector, by clicking on it popup will open
+        type: 'image',
+        gallery:{enabled:true}
+    });
 
 	document.title = trail["name"] + " | Spokes";
 });

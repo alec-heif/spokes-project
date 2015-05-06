@@ -83,12 +83,12 @@ html, body {
   float: right;
 }
 
-
 a, a:visited {
   color: #F56218;
   font-weight: bold;
   text-decoration: none;
 }
+
 a:hover {
   color: #FF9D2E;
 }
@@ -412,4 +412,18 @@ div.vertical-rule {
 
 .created_attributes{
   display:none;
+}
+
+.trail_image {
+  width: 150px;
+  margin: 5px;
+  border: 5px solid rgba(1,1,1,0);
+}
+
+.trail_image:hover {
+  border: 5px solid #F56218;
+}
+
+#images_list a:focus {
+  outline: none;
 }
