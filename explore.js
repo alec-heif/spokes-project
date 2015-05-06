@@ -87,20 +87,26 @@ $(function() {
 	// determines if a trail matches the given constraints
 	// ensures that all provided constraints are met
 	function matches_constraint(trail,c){
-
+		//return true;
+		console.log("TRAIL!", trail.name);
 		// never display hidden rides, unless they're explored by me.
 		if (trail.publicity === "private" && trail.explorer !== localStorage.getItem("loggedInAs")) {
+			console.log("asdf1");
 			return false;
 		}
 		if(!find(trail,c["keyword"])){
 			return false;
+			console.log("asdf2");
 		}
 
 
-		if(c["length"][1] != 100 && trail["length"] > c["length"][1]){
+		if(c["length"][1] != 100 && parseFloat(trail["length"]) > c["length"][1]){
+			console.log("asdf3");
 			return false;
+
 		}
-		if(trail["length"] < c["length"][0]){
+		if(parseFloat(trail["length"]) < c["length"][0]){
+			console.log("asdf4");
 			return false;
 		}
 
@@ -108,6 +114,7 @@ $(function() {
 		for(var i=0;i<c["attractions"].length;i++){
 			if(trail["attractions"].indexOf(c["attractions"]) == -1){
 				if(!c["match_any"]){
+					console.log("asdf5");
 					return false;
 				}
 			}
@@ -117,6 +124,7 @@ $(function() {
 		}
 
 		if(!any && c["attractions"].length > 0){
+			console.log("asdf6");
 			return false;
 		}
 
