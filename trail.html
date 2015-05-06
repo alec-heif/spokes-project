@@ -5,7 +5,7 @@
   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   <script src="topbar.js"></script>
   <script src="login.js"></script>
-  <script src="data.json"></script>
+  <!--<script src="data.json"></script>-->
   <script src="moment.js"></script>
   <script src="jquery.bxslider/jquery.bxslider.min.js"></script>
   <link href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
@@ -60,10 +60,10 @@
         <div class="blank comment">
           <img class="comment_author_image" src="content/icons/avatar_default.png">
           <div class="comment_text">
-            <textarea placeholder="Your comment..."></textarea>
+            <textarea placeholder="Your comment..." id="yourcomment"></textarea>
           </div>
         </div>
-        <a class="button" href="">Post comment</a>
+        <a class="button" href="javascript:void(0)" id="postcommentbutton">Post comment</a>
     </div>
     <div class="right_col"></div>
   </div>

@@ -74,13 +74,13 @@ function validateForm() {
 }
 
 
-var loggedInAs = "";
+//var loggedInAs = "";
 
 function attemptLogin() {
   var username = $("#loginusername").val();
   var password = $("#loginpassword").val();
   if (username && password) {
-    loggedInAs = username;
+    localStorage.setItem("loggedInAs", username);
     closeModalWindows();
     $("#loginusername").val("");
     $("#loginpassword").val("");
@@ -93,7 +93,7 @@ function attemptSignup() {
   var password = $("#signuppassword").val();
   var confirm = $("#signupconfirm").val();
   if (username && password && (password === confirm)) {
-    loggedInAs = username;
+    localStorage.setItem("loggedInAs", username);
     $("#signupusername").val("");
     $("#signuppassword").val("");
     $("#signupconfirm").val("");
@@ -104,7 +104,7 @@ function attemptSignup() {
 
 function attemptLogout() {
   console.log("logging out");
-  loggedInAs = "";
+  localStorage.removeItem("loggedInAs");
   updateLoginButtons();
 }
 
@@ -118,6 +118,7 @@ function validateSignup() {
 
 
 function updateLoginButtons() {
+  var loggedInAs = localStorage.getItem("loggedInAs");
   if (loggedInAs) {
     $("#firstlogin").text(loggedInAs).addClass("bold").unbind("click");
     $("#secondlogin").text("log out").unbind("click").on("click", attemptLogout);
