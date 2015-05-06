@@ -528,6 +528,12 @@ div.vertical-rule {
   font-size: 10pt;
 }
 
+
+#explorer {
+  width: 55%;
+  padding: 1em;
+}
+
 #map_instructions{
   padding:5px;
 }

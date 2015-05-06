@@ -386,7 +386,7 @@ function update_length(trail) {
       display = trail['length'].toFixed(2);
     }
     else if(typeof trail["length"] === 'string') {
-      display = trail['length'];
+      display = Number(trail['length']).toFixed(2);
     }
     if(display) {
         $("#distance").text(display + " miles");
