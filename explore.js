@@ -4,8 +4,11 @@ $(function() {
 		var div = $('<div/>').addClass("panel panel-default trail-panel").appendTo($('#content'));
 
 		var img_accordion_div = $('<div/>').addClass("panel panel-default trail-image-div").attr("id","image_accordion_" + trail["id"]).appendTo(div);
-		for(var i=0;i<trail["images"].length;i++){
-			$('<img/>').addClass("trail-image").attr("src","content/images/" + trail["images"][trail["images"].length - i - 1]).appendTo(img_accordion_div);
+		if (trail["images"]) {
+			for(var k in trail["images"]){//(var i=0;i<trail["images"].length;i++){
+				var src = trail["images"][k];
+				$('<img/>').addClass("trail-image").attr("src",src).appendTo(img_accordion_div);
+			}
 		}
 
 		var summary_div = $('<div/>').addClass("panel panel-default trail-summary-div").appendTo(div);
