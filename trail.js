@@ -182,3 +182,23 @@ function create_populate() {
     console.log("trail.js > create");
     $(".editor").show();   
 }
+
+
+
+function submitNewTrail() {
+	var newTrail = {
+		city: "Cambridge", 
+		description: "Insert description here",
+		difficulty: "hard", // "medium" "easy" "very hard"
+		explorer: localStorage.getItem("loggedInAs") || "anonymous",
+		length: "12.3",
+		name: "My Trail",
+		scenery: "nature",
+		state: "England",
+		terrain: "mountain"
+	};
+	trailsRef = new Firebase('https://spokes-project.firebaseio.com/routes');
+	trailsRef.push(newTrail, function() {
+		location.reload(); //go to newly created trail page
+	});
+}

@@ -31,19 +31,41 @@
         </div>
       </div>
       <div id="attributes">
-        <span id="distance"><input class="editor" size="8" placeholder="Distance"></input></span>
+        <span id="distance"><input class="editor" size="8" placeholder="Distance"></input></span >
         <div class="vertical-rule"></div>
-        <span id="difficulty"><input class="editor" size="8" placeholder="Difficulty"></input></span>
+        <span id="difficulty"><select class="editor" name="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+          <option value="very_hard">Very Hard</option>
+        </select></span>
         <div class="vertical-rule"></div>
-        <span id="terrain"><input class="editor" size="8" placeholder="Terrain"></input></span>
+        <span id="terrain">
+          <select class="editor" name="terrain">
+            <option value="paved">Paved</option>
+            <option value="gravel">Gravel</option>
+            <option value="mountain">Mountain</option>
+          </select>
+        </span>
         <div class="vertical-rule"></div>
-        <span id="scenery"><input class="editor" size="8" placeholder="Scenery"></input></span>
+        <span id="scenery">
+          <select class="editor" name="scenery">
+            <option value="urban">Urban</option>
+            <option value="nature">Nature</option>
+          </select>
+        </span>
       </div>
       <div id="description">
         <textarea class="editor" placeholder="Description"></textarea>
       </div>
       <div id="map">
         <div id="map_image"></div>
+        <a href="">
+          <div id="add_map">          
+            <span id="add_map_plus">+</span><br>
+            Add map          
+          </div>
+        </a>
       </div>
     </div>
 
