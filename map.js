@@ -345,6 +345,10 @@ function getCoords() {
 }
 
 function getMapImage(coords) {
+  if (!coords) {
+    // singlewhitepixel.gif
+    return "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICRAEAOw==";
+  }
   var first = '' + coords[0].lat + ',' + coords[0].lon;
   var last = '' + coords[coords.length-1].lat + ',' + coords[coords.length-1].lon;
   var prepend = 'https://maps.googleapis.com/maps/api/staticmap?center=' + first;
