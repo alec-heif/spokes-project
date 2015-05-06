@@ -1,5 +1,7 @@
 var routeCoords = [];
 var isCreateMode = true;
+var map_done_func;
+
 function initialize() {
   $.get("http://ipinfo.io", function(response) {
     var controlDiv = document.createElement('div');
@@ -265,12 +267,21 @@ function initialize() {
         map.setZoom(map.getZoom() - 1);
       });
       google.maps.event.addDomListener(controlDiv, 'click', function() {
-        var path = lineDrawn.getPath();
-        var coords = [];
-        path.forEach(function(coord) {
-          coords.push({lat: coord.lat(), lon: coord.lng()}); 
-        });
-        routeCoords = coords;
+        // Click on done_button
+        console.log("Done clicked");
+        if (lineDrawn !== undefined &&  lineDrawn !== null) {
+          // If a path has been drawn, put its coordinates in the global
+          // variable routeCoords.
+          var path = lineDrawn.getPath();
+          var coords = [];
+          path.forEach(function(coord) {
+            coords.push({lat: coord.lat(), lon: coord.lng()}); 
+          });
+          routeCoords = coords;
+        }
+        // Call the map_done_func after we finish
+        map_done_func();
+        
       });
       map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(controlDiv);
       map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(zoomControlDiv);

@@ -297,6 +297,15 @@ window.onbeforeunload = function(){
   }
 };
 
+function on_map_done() {
+    // Colse the map editing modal window
+    closeModalWindows();
+
+    // Look up the trail object
+    var trail = get_trail_by_id(thisTrailID);
+    // Set the trail's coordinates to the coordinates which were just drawn on the map.
+    trail.coords = routeCoords;
+}
 
 function openMapWindow() {
     $('#mapwindow').addClass('is-visible');
@@ -305,9 +314,13 @@ function openMapWindow() {
     // Look up the trail object
     var trail = get_trail_by_id(thisTrailID);
 
+    // set the map's done_func. map.js will call this function when the done button on
+    // the map editing modal is clicked.
+    map_done_func = on_map_done;
+
     // Get the route coordinates from the trail object and put them on the map.
     routeCoords = trail.coords;
-    
+
     return false;
 }
 
