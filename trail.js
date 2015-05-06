@@ -13,6 +13,12 @@ $(function() {
 
 		var trail = get_trail_by_id(trail_id);
 
+        // Get the route coordinates from the trail object and put them on the map.
+        console.log("set routeCoords");
+        routeCoords = trail.coords;
+        console.log(routeCoords);
+        initialize();
+
 		var trail_name = trail.name;
 		document.title = trail_name + " | Spokes";
 		
@@ -329,8 +335,9 @@ function openMapWindow() {
     // the map editing modal is clicked.
     map_done_func = on_map_done;
 
-    // Get the route coordinates from the trail object and put them on the map.
-    routeCoords = trail.coords;
+
+
+
 
     return false;
 }
