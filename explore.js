@@ -205,6 +205,8 @@ $(function() {
 
     window.onresize = function(){
 		$(".main").css("height",window.innerHeight - 100);
+
+		$('#content').css("width",$('.main').width() - 500);
     }
 
     var current_location;

@@ -19,8 +19,9 @@
 }
 
 .sidebar-container {
+	overflow-x:visible;
 	float:right;
-	width:33%;
+	width:430px;
 	height:90%;
 	padding:10px;
 	border: 1px solid;
