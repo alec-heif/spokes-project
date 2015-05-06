@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <head>
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -14,62 +13,49 @@
   <script src="firebase-local.js"></script>
   <script src="trail.js"></script>
 
-  
   <link rel="stylesheet" href="global.css" />
   <link rel="stylesheet" href="trail.css" />
-  <title>Red Road Trail | Spokes</title>
 </head>
-
 <body>
-<div class="main">
-  <div id="trail_info_block">
-    <div id="cover">
-      <img id="cover_image" src="content/images/bike1.jpg"/>
-      <div id="trail_name" class="trail_name"></div>
-    </div>
-    <div id="attributes">
-      <span id="distance"></span>
-      <div class="vertical-rule"></div>
-      <span id="difficulty"></span>
-      <div class="vertical-rule"></div>
-      <span id="terrain"></span>
-      <div class="vertical-rule"></div>
-      <span id="scenery"></span>
-    </div>
-    <div id="description">
-    </div>
-    <div id="map">
-      <img id="map_image" src="content/images/map1.png"/>
-    </div>
-  </div>
-
-  <div id="trail_photos_and_comments">
-    <div class="images left_col">
-      <ul id="images_list"></ul>
-      <a class="button" href="">Upload photos</a>
-    </div>
-
-
-    <div class="comments right_col">
-
-      <div id="comments_list"></div>   
-
-      <div class="blank comment">
-        <img class="comment_author_image" src="content/icons/avatar_default.png">
-        <div class="comment_text">
-          <textarea placeholder="Your comment..."></textarea>
-        </div>
+  <div class="main">
+    <div id="trail_info_block">
+      <div id="cover">
+        <img id="cover_image" src="content/images/bike1.jpg"/>
+        <div id="trail_name" class="trail_name"></div>
       </div>
-      <a class="button" href="">Post comment</a>
+      <div id="attributes">
+        <span id="distance"></span>
+        <div class="vertical-rule"></div>
+        <span id="difficulty"></span>
+        <div class="vertical-rule"></div>
+        <span id="terrain"></span>
+        <div class="vertical-rule"></div>
+        <span id="scenery"></span>
+      </div>
+      <div id="description">
+      </div>
+      <div id="map">
+        <img id="map_image" src="content/images/map1.png"/>
+      </div>
     </div>
+    <div id="trail_photos_and_comments">
+      <div class="images left_col">
+        <ul id="images_list"></ul>
+        <a class="button" href="">Upload photos</a>
+      </div>
+      <div class="comments right_col">
+        <div id="comments_list"></div>
+        <div class="blank comment">
+          <img class="comment_author_image" src="content/icons/avatar_default.png">
+          <div class="comment_text">
+            <textarea placeholder="Your comment..."></textarea>
+          </div>
+        </div>
+        <a class="button" href="">Post comment</a>
+      </div>
+    </div>
+    <div style="clear: both"></div>
+    <hr/>
   </div>
-
-<div style="clear: both"></div>
-<hr/>
-
-</div>
-
-
 </body>
 </html>
-<!-- </div> -->

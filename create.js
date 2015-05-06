@@ -1,17 +1,5 @@
 $(function() {
-	var trail_name = getQueryVariable("trail");
-	document.title = trail_name + " | Spokes";
-	routes = data["routes"];
-	var trail;
-	for(var i in routes){
-		if (routes[i]["name"] == trail_name) {
-			trail = routes[i];
-			break;
-		}
-	}
-	if(trail == undefined){
-		window.location = "create.html";
-	}
+
 	$("#trail_name").text(trail["name"]);
 	$("#distance").text(trail["length"] + " miles");
 	$("#difficulty").text(trail["difficulty"]);
@@ -77,8 +65,3 @@ function getQueryVariable(variable) {
     }
     console.log('Query variable %s not found', variable);
 }
-
-
-// preparing comment/photo upload
-var trail_name = getQueryVariable("trail");
-var routesRef = new Firebase('https://spokes-project.firebaseio.com/routes');
