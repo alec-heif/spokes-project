@@ -264,15 +264,18 @@ function checkSavability() {
 	);
 	console.log("Can publish?", canPublish);
 	canSave = somethingHasChanged && (publicity === "private" || canPublish); 
-	$("#savebutton").toggleClass("disabled", !canSave);
-	$("#publishedradio").attr("disabled", canPublish ? null : "disabled");
-	$("#publishedradiolabel").toggleClass("disabled", !canPublish);
+
 	if (canPublish) {
 		$("#whyyoucantpublish").hide();
 	} else {
 		$("#whyyoucantpublish").show();
+		console.log("shanging chanec");
+		$("#publishedradio").prop('checked',false);
+		$("#privateradio").prop('checked', true);
 	}
-	
+	$("#savebutton").toggleClass("disabled", !canSave);
+	$("#publishedradio").attr("disabled", canPublish ? null : "disabled");
+	$("#publishedradiolabel").toggleClass("disabled", !canPublish);	
 	somethingHasChanged = true;
 }
 
