@@ -37,8 +37,6 @@ $(function() {
 			
 		}
 
-        // Initialize the map.
-        initialize();
 
 		$("#author_name").text(trail["explorer"]);
 		$("#distance").text(trail["length"] + " miles");
@@ -239,7 +237,6 @@ function submitEditedTrail() {
 			terrain:     $("#editterrain").val(),
 			scenery:     $("#editscenery").val(),
 			publicity:   $("input[name='publicity']:checked").val(),
-            coords:      get_trail_by_id(thisTrailID).coords,
 		};
 		var trailRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+thisTrailID);
 		var numberOfKeys = Object.keys(attributes).length;
@@ -332,16 +329,12 @@ function openMapWindow() {
     $('#mapwindow').addClass('is-visible');
     $('.modal-mask').addClass('is-visible');
 
-    // Look up the trail object
-    var trail = get_trail_by_id(thisTrailID);
+    // Initialize the map.
+    initialize();
 
     // set the map's done_func. map.js will call this function when the done button on
     // the map editing modal is clicked.
     map_done_func = on_map_done;
-
-
-
-
 
     return false;
 }

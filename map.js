@@ -269,7 +269,7 @@ function initialize() {
       google.maps.event.addDomListener(controlDiv, 'click', function() {
         // Click on done_button
         console.log("Done clicked");
-        if (lineDrawn !== undefined &&  lineDrawn !== null) {
+        if (lineDrawn) {
           // If a path has been drawn, put its coordinates in the global
           // variable routeCoords.
           var path = lineDrawn.getPath();
@@ -298,7 +298,7 @@ function initialize() {
       });
       map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(zoomControlDiv);
     }
-    if (routeCoords !== undefined && routeCoords !== null) {
+    if (routeCoords !== undefined && routeCoords !== null && routeCoords.length > 1) {
       console.log("putting routeCoords in map");
       var latLonCoords = routeCoords.map(function(coord) {
         return (new google.maps.LatLng(coord.lat, coord.lon));
