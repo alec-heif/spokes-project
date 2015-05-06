@@ -380,6 +380,7 @@ div.vertical-rule {
   padding: 5px;
   background-color: #fff;
   box-shadow: 0px 0px 5px #888;
+  text-align: center;
 }
 
 #map_image {
@@ -487,4 +488,13 @@ div.vertical-rule {
 
 #scenery select {
   margin: -20px;
+}
+
+#add_map {
+  padding-top: 3em;
+  padding-bottom: 6em;
+}
+
+#add_map_plus {
+  font-size: 72pt;
 }
