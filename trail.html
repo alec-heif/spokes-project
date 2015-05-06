@@ -17,7 +17,9 @@
   <link rel="stylesheet" href="trail.css" />
 </head>
 <body>
-  <div class="main">
+
+  <div id="fixed_elements">
+
     <div id="trail_info_block">
       <div id="cover">
         <img id="cover_image" src="content/images/bike1.jpg"/>
@@ -38,13 +40,21 @@
         <img id="map_image" src="content/images/map1.png"/>
       </div>
     </div>
-    <div id="trail_photos_and_comments">
-      <div class="images left_col">
+
+    <div id="trail_images">
+      <div class="left_col">       
+      </div>
+      <div class="images right_col">
         <ul id="images_list"></ul>
         <a class="button" href="">Upload photos</a>
-      </div>
-      <div class="comments right_col">
-        <div id="comments_list"></div>
+      </div>      
+    </div>
+
+  </div>
+
+  <div id="scrolling_elements">
+    <div class="comments left_col">
+       <div id="comments_list"></div>  
         <div class="blank comment">
           <img class="comment_author_image" src="content/icons/avatar_default.png">
           <div class="comment_text">
@@ -52,10 +62,9 @@
           </div>
         </div>
         <a class="button" href="">Post comment</a>
-      </div>
     </div>
-    <div style="clear: both"></div>
-    <hr/>
+    <div class="right_col"></div>
   </div>
+
 </body>
 </html>

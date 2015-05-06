@@ -79,6 +79,21 @@ function getQueryVariable(variable) {
 }
 
 
+// This function will be executed when the user scrolls the page.
+$(window).scroll(function(e) {
+	var fixed_scroll_max = 150;
+
+    console.log($(this).scrollTop());
+
+    var fixed_element_shift = -1 * Math.min(fixed_scroll_max, $(this).scrollTop());
+
+    $('#fixed_elements').css({
+            'top': fixed_element_shift + 'px'
+        });
+});
+
+
 // preparing comment/photo upload
 var trail_name = getQueryVariable("trail");
 var routesRef = new Firebase('https://spokes-project.firebaseio.com/routes');
+

@@ -67,7 +67,7 @@ html, body {
 
 .main {
   padding: 10px;
-  width: 86%;
+  width: 100%;
   margin-top: 60px;
   margin-left: auto;
   margin-right: auto;
@@ -301,13 +301,14 @@ a {
 
 #trail_info_block {
   background-color: #fff;
-  width: 80%;
+  width: 70%;
   height: 400px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 80px;
+  margin-bottom: 70px;
   position: relative;
   border: 1px solid #888;
+  box-shadow: 0px 2px 2px #888;
 }
 
 #cover {
@@ -327,6 +328,13 @@ a {
   position: relative;
   border-top: 1px solid #888;
   border-bottom: 1px solid #888;
+}
+
+#distance, #difficulty, #terrain, #scenery {
+  padding-left: 1em;
+  padding-right: 1em;
+  position: relative;
+  top: -0.5em;
 }
 
 div.vertical-rule {
@@ -364,10 +372,30 @@ div.vertical-rule {
 }
 
 
-#trail_photos_and_comments {
-  width: 80%;  
+#trail_images {
+  width: 70%;  
   margin-left: auto;
   margin-right: auto;
+}
+
+#fixed_elements {
+  position: fixed;
+  width: 100%;
+  margin-top: 60px;
+  z-index: 10;
+}
+
+#scrolling_elements {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.comments {
+  position: relative;
+  top: 500px;
+  margin-bottom: 20px;
 }
 
 .create_attributes{
