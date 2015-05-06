@@ -283,7 +283,10 @@ $(function() {
 		}
 	}
 
-    update_length_slider();
+	loadData(function(){
+		update_length_slider();
+	});
+    
     window.onresize();
 
 });
