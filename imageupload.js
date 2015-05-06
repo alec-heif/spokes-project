@@ -40,11 +40,12 @@ var currentlyWorking = false;
 function uploadImage() {
 	var img = $('#myimg').attr('src');
 	if (img && !currentlyWorking) {
+    dummy = false;
 		currentlyWorking = true;
-		var id = thisTrail.id - 1; //Don't ask, don't tell
-		imagesRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+id+'/images');
+		imagesRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+thisTrailID+'/images');
 		imagesRef.push(img, function(a,b,c) {
-			location.reload();
+			//location.reload();
+      location.href="trail.html?trail="+thisTrailID;
 		});
 	}
 

@@ -18,25 +18,37 @@
   <script src="map.js"></script>
   <script src="trail.js"></script>
   <script src="imageupload.js"></script>
+  <script>
+    function openMapWindow() {
+      $('#mapwindow').addClass('is-visible');
+      $('.modal-mask').addClass('is-visible');
+      return false;
+    }
+  </script>
 
   <link rel="stylesheet" href="global.css" />
   <link rel="stylesheet" href="trail.css" />
 </head>
 <body>
-
+<div class="modal" id="mapwindow">
+  <!--<div class="modal-wrapper">-->
+    <div id="map-canvas"></div>
+  <!--</div>-->
+</div>
   <div id="fixed_elements">
 
     <div id="trail_info_block">
       <div id="cover">
         <img id="cover_image"/>
         <div id="trail_name" class="trail_name">
-          <input class="editor" placeholder="Trail Name"></input>
+          <input class="editor" placeholder="Trail Name" id="edittrailname"></input>
         </div>
       </div>
       <div id="attributes">
         <span id="distance"><input class="editor" size="8" placeholder="Distance"></input></span >
         <div class="vertical-rule"></div>
-        <span id="difficulty"><select class="editor" name="difficulty">
+        <span id="difficulty"><select class="editor" id="editdifficulty" name="difficulty">
+          <option value="">(difficulty)</option>
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
@@ -44,7 +56,8 @@
         </select></span>
         <div class="vertical-rule"></div>
         <span id="terrain">
-          <select class="editor" name="terrain">
+          <select class="editor" id="editterrain" name="terrain">
+            <option value="">(terrain)</option>
             <option value="paved">Paved</option>
             <option value="gravel">Gravel</option>
             <option value="mountain">Mountain</option>
@@ -52,14 +65,15 @@
         </span>
         <div class="vertical-rule"></div>
         <span id="scenery">
-          <select class="editor" name="scenery">
+          <select class="editor" id="editscenery" name="scenery">
+            <option value="">(scenery)</option>
             <option value="urban">Urban</option>
             <option value="nature">Nature</option>
           </select>
         </span>
       </div>
       <div id="description">
-        <textarea class="editor" placeholder="Description"></textarea>
+        <textarea class="editor" placeholder="Description" id="editdescription"></textarea>
       </div>
       <div id="map">
         <a href="">
@@ -81,7 +95,7 @@
     </div>
 
     <div id="save_block" class="editor">
-      <a class="button" href="javascript:void(0)" onclick="">Save</a>
+      <a class="button disabled" href="javascript:void(0)" onclick="submitEditedTrail()" id="savebutton">Save</a>
       <input type="radio" name="publicity" value="published">Publish</input>
       <br>
       <input type="radio" name="publicity" value="private" checked="checked">Keep Private</input>

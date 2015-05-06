@@ -1,38 +1,48 @@
-var thisTrail;
-
+var thisTrailID;
+var dummy = false;
 $(function() {
 	loadData(function(){
 
 
-		var trail_name = getQueryVariable("trail");
-        if (trail_name == "create") {
+		var trail_id = getQueryVariable("trail");
+        if (trail_id == "create") {
             create_populate();
             return;
         }
+        thisTrailID = trail_id;
 
-		document.title = trail_name + " | Spokes";
 		routes = data["routes"];
 		var trail;
 		for(var i in routes){
-			if (routes[i]["name"] == trail_name) {
+			if (routes[i]["id"] == trail_id) {
 				trail = routes[i];
 				break;
 			}
 		}
-		if(trail == undefined){
-			//window.location = "create.html";
+		var trail_name = trail.name;
+		document.title = trail_name + " | Spokes";
+		
+		if(trail.explorer === "anonymous" || trail.explorer === (localStorage.getItem("loggedInAs"))){
+			$(".editor").show();
+			setEditorValues(trail);
+			//return;
+		} else {
+		
+			$("#trail_name").text(trail["name"]);
+			
+			$("#difficulty").text(trail["difficulty"]);
+			$("#terrain").text(trail["terrain"]);
+			$("#scenery").text(trail["scenery"]);
+			$("#description").text(trail["description"]);
+			
 		}
-		thisTrail = trail;
-		$("#trail_name").text(trail["name"]);
-		$("#distance").text(trail["length"] + " miles");
-		$("#difficulty").text(trail["difficulty"]);
-		$("#terrain").text(trail["terrain"]);
-		$("#scenery").text(trail["scenery"]);
-		$("#description").text(trail["description"]);
 		$("#author_name").text(trail["explorer"]);
-    var coords = trail.coords;
-    var url = 'https://maps.googleapis.com/maps/api/staticmap?center=42.364251817286835,-71.10334396362305&zoom=13&size=400x300&markers=color:green%7clabel:A%7c42.364251817286835,-71.10334396362305&markers=color:red%7clabel:B%7c42.36222240121285,-71.10566139221191&path=color:0x000000%7cweight:5%7c42.364251817286835,-71.10334396362305%7c42.35527749714674,-71.09999656677246%7c42.362412661754455,-71.1101245880127%7c42.36532991791331,-71.10634803771973%7c42.36222240121285,-71.10566139221191';
-    $('#add_map').css({'background-image': 'url(' + url + ')', 'background-repeat': 'no-repeat', 'background-size': '100%'});
+		$("#distance").text(trail["length"] + " miles");
+
+		//should this go inside the block?
+    	var coords = trail.coords;
+    	var url = 'https://maps.googleapis.com/maps/api/staticmap?center=42.364251817286835,-71.10334396362305&zoom=13&size=400x300&markers=color:green%7clabel:A%7c42.364251817286835,-71.10334396362305&markers=color:red%7clabel:B%7c42.36222240121285,-71.10566139221191&path=color:0x000000%7cweight:5%7c42.364251817286835,-71.10334396362305%7c42.35527749714674,-71.09999656677246%7c42.362412661754455,-71.1101245880127%7c42.36532991791331,-71.10634803771973%7c42.36222240121285,-71.10566139221191';
+    	$('#add_map').css({'background-image': 'url(' + url + ')', 'background-repeat': 'no-repeat', 'background-size': '100%'});
 
     //TODO need someone to finish my stuff
 
@@ -44,7 +54,7 @@ $(function() {
 		
 		for(var i in trail["comments"]) {
 			var comment = trail["comments"][i];
-			console.log(comment);
+			//console.log(comment);
 			var comment_div = document.createElement('div'); // comment_div = $('<div>').addClass('comment_text');
 			comment_div.className = "comment";
 			var comment_text_div = document.createElement('div');
@@ -119,7 +129,14 @@ $(function() {
 
       document.title = trail["name"] + " | Spokes";
 
-      $("#yourcomment").on("keyup", function(){
+
+
+  });
+});
+
+
+$(function(){
+	$("#yourcomment").on("keyup", function(){
 		//console.log("comment changed");
 		validatePostCommentButton();
 	});
@@ -127,10 +144,8 @@ $(function() {
           if ($("#yourcomment").val()) {
              submitComment();
          }
-     });
-      validatePostCommentButton();
-
-  });
+    	1});
+    validatePostCommentButton();
 });
 
 function validatePostCommentButton() {
@@ -156,7 +171,7 @@ $(window).scroll(function(e) {
 	var fixed_scroll_max = $('#fixed_elements').height() - $(window).height()
         + $('#topbar').height() + 50;
 
-    console.log(fixed_scroll_max);
+    //console.log(fixed_scroll_max);
 
     var fixed_element_shift = -1 * Math.min(fixed_scroll_max, $(this).scrollTop());
 
@@ -171,26 +186,109 @@ $(window).scroll(function(e) {
 
 
 function submitComment() {
+	dummy = false;
 	var comment = {
 		creator: localStorage.getItem("loggedInAs") || "anonymous",
 		text: $("#yourcomment").val(),
 		timestamp: Math.floor((new Date())/1000)
 	};
-	var id = thisTrail.id - 1; //Don't ask, don't tell
-	commentsRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+id+'/comments');
-	commentsRef.push(comment, function(a,b,c) {
-		location.reload();
+	//var id = thisTrail.id - 1; //Don't ask, don't tell
+	var commentsRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+thisTrailID+'/comments');
+	commentsRef.push(comment, function() {
+		//location.reload();
+		location.href="trail.html?trail="+thisTrailID;
 	})
 }
 
 function create_populate() {
     document.title = "Create a new Trail | Spokes";
     console.log("trail.js > create");
-    $(".editor").show();   
+    $(".editor").show();
+    submitDummyTrail();
 }
 
 
 
+function submitDummyTrail() {
+	dummy = true;
+	var newTrail = {
+		explorer: localStorage.getItem("loggedInAs") || "anonymous",
+		//name: "Untitled",
+		publicity: "private"
+	};
+	var trailsRef = new Firebase('https://spokes-project.firebaseio.com/routes');
+	var newRef = trailsRef.push(newTrail);
+	thisTrailID = newRef.key();
+	newRef.child("id").set(thisTrailID);
+}
+
+function submitEditedTrail() {
+	if (canSave) {
+		dummy = false;
+		var newName = $("#edittrailname").val();
+		var attributes = {
+			description: $("#editdescription").val(),
+			name: 		 newName,
+			difficulty:  $("#editdifficulty").val(),
+			terrain:     $("#editterrain").val(),
+			scenery:     $("#editscenery").val(),
+			publicity:   $("input[name='publicity']:checked").val()
+		};
+		var trailRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+thisTrailID);
+		var numberOfKeys = Object.keys(attributes).length;
+		var i = 0;
+		for (var key in attributes) {
+			trailRef.child(key).set(attributes[key], function() {
+				i++;
+				if (i === numberOfKeys) {
+					console.log("DONE!");
+					//location.reload();
+					location.href="trail.html?trail="+thisTrailID;
+				} else {
+					console.log("and...");
+				}	
+			});
+		}
+	}
+}
+
+var canSave = false;
+$(function(){
+	$(".editor").on("change", checkSavability).on("keyup", checkSavability);
+});
+function checkSavability() {
+	var publicity = $("input[name='publicity']:checked").val();
+	canSave = publicity === "private" || (
+		$("#edittrailname").val() && 
+		$("#editdescription").val() &&
+		$("#editdifficulty").val() &&
+		$("#editterrain").val() &&
+		$("#editscenery").val() &&
+		true //Map exists
+	); 
+	$("#savebutton").toggleClass("disabled", !canSave);
+}
+
+function setEditorValues(trail) {
+	$("#edittrailname").val(trail.name);
+	$("#editdescription").val(trail.description);
+	$("#editdifficulty").val(trail.difficulty);
+	$("#editterrain").val(trail.terrain);
+	$("#editscenery").val(trail.scenery);
+	$("input[value='"+trail.publicity+"']").attr('checked', 'checked')
+}
+
+// If you never added anything, delete the dummy.
+window.onbeforeunload = function(){
+  if (dummy) {
+  	alert("deleting dummy!");
+  	var trailRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+thisTrailID);
+  	trailRef.set(null);
+  }
+};
+
+
+/*
 function submitNewTrail() {
 	var newTrail = {
 		city: "Cambridge", 
@@ -208,3 +306,4 @@ function submitNewTrail() {
 		location.reload(); //go to newly created trail page
 	});
 }
+*/

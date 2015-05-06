@@ -36,7 +36,7 @@ $(function() {
 			speed: 300
 		});
 
-		div.click(function(){window.location='trail.html?trail='+trail["name"]});
+		div.click(function(){window.location='trail.html?trail='+trail["id"]});
 	}
 
 
