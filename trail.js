@@ -37,19 +37,14 @@ $(function() {
 			
 		}
 
-        // Initialize the map.
-        initialize();
 
 		$("#author_name").text(trail["explorer"]);
 		$("#distance").text(trail["length"] + " miles");
 
 		//should this go inside the block?
     	var coords = trail.coords;
-    	var url = 'https://maps.googleapis.com/maps/api/staticmap?center=42.364251817286835,-71.10334396362305&zoom=13&size=400x300&markers=color:green%7clabel:A%7c42.364251817286835,-71.10334396362305&markers=color:red%7clabel:B%7c42.36222240121285,-71.10566139221191&path=color:0x000000%7cweight:5%7c42.364251817286835,-71.10334396362305%7c42.35527749714674,-71.09999656677246%7c42.362412661754455,-71.1101245880127%7c42.36532991791331,-71.10634803771973%7c42.36222240121285,-71.10566139221191';
-    	$('#map_div').css({'background-image': 'url(' + url + ')', 'background-repeat': 'no-repeat', 'background-size': '100%'});
 
-    //TODO need someone to finish my stuff
-
+        update_map_preview(coords);
 
 		//$("#cover_image").attr("src", /*"content/images/" +*/ trail["images"][trail["images"].keys()[0]]);
 		
@@ -239,7 +234,6 @@ function submitEditedTrail() {
 			terrain:     $("#editterrain").val(),
 			scenery:     $("#editscenery").val(),
 			publicity:   $("input[name='publicity']:checked").val(),
-            coords:      get_trail_by_id(thisTrailID).coords,
 		};
 		var trailRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+thisTrailID);
 		var numberOfKeys = Object.keys(attributes).length;
@@ -320,28 +314,37 @@ function on_map_done() {
     var trail = get_trail_by_id(thisTrailID);
     // Set the trail's coordinates to the coordinates which were just drawn on the map.
     trail.coords = routeCoords;
-
-    // Save the coords to the database.
     var trailRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+thisTrailID);
+    getRouteCityState(routeCoords, function(result) {
+      var length = getRouteLength(routeCoords);
+      if (result) {
+        var city = result.city;
+        var state = result.state;
+      }
+      trail.city = city;
+      trail.state = state;
+      trail.length = length;
+      trailRef.child('city').set(city);
+      trailRef.child('state').set(state);
+      trailRef.child('length').set(length);
+    });
+    // Save the coords to the database.
     trailRef.child('coords').set(routeCoords, function() {
             console.log("map coords saved to firebase.");
     });
+    update_map_preview(routeCoords);
 }
 
 function openMapWindow() {
     $('#mapwindow').addClass('is-visible');
     $('.modal-mask').addClass('is-visible');
 
-    // Look up the trail object
-    var trail = get_trail_by_id(thisTrailID);
+    // Initialize the map.
+    initialize();
 
     // set the map's done_func. map.js will call this function when the done button on
     // the map editing modal is clicked.
     map_done_func = on_map_done;
-
-
-
-
 
     return false;
 }
@@ -360,6 +363,12 @@ function get_trail_by_id(trail_id) {
 
 function is_trail_editable(trail) {
     return trail.explorer === "anonymous" || trail.explorer === (localStorage.getItem("loggedInAs"));
+}
+
+function update_map_preview(coords) {
+    var url = getMapImage(coords);
+    $('#map_div').css({'background-image': 'url(' + url + ')', 'background-repeat': 'no-repeat', 'background-size': '100%'});
+
 }
 /*
 function submitNewTrail() {
