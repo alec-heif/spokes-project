@@ -10,11 +10,27 @@
 	<script src="jquery.bxslider/jquery.bxslider.min.js"></script>
 	<link href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
 	<script src="create.js"></script>
+	<script src="login.js"></script>
+	<script>
+		function openMapWindow() {
+		  $('#mapwindow').addClass('is-visible');
+		  $('.modal-mask').addClass('is-visible');
+		  return false;
+		}
+	</script>
 	<link rel="stylesheet" href="global.css" />
 	<link rel="stylesheet" href="trail.css" />
 	<title>Create a New Trail | Spokes</title>
 </head>
 <body>
+<div class="modal" id="mapwindow">
+  <div class="modal-wrapper">
+  	<div class="xbutton"><a onclick="closeModalWindows();">&times;</a></div>
+    insert modal map window
+  </div>
+</div>
+
+
 	<div class="main">
 		<div id="trail_info_block">
 			<div id="cover">

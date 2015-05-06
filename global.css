@@ -232,6 +232,11 @@ img {
   background-color: white;
   border-radius: 10px;
 }
+
+#mapwindow {
+  width: 360px;
+  height: 360px;
+}
  
 .modal.is-visible {
   visibility: visible;
