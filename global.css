@@ -273,7 +273,7 @@ img {
   color: #ccc;
 }
 
-.modal input, .modal button {
+.modal input[type="text"], .modal input[type="password"], .modal button {
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -412,4 +412,8 @@ div.vertical-rule {
 
 .created_attributes{
   display:none;
+}
+
+#myimg {
+  border: 1px solid #ccc;
 }

@@ -26,9 +26,9 @@ $(function() {
 		$("#description").text(trail["description"]);
 		$("#author_name").text(trail["explorer"]);
 
-		$("#cover_image").attr("src", "content/images/" + trail["images"][0]);
+		//$("#cover_image").attr("src", /*"content/images/" +*/ trail["images"][trail["images"].keys()[0]]);
 		
-		$("#trail_map").attr("src", "content/images/" + trail["images"][trail["images"].length - 1]);
+		//$("#trail_map").attr("src", "content/images/" + trail["images"][trail["images"].length - 1]);
 
 		
 		for(var i in trail["comments"]) {
@@ -55,14 +55,29 @@ $(function() {
 			$("#comments_list").prepend(comment_div);
 		}
 
-		for(var i=0; i < trail["images"].length - 1; i++) {
+		/*for(var i=0; i < trail["images"].length - 1; i++) {
 			var image = document.createElement('img');
 			image.src = "content/images/" + trail["images"][i];
 			image.className = "trail_image";
 			var li = document.createElement('li');
 			li.appendChild(image);
 			$("#images_list").append(li);
+		}*/
+		var isFirst = true;
+		for (var key in trail["images"]) {
+			var image = document.createElement('img');
+			var src = trail["images"][key];
+			image.src = src;
+			image.className = "trail_image";
+			var li = document.createElement('li');
+			li.appendChild(image);
+			$("#images_list").append(li);
+			if (isFirst) {
+				$("#cover_image").attr("src", src);
+				isFirst = false;
+			}
 		}
+
 		$("#images_list").bxSlider({
 			auto: true,
 			autoControls: true,
