@@ -381,8 +381,15 @@ function update_map_preview(coords) {
 
 function update_length(trail) {
     console.log("length " + trail["length"]);
-    if(trail["length"]) {
-        $("#distance").text(trail["length"].toFixed(2) + " miles");
+    var display;
+    if (typeof trail["length"] === 'number') {
+      display = trail['length'].toFixed(2);
+    }
+    else if(typeof trail["length"] === 'string') {
+      display = Number(trail['length']).toFixed(2);
+    }
+    if(display) {
+        $("#distance").text(display + " miles");
     }
     else {
         $("#distance").text("Length unknown");

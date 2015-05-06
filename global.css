@@ -533,3 +533,7 @@ div.vertical-rule {
   width: 55%;
   padding: 1em;
 }
+
+#map_instructions{
+  padding:5px;
+}
