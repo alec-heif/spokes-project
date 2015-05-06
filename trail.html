@@ -20,54 +20,53 @@
 </head>
 
 <body>
-<div class="main">
-  <div id="trail_info_block">
-    <div id="cover">
-      <img id="cover_image" src="content/images/bike1.jpg"/>
-      <div id="trail_name" class="trail_name"></div>
-    </div>
-    <div id="attributes">
-      <span id="distance"></span>
-      <div class="vertical-rule"></div>
-      <span id="difficulty"></span>
-      <div class="vertical-rule"></div>
-      <span id="terrain"></span>
-      <div class="vertical-rule"></div>
-      <span id="scenery"></span>
-    </div>
-    <div id="description">
-    </div>
-    <div id="map">
-      <img id="map_image" src="content/images/map1.png"/>
-    </div>
-  </div>
+  <div id="fixed_elements">
 
-  <div id="trail_photos_and_comments">
-    <div class="images left_col">
-      <ul id="images_list"></ul>
-      <a class="button" href="">Upload photos</a>
-    </div>
-
-
-    <div class="comments right_col">
-
-      <div id="comments_list"></div>   
-
-      <div class="blank comment">
-        <img class="comment_author_image" src="content/icons/avatar_default.png">
-        <div class="comment_text">
-          <textarea placeholder="Your comment..."></textarea>
-        </div>
+    <div id="trail_info_block">
+      <div id="cover">
+        <img id="cover_image" src="content/images/bike1.jpg"/>
+        <div id="trail_name" class="trail_name"></div>
       </div>
-      <a class="button" href="">Post comment</a>
+      <div id="attributes">
+        <span id="distance"></span>
+        <div class="vertical-rule"></div>
+        <span id="difficulty"></span>
+        <div class="vertical-rule"></div>
+        <span id="terrain"></span>
+        <div class="vertical-rule"></div>
+        <span id="scenery"></span>
+      </div>
+      <div id="description">
+      </div>
+      <div id="map">
+        <img id="map_image" src="content/images/map1.png"/>
+      </div>
     </div>
+
+    <div id="trail_images">
+      <div class="left_col">       
+      </div>
+      <div class="images right_col">
+        <ul id="images_list"></ul>
+        <a class="button" href="">Upload photos</a>
+      </div>      
+    </div>
+
   </div>
 
-<div style="clear: both"></div>
-<hr/>
-
-</div>
-
+  <div id="scrolling_elements">
+    <div class="comments left_col">
+       <div id="comments_list"></div>  
+        <div class="blank comment">
+          <img class="comment_author_image" src="content/icons/avatar_default.png">
+          <div class="comment_text">
+            <textarea placeholder="Your comment..."></textarea>
+          </div>
+        </div>
+        <a class="button" href="">Post comment</a>
+    </div>
+    <div class="right_col"></div>
+  </div>
 
 </body>
 </html>
