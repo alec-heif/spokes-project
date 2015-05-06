@@ -106,10 +106,13 @@ a.button {
 }
 
 a.button.disabled {
-  color: #ccc;
   border: 1px solid #eee;
   cursor: default;
 }
+.disabled, .disabled:hover {
+  color: #ccc;
+}  
+
 
 img {
   width: 100%;
@@ -460,14 +463,15 @@ div.vertical-rule {
 }
 
 #save_block {
-  position: absolute;
+  position: fixed;
   left: 1%;
-  top: 20%;
-  width: 10%;
+  top: 76px; /* 20% */
+  width: 10.5%;
   background-color: rgba(245, 98, 24, 0.2);
   border: 1px solid #888;
   pointer-events: auto;
   padding: 1%;
+  border-radius: 10px;
 }
 
 #save_block .button {

@@ -204,6 +204,7 @@ function create_populate() {
     document.title = "Create a new Trail | Spokes";
     console.log("trail.js > create");
     $(".editor").show();
+    checkSavability();
     submitDummyTrail();
 }
 
@@ -253,21 +254,35 @@ function submitEditedTrail() {
 }
 
 var canSave = false;
+var somethingHasChanged = false;
 $(function(){
 	$(".editor").on("change", checkSavability).on("keyup", checkSavability);
 });
 function checkSavability() {
 	var publicity = $("input[name='publicity']:checked").val();
-	canSave = publicity === "private" || (
+	var canPublish = !!(
 		$("#edittrailname").val() && 
 		$("#editdescription").val() &&
 		$("#editdifficulty").val() &&
 		$("#editterrain").val() &&
 		$("#editscenery").val() &&
 		true //Map exists
-	); 
+	);
+	console.log("Can publish?", canPublish);
+	canSave = somethingHasChanged && (publicity === "private" || canPublish); 
 	$("#savebutton").toggleClass("disabled", !canSave);
+	$("#publishedradio").attr("disabled", canPublish ? null : "disabled");
+	$("#publishedradiolabel").toggleClass("disabled", !canPublish);
+	if (canPublish) {
+		$("#whyyoucantpublish").hide();
+	} else {
+		$("#whyyoucantpublish").show();
+	}
+	
+	somethingHasChanged = true;
 }
+
+
 
 function setEditorValues(trail) {
 	$("#edittrailname").val(trail.name);
@@ -275,7 +290,8 @@ function setEditorValues(trail) {
 	$("#editdifficulty").val(trail.difficulty);
 	$("#editterrain").val(trail.terrain);
 	$("#editscenery").val(trail.scenery);
-	$("input[value='"+trail.publicity+"']").attr('checked', 'checked')
+	$("input[value='"+trail.publicity+"']").attr('checked', 'checked');
+	checkSavability();
 }
 
 // If you never added anything, delete the dummy.

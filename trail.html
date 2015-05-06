@@ -35,6 +35,16 @@
     <div id="map-canvas"></div>
   <!--</div>-->
 </div>
+
+    <div id="save_block" class="editor">
+      <a class="button disabled" href="javascript:void(0)" onclick="submitEditedTrail()" id="savebutton">Save</a>
+      <h3 style="display: inline">Visible to...</h3><br/>
+      <input type="radio" name="publicity" value="private" checked="checked">only me</input><br/>
+      <input type="radio" name="publicity" value="published" id="publishedradio"/><span id="publishedradiolabel">everyone</span><br/>
+      <div id="whyyoucantpublish" style="display:none">Make sure to complete all information before publishing</div>
+      
+    </div>
+
   <div id="fixed_elements">
 
     <div id="trail_info_block">
@@ -94,12 +104,7 @@
       </div>      
     </div>
 
-    <div id="save_block" class="editor">
-      <a class="button disabled" href="javascript:void(0)" onclick="submitEditedTrail()" id="savebutton">Save</a>
-      <input type="radio" name="publicity" value="published">Publish</input>
-      <br>
-      <input type="radio" name="publicity" value="private" checked="checked">Keep Private</input>
-    </div>
+
 
   </div>
 
