@@ -361,9 +361,14 @@ function is_trail_editable(trail) {
 }
 
 function update_map_preview(coords) {
-    var url = getMapImage(coords);
-    $('#map_div').css({'background-image': 'url(' + url + ')', 'background-repeat': 'no-repeat', 'background-size': '100%'});
-
+    if (coords) {
+        var url = getMapImage(coords);
+        $('#map_div').css({'background-image': 'url(' + url + ')', 'background-repeat': 'no-repeat', 'background-size': '100%'});
+        $('#map_edit_link_text').text('Edit map');
+    }
+    else {
+        $('#map_edit_link_text').text('Add map');
+    }
 }
 
 function update_length(trail) {
