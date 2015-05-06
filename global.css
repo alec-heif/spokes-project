@@ -487,6 +487,7 @@ div.vertical-rule {
   pointer-events: auto;
   padding: 1%;
   border-radius: 10px;
+  box-shadow: 0px 0px 5px #F56218;
 }
 
 #save_block .button {
