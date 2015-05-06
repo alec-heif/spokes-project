@@ -320,9 +320,21 @@ function on_map_done() {
     var trail = get_trail_by_id(thisTrailID);
     // Set the trail's coordinates to the coordinates which were just drawn on the map.
     trail.coords = routeCoords;
-
-    // Save the coords to the database.
     var trailRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+thisTrailID);
+    getRouteCityState(coords, function(result) {
+      var length = getRouteLength(coords);
+      if (result) {
+        var city = result.city;
+        var state = result.state;
+      }
+      trail.city = city;
+      trail.state = state;
+      trail.length = length;
+      trailRef.child('city').set(city);
+      trailRef.child('state').set(state);
+      trailRef.child('length').set(length);
+    });
+    // Save the coords to the database.
     trailRef.child('coords').set(routeCoords, function() {
             console.log("map coords saved to firebase.");
     });
