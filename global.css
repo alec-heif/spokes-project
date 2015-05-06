@@ -254,7 +254,6 @@ label {
 
 #mapwindow {
   width: 400px;
-  height: 400px;
 }
  
 .modal.is-visible {
@@ -270,7 +269,7 @@ label {
   height: 100%;
   z-index: 19999;
   background-color: white;
-  opacity: 0.85;
+  opacity: 0.80;
   display: none;
 }
 .modal-mask.is-visible {
