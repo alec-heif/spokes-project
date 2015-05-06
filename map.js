@@ -65,9 +65,16 @@ function initialize() {
     zoomControlDiv.index = 10;
 
     var loc = response.loc.split(',');
+    var center;
+    if (routeCoords && routeCoords.length > 1) {
+      center = new google.maps.LatLng(routeCoords[0].lat, routeCoords[0].lon);
+    }
+    else {
+      center = new google.maps.LatLng(loc[0], loc[1]);
+    }
     var mapOptions = {
       zoom: 15,
-      center: new google.maps.LatLng(loc[0], loc[1]),
+      center: center,
       disableDefaultUI: true,
       mapTypeId: google.maps.MapTypeId.TERRAIN
     };
@@ -78,7 +85,7 @@ function initialize() {
       polylineOptions: {
         clickable: true,
         draggable: false,
-        editable: false,
+        editable: true,
         geodesic: false,
         strokeColor: '#000000',
         strokeOpacity: 1,
