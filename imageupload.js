@@ -2,13 +2,13 @@ $(function(){
 	$("body").prepend(function(){/*
 <div class="modal" id="imagewindow">
   <div class="modal-wrapper">
-  	<h1 style="display: inline; float: left; margin-top: 0px">upload photo</h1>
+  	<h1 style="display: inline; float: left; margin-top: 0px">Upload photo</h1>
     <div class="xbutton" style="float:right; width: 50%"><a onclick="closeModalWindows();">&times;</a></div>
     <div style="clear:both"></div>
     <br/>
     <input type='file' style="margin-bottom: 10px"/>
     <img id="myimg" width=300 height=300/>
-    <a id="uploadimagebutton" class="button disabled" href="javascript:void(0)" onclick="uploadImage()">upload</a>
+    <a id="uploadimagebutton" class="button disabled" href="javascript:void(0)" onclick="uploadImage()">Upload</a>
   </div>
 </div>
 */}.toString().slice(14,-3));

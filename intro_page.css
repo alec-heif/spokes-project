@@ -38,6 +38,8 @@ html, body {
 }
 
 /* Button from http://html5up.net/ Overflow*/    
+
+/*
 input[type="button"],
 input[type="submit"],
 input[type="reset"],
@@ -91,6 +93,8 @@ input[type="reset"].style2:hover,
   color: #fff !important;
   text-shadow: 0 0 0.5px rgba(255,255,255,0.25) !important;
 }
+
+*/
 
 .logo_image1 {
   height: 80px;
