@@ -78,7 +78,7 @@ function initialize() {
       polylineOptions: {
         clickable: true,
         draggable: false,
-        editable: false,
+        editable: true,
         geodesic: false,
         strokeColor: '#000000',
         strokeOpacity: 1,
