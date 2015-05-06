@@ -43,7 +43,7 @@ $(function() {
 
 		//should this go inside the block?
     	var coords = trail.coords;
-    	var url = 'https://maps.googleapis.com/maps/api/staticmap?center=42.364251817286835,-71.10334396362305&zoom=13&size=400x300&markers=color:green%7clabel:A%7c42.364251817286835,-71.10334396362305&markers=color:red%7clabel:B%7c42.36222240121285,-71.10566139221191&path=color:0x000000%7cweight:5%7c42.364251817286835,-71.10334396362305%7c42.35527749714674,-71.09999656677246%7c42.362412661754455,-71.1101245880127%7c42.36532991791331,-71.10634803771973%7c42.36222240121285,-71.10566139221191';
+    	var url = getMapImage(coords);
     	$('#map_div').css({'background-image': 'url(' + url + ')', 'background-repeat': 'no-repeat', 'background-size': '100%'});
 
     //TODO need someone to finish my stuff
