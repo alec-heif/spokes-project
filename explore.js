@@ -16,7 +16,14 @@ $(function() {
 		$('<div/>').addClass("trail-name").html(trail["name"]).appendTo(summary_div);
 
 		var summary = $('<div/>').appendTo(summary_div).addClass("trail-summary");
-		$('<div/>').appendTo(summary).addClass("trail-length").html(trail["length"] + " miles long");
+		var display;
+		if (typeof trail["length"] === 'number') {
+		  display = trail['length'].toFixed(2);
+		}
+		else if(typeof trail["length"] === 'string') {
+		  display = trail['length'];
+		}
+		$('<div/>').appendTo(summary).addClass("trail-length").html(display + " miles long");
 		$('<div/>').appendTo(summary).addClass("trail-difficulty").html(trail["difficulty"]);
 		$('<div/>').appendTo(summary).addClass("trail-terrain").html(trail["terrain"]);
 		$('<div/>').appendTo(summary).addClass("trail-scenery").html(trail["scenery"]);
