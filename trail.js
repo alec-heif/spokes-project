@@ -157,7 +157,6 @@ function getQueryVariable(variable) {
             return decodeURIComponent(pair[1]);
         }
     }
-    window.location = "trail.html?trail=0";
     console.log('Query variable %s not found', variable);
 }
 
