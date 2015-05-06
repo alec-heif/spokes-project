@@ -347,6 +347,11 @@ a {
   top: -0.5em;
 }
 
+#distance input, #difficulty input, #terrain input, #scenery input {
+
+}
+
+
 div.vertical-rule {
   display: inline-block;
   border : 0;
@@ -440,4 +445,28 @@ div.vertical-rule {
   border: 1px solid #888;
   text-align: center;
   margin: 10px;
+}
+
+#description textarea {
+  width: 90%;
+  height: 100%;
+}
+
+#save_block {
+  position: absolute;
+  left: 1%;
+  top: 20%;
+  width: 10%;
+  background-color: rgba(245, 98, 24, 0.2);
+  border: 1px solid #888;
+  pointer-events: auto;
+  padding: 1%;
+}
+
+#save_block .button {
+  margin: 10%;
+}
+
+.editor {
+  display: none;
 }
