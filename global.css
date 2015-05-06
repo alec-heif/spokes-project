@@ -164,6 +164,10 @@ img {
   margin-bottom: 10px;
 }
 
+.images {
+  pointer-events: auto;
+}
+
 
 
 .subheading {
@@ -309,6 +313,7 @@ a {
   position: relative;
   border: 1px solid #888;
   box-shadow: 0px 2px 2px #888;
+  pointer-events: auto;
 }
 
 #cover {
@@ -385,6 +390,7 @@ div.vertical-rule {
   width: 100%;
   margin-top: 60px;
   z-index: 10;
+  pointer-events: none;
 }
 
 #scrolling_elements {
