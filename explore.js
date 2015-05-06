@@ -1,111 +1,42 @@
 $(function() {
 
-	// on page load
-	routes = data["routes"];
-
 	function display(trail){
-		var div = document.createElement('div');
-		div.className = "panel panel-default trail-panel";
+		var div = $('<div/>').addClass("panel panel-default trail-panel").appendTo($('#content'));
 
-		var img_accordion_div = document.createElement('div');
-		img_accordion_div.className = "panel panel-default trail-image-div";
-		img_accordion_div.id = "image_accordion_" + trail["id"];
-		for(var i=0;i<trail["images"].length;i++){
-			var img_div = document.createElement('div');
-			img_div.className = "trail-image";
-			img_div.style.backgroundImage = "url(content/images/" + trail["images"][i] + ")";
-			img_accordion_div.appendChild(img_div);
+		var img_accordion_div = $('<div/>').addClass("panel panel-default trail-image-div").attr("id","image_accordion_" + trail["id"]).appendTo(div);
+		if (trail["images"]) {
+			for(var k in trail["images"]){//(var i=0;i<trail["images"].length;i++){
+				var src = trail["images"][k];
+				$('<img/>').addClass("trail-image").attr("src",src).appendTo(img_accordion_div);
+			}
 		}
-		div.appendChild(img_accordion_div);
 
-		var summary_div = document.createElement('div');
-		summary_div.className = "panel panel-default trail-summary-div";
+		var summary_div = $('<div/>').addClass("panel panel-default trail-summary-div").appendTo(div);
 
-		var name_div = document.createElement('div');
-		var name = document.createTextNode(trail["name"]);
-		name_div.appendChild(name);
-		name_div.className = "trail-name";
-		summary_div.appendChild(name_div);
+		$('<div/>').addClass("trail-name").html(trail["name"]).appendTo(summary_div);
 
-		var summary = document.createElement('div');
+		var summary = $('<div/>').appendTo(summary_div).addClass("trail-summary");
+		$('<div/>').appendTo(summary).addClass("trail-length").html(trail["length"] + " miles long");
+		$('<div/>').appendTo(summary).addClass("trail-difficulty").html(trail["difficulty"]);
+		$('<div/>').appendTo(summary).addClass("trail-terrain").html(trail["terrain"]);
+		$('<div/>').appendTo(summary).addClass("trail-scenery").html(trail["scenery"]);
+		$('<div/>').appendTo(summary).addClass("trail-explorer").html(trail["explorer"]);
+		$('<div/>').appendTo(summary).addClass("trail-description").html(trail["description"]);
 
-		var trailLength = document.createElement('div');
-		trailLength.className = "trail-length";
-		trailLength.innerHTML = trail["length"] + " miles long";
-
-		var trailDifficulty = document.createElement('div');
-		trailDifficulty.className = "trail-difficulty";
-		trailDifficulty.innerHTML = trail["difficulty"];
-
-		var trailTerrain = document.createElement('div');
-		trailTerrain.className = "trail-terrain";
-		trailTerrain.innerHTML = trail["terrain"];
-
-		var trailScenery = document.createElement('div');
-		trailScenery.className = "trail-scenery";
-		trailScenery.innerHTML = trail["scenery"];
-
-		var trailExplorer = document.createElement('a');
-		trailExplorer.className = "trail-explorer";
-		trailExplorer.href = "";
-		trailExplorer.innerHTML = trail["explorer"];
-
-		var trailDescription = document.createElement('div');
-		trailDescription.className = "trail-description";
-		trailDescription.innerHTML = trail["description"];
-
-		/*append(attributes_text,summary);
-		summary.appendChild(document.createElement('br'));
-		append("Description: ",summary);
-		append(trail["description"],summary);*/
-		summary.appendChild(trailLength);
-		summary.appendChild(trailDifficulty);
-		summary.appendChild(trailTerrain);
-		summary.appendChild(trailScenery);
-		
-		summary.appendChild(trailDescription);
-
-		summary.appendChild(trailExplorer);
-
-		summary.className = "trail-summary";
-		summary_div.appendChild(summary);
-
-		div.appendChild(summary_div);
-
-		var clear_div = document.createElement('div');
-		clear_div.style.clear = "both";
-		div.appendChild(clear_div);
-
-		div.onclick = function(){window.location='trail.html?trail='+trail["name"]}
-		$('#content').append(div);
+		$('<div/>').appendTo(div).css("clear","both");
 
 		$("#image_accordion_" + trail["id"]).zAccordion({
-			startingSlide: trail["images"].length - 1,
+			startingSlide: 0,
 			auto: false,
 			tabWidth: "15%",
 			width: "100%",
 			height: 300,
-			trigger: "mouseover"
+			trigger: "mouseover",
+			invert: true,
+			speed: 300
 		});
-	}
 
-	function append(object,div){
-		if(typeof object == "string"){
-			if(object != ""){
-				div.appendChild(document.createElement('br'));
-				div.appendChild(document.createTextNode(object));
-			}
-		}
-		else{
-			var text = "";
-			for(var i=0;i<object.length;i++){
-				text += object[i] + " ";
-			}
-			if(text != ""){
-				div.appendChild(document.createElement('br'));
-				div.appendChild(document.createTextNode(text));
-			}
-		}
+		div.click(function(){window.location='trail.html?trail='+trail["name"]});
 	}
 
 
@@ -120,8 +51,13 @@ $(function() {
 			}
 		}
 		if($('#content').children().length == 0){
-			console.log("no trails matched");
+			no_trails_found();
 		}
+		update_hash(constraints);
+	}
+
+	function no_trails_found(){
+		$('<div/>').appendTo('#content').addClass('no_trails').html('No Trails Found!');
 	}
 
 	function find(object,string){
@@ -141,16 +77,6 @@ $(function() {
 		return false;
 	}
 
-	// checks if all elements in array2 are in array1
-	function matches_arrays(array1,array2){
-		for(var j=0;j<array2.length;j++){
-			if(array1.indexOf(array2[j]) == -1){
-				return false;
-			}
-		}
-		return true;
-	}
-
 	// determines if a trail matches the given constraints
 	// ensures that all provided constraints are met
 	function matches_constraint(trail,c){
@@ -167,10 +93,21 @@ $(function() {
 			return false;
 		}
 
-		// if(!matches_arrays(trail["attractions"],c["attractions"]){
-		// 	return false;
-		// })
+		var any = false;
+		for(var i=0;i<c["attractions"].length;i++){
+			if(trail["attractions"].indexOf(c["attractions"]) == -1){
+				if(!c["match_any"]){
+					return false;
+				}
+			}
+			else{
+				any = true;
+			}
+		}
 
+		if(!any && c["attractions"].length > 0){
+			return false;
+		}
 
 		var matches = true;
 		["scenery","terrain","difficulty"].forEach(function(key){
@@ -185,9 +122,9 @@ $(function() {
 		}
 
 		if(c["distance"] != undefined){
-			var location = get_current_location();
-			var x = location["latitude"]-trail["latitude"];
-			var y= location["longitude"]-trail["longitude"];
+			var location = get_lat_long(c["zip"]);
+			var x = parseFloat(location["latitude"])-trail["latitude"];
+			var y = parseFloat(location["longitude"])-trail["longitude"];
 			if(Math.pow(x,2) + Math.pow(y,2) > Math.pow(c["distance"],2)){
 				return false;
 			}
@@ -196,15 +133,12 @@ $(function() {
 		return true;
 	}
 
-	function get_current_location(){
-		return {"latitude":0,"longitude":0}
-	}
-
 	// returns search constraints as a dictionary
 	function get_constraints(){
 		var c = {};
 		c["keyword"] = $('#search_field').val();
-		c["length"] = $( "#length_slider" ).slider('values');
+		c["length"] = slider_values;
+		c["match_any"] = $('input[value=match_any]').is(':checked');
 		c["attractions"] = []
 		$('input[name=attractions]:checked').each(function(){
 			c["attractions"].push(this.value);
@@ -213,17 +147,33 @@ $(function() {
 			c[key] =  $('input[name='+key+']:checked').val();
 		});
 		if($('input[name=location]').is(':checked')){
-			c["distance"] = $('#location_distance').val();
+			var zip = $('input[id=zip]').val();
+			if(zip.length == 5 && Number(zip) > 0){
+				c["distance"] = $('#location_distance').val();
+				c["zip"] = zip;
+			}
 		}
 		return c;
 	}
 
 	// updates filter on every user input
+
+	$("input[type=text]").keyup(function(){
+		updateFilter();
+	});
+
+
     $("input").change(function(){
+    	updateFilter();
+    });
+
+    $("select").change(function(){
     	updateFilter();
     })
 
 	// search slider
+
+	var slider_values;
 
     $( "#length_slider" ).slider({
       range: true,
@@ -252,15 +202,94 @@ $(function() {
 		}
 		$( "#length_display" ).text(start +
 		" miles - " + end + " miles");
+		slider_values = [start,end];
 		updateFilter();
     }
 
-    update_length_slider();
-    $(".main").css("height",window.innerHeight - 60);
-    $(".content").css("height",window.innerHeight - 60);
-});
+    window.onresize = function(){
+		$(".main").css("height",window.innerHeight - 100);
 
-  $.get("http://ipinfo.io", function(response) {
-    $('#city').html(response.city + ', ');
-    $('#state').html(response.region);
-  }, "jsonp");
+		$('#content').css("width",$('.main').width() - 500);
+    }
+
+    var current_location;
+	$.get("http://ipinfo.io", function(response) {
+		current_location = response.loc.split(',');
+	$('#zip').val(response.postal);
+	}, "jsonp");
+
+	function get_lat_long(zip){
+		return {"latitude": 0, "longitude": 0}
+	}
+
+	function update_hash(constraints){
+		var hash = [];
+		if(constraints.keyword){
+			hash.push("keyword~"+constraints.keyword);
+		}
+		var length = constraints.length;
+		if(length[0] != 0 || length[1] != "100+"){
+			hash.push("length~"+length[0]+"~"+length[1]);
+		}
+		if(constraints.match_any){
+			hash.push("match_any");
+		}
+		if(constraints.attractions.length > 0){
+			hash.push("attractions~"+constraints.attractions.join("~"));
+		}
+		if(constraints.scenery != "any"){
+			hash.push("scenery~"+constraints.scenery);
+		}
+		if(constraints.terrain != "any"){
+			hash.push("terrain~"+constraints.terrain);
+		}
+		if(constraints.distance){
+			hash.push("distance~"+constraints.distance+"~"+constraints.zip);
+		}
+		if(constraints.difficulty != "any"){
+			hash.push("difficulty~"+constraints.difficulty);
+		}
+		location.hash = hash.join("|");
+	}
+
+	var hash = location.hash;
+	if(hash){
+		var values = hash.substring(1).split('|');
+		var params;
+		for(var i=0;i<values.length;i++){
+			params = values[i].split('~');
+			if(params[0] == "keyword"){
+				$('#search_field').val(params[1]);
+			}
+			else if(params[0] == "length"){
+				if(Number(params[1]) > 0){
+					$( "#length_slider" ).slider("values",0,params[1])
+				}
+				if(Number(params[2]) > 0){
+					$( "#length_slider" ).slider("values",1,params[2])
+				}
+			}
+			else if(params[0] == "match_any"){
+				$('input[value=match_any]').attr('checked', true);
+			}
+			else if(params[0] == "attractions"){
+				for(var i=1;i<params.length;i++){
+					$('input[value='+params[i]+']').attr('checked', true);
+				}
+			}
+			else if(params[0] == "scenery" || params[0] == "terrain" || params[0] == "difficulty"){
+				$('input[value='+params[i]+']').attr('checked', true);
+			}
+			else if(params[0] == "distance"){
+				$('input[name=location]').attr('checked', true);
+			}
+		}
+	}
+
+	loadData(function(){
+		update_length_slider();
+	});
+    
+    window.onresize();
+
+});

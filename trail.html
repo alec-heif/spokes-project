@@ -1,98 +1,73 @@
 <!DOCTYPE html>
-
 <head>
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   <script src="topbar.js"></script>
-  <script src="data.json"></script>
+  <script src="login.js"></script>
+  <!--<script src="data.json"></script>-->
+  <script src="moment.js"></script>
+  <script src="jquery.bxslider/jquery.bxslider.min.js"></script>
+  <link href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  <script src="firebase-local.js"></script>
+  <link rel="stylesheet" href="magnific-popup/magnific-popup.css"> 
+  <script src="magnific-popup/jquery.magnific-popup.js"></script>
   <script src="trail.js"></script>
+  <script src="imageupload.js"></script>
 
-  
   <link rel="stylesheet" href="global.css" />
   <link rel="stylesheet" href="trail.css" />
-  <title>Red Road Trail | Spokes</title>
 </head>
-
 <body>
-<div class="main">
-  <div class="map left_col">
-    <img id="trail_map" src="content/images/map.png"/>
+
+  <div id="fixed_elements">
+
+    <div id="trail_info_block">
+      <div id="cover">
+        <img id="cover_image"/>
+        <div id="trail_name" class="trail_name"></div>
+      </div>
+      <div id="attributes">
+        <span id="distance"></span>
+        <div class="vertical-rule"></div>
+        <span id="difficulty"></span>
+        <div class="vertical-rule"></div>
+        <span id="terrain"></span>
+        <div class="vertical-rule"></div>
+        <span id="scenery"></span>
+      </div>
+      <div id="description">
+      </div>
+      <div id="map">
+        <img id="map_image" src="content/images/map1.png"/>
+      </div>
+    </div>
+
+    <div id="trail_images">
+      <div class="left_col">       
+      </div>
+      <div class="images right_col">
+        <div id="images_list"></div>
+        <a class="button" href="javascript:void(0)" onclick="openImageWindow();">Upload photos</a>
+      </div>      
+    </div>
+
   </div>
 
-  <div class="right_col">
-    <div id="trail_name" class="trail_name">Red Road Trail</div>
-    <div id="distance" class="distance">24.7 miles</div>
-    <div id="attributes" class="attributes"></div>
-    <div style="clear:both"></div>
-    <div id="description" class="description"></div>
-
-    <div class="author">
-      explored by <a id="author_name" class="author_name" href="">Jeff</a>
+  <div id="scrolling_elements">
+    <div class="comments left_col">
+       <div id="comments_list"></div>  
+        <div class="blank comment">
+          <img class="comment_author_image" src="content/icons/avatar_default.png">
+          <div class="comment_text">
+            <textarea placeholder="Your comment..." id="yourcomment"></textarea>
+          </div>
+        </div>
+        <a class="button" href="javascript:void(0)" id="postcommentbutton">Post comment</a>
     </div>
-
-    
-    <!--<hr/>
-    <div class="thumbnails">
-      <div class="thumbnail" style="background: url('content/images/77_mass_ave.jpg')"></div>
-    </div>-->
+    <div class="right_col"></div>
   </div>
-  <div style="clear:both"></div>
-  <hr/>
-
-  <div class="images left_col">
-    <div class="subheading">photos</div>
-    <img class="trail_image" src="content/images/77_mass_ave.jpg"/>
-    <img class="trail_image" src="content/images/faneuil_hall.jpg"/>
-    <a class="button" href="">upload photos</a>
-  </div>
-
-
-  <div class="comments right_col">
-    <div class="subheading">comments</div>
-    <div class="comment">
-      <img class="comment_author_image" src="content/icons/avatar_default.png">
-      <div class="comment_text">
-        Really fun!
-      </div>
-      <div class="author">
-        3 days ago by <a class="author_name" href="">Alice</a>
-      </div>
-    </div>
-    <div class="comment">
-      <img class="comment_author_image" src="content/icons/avatar_default.png">
-      <div class="comment_text">
-        pretty sweet, chill, dank, totally non-heinous
-      </div>
-      <div class="author">
-        2 weeks ago by <a class="author_name" href="">Bob</a>
-      </div>
-    </div>
-    <div class="comment">
-      <img class="comment_author_image" src="content/icons/hipster.jpg">
-      <div class="comment_text">
-        This is a long comment. American Apparel tilde yr +1 distillery, pour-over next level cold-pressed YOLO dreamcatcher selvage Brooklyn flexitarian butcher. Heirloom bespoke kogi, Portland butcher 8-bit kitsch swag. Kale chips VHS Tumblr fanny pack. Semiotics scenester 3 wolf moon bicycle rights. Hoodie cornhole flexitarian Echo Park Truffaut, DIY YOLO gastropub McSweeney's 90's Kickstarter. Drinking vinegar aesthetic lumbersexual locavore dreamcatcher, Vice organic cred. Four loko artisan put a bird on it, fashion axe iPhone you probably haven't heard of them raw denim 3 wolf moon paleo literally Wes Anderson keytar Schlitz. Lorem ipsum dolor sit amet, sed contra audentior ito.
-      </div>
-      <div class="author">
-        1 year ago by <a class="author_name" href="">3edgy5me</a>
-      </div>
-    </div>
-
-    <div class="blank comment">
-      <img class="comment_author_image" src="content/icons/avatar_default.png">
-      <div class="comment_text">
-        <textarea placeholder="Your comment..."></textarea>
-      </div>
-    </div>
-    <a class="button" href="">post comment</a>
-  </div>
-
-<div style="clear: both"></div>
-<hr/>
-
-</div>
-
 
 </body>
 </html>
-<!-- </div> -->
