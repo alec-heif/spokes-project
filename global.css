@@ -527,3 +527,9 @@ div.vertical-rule {
 #whyyoucantpublish {
   font-size: 10pt;
 }
+
+
+#explorer {
+  width: 55%;
+  padding: 1em;
+}
