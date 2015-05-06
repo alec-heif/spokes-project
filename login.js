@@ -85,6 +85,7 @@ function attemptLogin() {
     $("#loginusername").val("");
     $("#loginpassword").val("");
     updateLoginButtons();
+    location.reload();
   }
 }
 
@@ -99,6 +100,7 @@ function attemptSignup() {
     $("#signupconfirm").val("");
     closeModalWindows();
     updateLoginButtons();
+    location.reload();
   }
 }
 
@@ -106,6 +108,7 @@ function attemptLogout() {
   console.log("logging out");
   localStorage.removeItem("loggedInAs");
   updateLoginButtons();
+  location.reload();
 }
 
 function validateLogin() {
