@@ -11,14 +11,8 @@ $(function() {
         }
         thisTrailID = trail_id;
 
-		routes = data["routes"];
-		var trail;
-		for(var i in routes){
-			if (routes[i]["id"] == trail_id) {
-				trail = routes[i];
-				break;
-			}
-		}
+		var trail = get_trail_by_id(trail_id);
+
 		var trail_name = trail.name;
 		document.title = trail_name + " | Spokes";
 		
@@ -307,9 +301,27 @@ window.onbeforeunload = function(){
 function openMapWindow() {
     $('#mapwindow').addClass('is-visible');
     $('.modal-mask').addClass('is-visible');
+
+    // Look up the trail object
+    var trail = get_trail_by_id(thisTrailID);
+
+    // Get the route coordinates from the trail object and put them on the map.
+    routeCoords = trail.coords;
+    
     return false;
 }
 
+function get_trail_by_id(trail_id) {
+    routes = data["routes"];
+    var trail;
+    for(var i in routes){
+        if (routes[i]["id"] == trail_id) {
+            trail = routes[i];
+            break;
+        }
+    }
+    return trail;
+}
 /*
 function submitNewTrail() {
 	var newTrail = {
