@@ -30,6 +30,7 @@ $(function() {
 			height: 300,
 			trigger: "mouseover",
 			invert: true,
+			speed: 300
 		});
 
 		div.click(function(){window.location='trail.html?trail='+trail["name"]});

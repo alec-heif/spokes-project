@@ -19,6 +19,7 @@ html, body {
   width: 100%;
   margin-left: 0;
   margin-right: 0;
+  z-index: 15000;
 }
 
 
@@ -78,8 +79,8 @@ html, body {
 }
 
 .right_col {
-  float:right;
   width: 47%;
+  float: right;
 }
 
 
@@ -168,12 +169,11 @@ img {
 
 
 .comment {
-  border: 1px solid #aaa;
-  border-radius: 15px;
+  border: 1px solid #888;
   min-height: 70px;
   margin-bottom: 10px;
   position: relative;
-  background-color: #FFFEEE;
+  background-color: #FFF;
 }
 
 .comment_text {
@@ -183,12 +183,12 @@ img {
 }
 
 .comment_author_image {
-  border-radius: 15px;
   width: 70px;
   height: 70px;
   float: left;
   margin-right: 10px;
   margin-bottom: 10px;
+  border-right: 1px solid #888;
 }
 
 .comment .author {
@@ -198,7 +198,6 @@ img {
 }
 
 .comment textarea {
-  border-radius: 15px;
   border: 1px solid #aaa;
   padding: 6px;
   width: calc(100% - 90px);
@@ -209,13 +208,62 @@ img {
   margin-bottom: 0px;
 }
 
+
+
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 300px;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 20000;
+  transition: opacity 1s 0, visibility 0 1s;
+  border: 1px solid black;
+  background-color: white;
+}
+ 
+.modal.is-visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s 0, visibility 0 0;
+}
+
+.modal-mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 19999;
+  background-color: white;
+  opacity: 0.5;
+  display: none;
+}
+.modal-mask.is-visible {
+  display: block;
+}
+
+
+.bold, .bold:hover {
+  font-weight: bold;
+  color: black;
+  cursor: default;
+}
+
+a {
+  cursor: pointer;
+}
+
+
 #trail_info_block {
   background-color: #fff;
-  width: 70%;
+  width: 80%;
   height: 400px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   position: relative;
   border: 1px solid #888;
 }
@@ -234,8 +282,9 @@ img {
 #attributes {
   background-color: #f6f7f8;
   height: 2em;
-  line-height: 2em;
   position: relative;
+  border-top: 1px solid #888;
+  border-bottom: 1px solid #888;
 }
 
 div.vertical-rule {
@@ -270,4 +319,11 @@ div.vertical-rule {
 
 #map_image {
   width: 100%;
+}
+
+
+#trail_photos_and_comments {
+  width: 80%;  
+  margin-left: auto;
+  margin-right: auto;
 }

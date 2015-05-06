@@ -5,6 +5,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   <script src="topbar.js"></script>
+  <script src="login.js"></script>
   <script src="data.json"></script>
   <script src="moment.js"></script>
   <script src="jquery.bxslider/jquery.bxslider.min.js"></script>
@@ -23,16 +24,16 @@
   <div id="trail_info_block">
     <div id="cover">
       <img id="cover_image" src="content/images/bike1.jpg"/>
-      <div id="trail_name" class="trail_name">Red Road Trail</div>
+      <div id="trail_name" class="trail_name"></div>
     </div>
     <div id="attributes">
-      <span id="distance">24</span>
+      <span id="distance"></span>
       <div class="vertical-rule"></div>
-      <span id="difficulty">Easy</span>
+      <span id="difficulty"></span>
       <div class="vertical-rule"></div>
-      <span id="terrain">Paved</span>
+      <span id="terrain"></span>
       <div class="vertical-rule"></div>
-      <span id="scenery">Urban</span>
+      <span id="scenery"></span>
     </div>
     <div id="description">
     </div>
@@ -41,30 +42,25 @@
     </div>
   </div>
 
-
-
-  <div style="clear:both"></div>
-  <hr/>
-
-  <div class="images left_col">
-    <div class="subheading">photos</div>
-    <ul id="images_list"></ul>
-    <a class="button" href="">upload photos</a>
-  </div>
-
-
-  <div class="comments right_col">
-    <div class="subheading">comments</div>
-
-    <div id="comments_list"></div>   
-
-    <div class="blank comment">
-      <img class="comment_author_image" src="content/icons/avatar_default.png">
-      <div class="comment_text">
-        <textarea placeholder="Your comment..."></textarea>
-      </div>
+  <div id="trail_photos_and_comments">
+    <div class="images left_col">
+      <ul id="images_list"></ul>
+      <a class="button" href="">Upload photos</a>
     </div>
-    <a class="button" href="">post comment</a>
+
+
+    <div class="comments right_col">
+
+      <div id="comments_list"></div>   
+
+      <div class="blank comment">
+        <img class="comment_author_image" src="content/icons/avatar_default.png">
+        <div class="comment_text">
+          <textarea placeholder="Your comment..."></textarea>
+        </div>
+      </div>
+      <a class="button" href="">Post comment</a>
+    </div>
   </div>
 
 <div style="clear: both"></div>

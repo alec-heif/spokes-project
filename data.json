@@ -55,6 +55,24 @@ data = {
           "creator":"aheifetz",
           "timestamp":1429087654,
           "text":"This was a beautiful route, nice find"
+        },
+        {
+          "id":4,
+          "creator":"aheifetz",
+          "timestamp":1429087954,
+          "text":"The bike lanes are well separated from traffic."
+        },
+        {
+          "id":5,
+          "creator":"mvernacc",
+          "timestamp":1429089654,
+          "text":"Best in the spring"
+        },
+        {
+          "id":6,
+          "creator":"aheifetz",
+          "timestamp":1429089954,
+          "text":"There's a bike shop nearby"
         }
       ],
       "images": [
