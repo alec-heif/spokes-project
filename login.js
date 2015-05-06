@@ -16,7 +16,7 @@ var modalWindows = function(){/*
     <a onclick="attemptSignup();" class="button" href="javascript:void(0)">sign up</a>
   </div>
 </div>
-<div class="modal-mask"></div>
+<div class="modal-mask" onclick="closeModalWindows()"></div>
 */}.toString().slice(14,-3);
 
 //alert(modalWindows)
