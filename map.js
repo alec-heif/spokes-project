@@ -265,7 +265,20 @@ function initialize() {
         coords.push({lat: coord.lat(), lon: coord.lng()}); 
       });
       console.log(coords);
+      console.log(getMapImage(coords));
     });
   }, "jsonp");
+}
+
+function getMapImage(coords) {
+  var first = '' + coords[0].lat + ',' + coords[0].lon;
+  var last = '' + coords[coords.length-1].lat + ',' + coords[coords.length-1].lon;
+  var prepend = 'https://maps.googleapis.com/maps/api/staticmap?center=' + first;
+  prepend += '&zoom=15&size=300x300&markers=icon:start.png%7c' + first;
+  prepend += '&markers=icon:end.png%7c' + last;
+  prepend += '&path=color:0x000000%7cweight:5';
+  coords.forEach(function(coord) {
+    prepend += '%7c' + coord.lat + ',' + coord.lon;
+  });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
