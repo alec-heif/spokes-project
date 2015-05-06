@@ -254,6 +254,7 @@ function initialize() {
       var images = ['cursor.png', 'pencil.png', 'eraser.png', 'zoom_in.png', 'zoom_out.png'];
       var buttons = images.map(createButton);
       var actual_buttons = buttons.map(function(c) {return c.firstChild;});
+      $('#map_instructions').hide();
       buttons.forEach(function(button) { zoomControlWrapper.appendChild(button); });
       google.maps.event.addDomListener(buttons[0], 'click', function() {
         dragMode();
@@ -273,10 +274,10 @@ function initialize() {
         }
       });
       google.maps.event.addDomListener(buttons[2], 'click', function() {
-        $('#map_instructions').hide();
-        map.setOptions({ draggableCursor: 'url(eraser_copy.png), auto', draggable: true});
-        eraser = true;
         if(lineDrawn) {
+          $('#map_instructions').hide();
+          map.setOptions({ draggableCursor: 'url(eraser_copy.png), auto', draggable: true});
+          eraser = true;
           markers = createMarkers();
           lineDrawn.setOptions({clickable: false, editable: false});
           buttons[0].style.backgroundColor = '#fff';
