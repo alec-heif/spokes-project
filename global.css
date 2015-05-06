@@ -327,3 +327,11 @@ div.vertical-rule {
   margin-left: auto;
   margin-right: auto;
 }
+
+.create_attributes{
+  padding:10px;
+}
+
+.created_attributes{
+  display:none;
+}
