@@ -15,11 +15,12 @@ html, body {
   top: 0;
   /*z-index: 1000;*/
   height: 60px;
-  background-color: #9DC9AC;
+  background-color: #556270;
   width: 100%;
   margin-left: 0;
   margin-right: 0;
   z-index: 15000;
+  box-shadow: 0 2px 5px #222;
 }
 
 
@@ -44,6 +45,7 @@ html, body {
 #topbar .username {
   float: right;
   line-height: 60px;
+  color: #e9eaed;
 }
 
 #topbar .topbar_main {
@@ -54,7 +56,7 @@ html, body {
 
 .pseudotopbar {
   height: 60px;
-  background-color: rgba(157, 201, 172, 0.7);
+  background-color: rgba(89, 98, 112, 0.7);
 }
 
 .pseudotopbar .pseudotopbar_main {
@@ -293,9 +295,9 @@ img {
 }
 
 
-.bold, .bold:hover {
+#topbar .bold, #topbar .bold:hover {
   font-weight: bold;
-  color: black;
+  color: #e9eaed;
   cursor: default;
 }
 
@@ -331,7 +333,7 @@ a {
 }
 
 #attributes {
-  background-color: #f6f7f8;
+  background-color: rgba(89, 98, 112, 0.5);
   height: 2em;
   position: relative;
   border-top: 1px solid #888;
