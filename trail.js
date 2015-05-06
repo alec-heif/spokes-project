@@ -228,7 +228,8 @@ function submitEditedTrail() {
 			difficulty:  $("#editdifficulty").val(),
 			terrain:     $("#editterrain").val(),
 			scenery:     $("#editscenery").val(),
-			publicity:   $("input[name='publicity']:checked").val()
+			publicity:   $("input[name='publicity']:checked").val(),
+            coords:      get_trail_by_id(thisTrailID).coords,
 		};
 		var trailRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+thisTrailID);
 		var numberOfKeys = Object.keys(attributes).length;
@@ -309,6 +310,12 @@ function on_map_done() {
     var trail = get_trail_by_id(thisTrailID);
     // Set the trail's coordinates to the coordinates which were just drawn on the map.
     trail.coords = routeCoords;
+
+    // Save the coords to the database.
+    var trailRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+thisTrailID);
+    trailRef.child('coords').set(routeCoords, function() {
+            console.log("map coords saved to firebase.");
+    });
 }
 
 function openMapWindow() {
