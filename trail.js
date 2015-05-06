@@ -72,7 +72,23 @@ $(function() {
 
 		document.title = trail["name"] + " | Spokes";
 	});
+
+	$("#yourcomment").on("keyup", function(){
+		//console.log("comment changed");
+		validatePostCommentButton();
+	});
+	$("#postcommentbutton").on("click", function(){
+		if ($("#yourcomment").val()) {
+			submitComment();
+		}
+	});
+	validatePostCommentButton();
+
 });
+
+function validatePostCommentButton() {
+	$("#postcommentbutton").toggleClass("disabled", !$("#yourcomment").val());
+}
 
 function getQueryVariable(variable) {
 	// From http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
@@ -104,14 +120,16 @@ $(window).scroll(function(e) {
 
 function submitComment() {
 	var comment = {
-		creator: "AliceExample",
-		text: "Lorem ipsum dolor sit amet",
+		creator: localStorage.getItem("loggedInAs") || "anonymous",
+		text: $("#yourcomment").val(),
 		timestamp: Math.floor((new Date())/1000)
 	};
 	var id = thisTrail.id - 1; //Don't ask, don't tell
 	commentsRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+id+'/comments');
 	commentsRef.push(comment, function(a,b,c) {
-		console.log("Pushed!", a, b, c);
+		location.reload();
 	})
 }
+
+
 
