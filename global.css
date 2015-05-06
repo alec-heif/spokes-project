@@ -517,11 +517,12 @@ div.vertical-rule {
   font-size: 72pt;
 }
 
-#add_map {
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 100%;
-  padding-top: 3em;
-}
+ #add_map {
+   background-color: rgba(255, 255, 255, 0.5);
+   width: 100%;
+   padding-top: 3em;
+   padding-bottom: 6em;
+ }
 
 #whyyoucantpublish {
   font-size: 10pt;
