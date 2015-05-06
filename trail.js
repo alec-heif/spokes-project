@@ -86,19 +86,38 @@ $(function() {
 		});
 
 		document.title = trail["name"] + " | Spokes";
-	});
+	//});
 
-	$("#yourcomment").on("keyup", function(){
+
+        for(var i=0; i < trail["images"].length - 1; i++) {
+          var image = document.createElement('img');
+          image.src = "content/images/" + trail["images"][i];
+          image.className = "trail_image";
+          var a = document.createElement('a');
+          a.appendChild(image);
+          a.href = image.src;
+          $("#images_list").append(a);
+      }
+      $("#images_list").magnificPopup({
+        delegate: 'a', // child items selector, by clicking on it popup will open
+        type: 'image',
+        gallery:{enabled:true}
+    });
+
+      document.title = trail["name"] + " | Spokes";
+
+      $("#yourcomment").on("keyup", function(){
 		//console.log("comment changed");
 		validatePostCommentButton();
 	});
-	$("#postcommentbutton").on("click", function(){
-		if ($("#yourcomment").val()) {
-			submitComment();
-		}
-	});
-	validatePostCommentButton();
+      $("#postcommentbutton").on("click", function(){
+          if ($("#yourcomment").val()) {
+             submitComment();
+         }
+     });
+      validatePostCommentButton();
 
+  });
 });
 
 function validatePostCommentButton() {
@@ -121,15 +140,20 @@ function getQueryVariable(variable) {
 
 // This function will be executed when the user scrolls the page.
 $(window).scroll(function(e) {
-	var fixed_scroll_max = 150;
+	var fixed_scroll_max = $('#fixed_elements').height() - $(window).height()
+        + $('#topbar').height() + 50;
 
-    console.log($(this).scrollTop());
+    console.log(fixed_scroll_max);
 
     var fixed_element_shift = -1 * Math.min(fixed_scroll_max, $(this).scrollTop());
 
     $('#fixed_elements').css({
-            'top': fixed_element_shift + 'px'
-        });
+        'top': fixed_element_shift + 'px'
+    });
+
+    $('#scrolling_elements').css({
+        'height': (fixed_scroll_max+$(window).height()) + 'px'
+    });
 });
 
 
@@ -145,6 +169,5 @@ function submitComment() {
 		location.reload();
 	})
 }
-
 
 
