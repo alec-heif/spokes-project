@@ -509,7 +509,8 @@ div.vertical-rule {
   margin: -20px;
 }
 
-#add_map {
+#map_div {
+  height: 135px;
   padding-top: 3em;
   padding-bottom: 6em;
 }
