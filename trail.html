@@ -18,13 +18,6 @@
   <script src="map.js"></script>
   <script src="trail.js"></script>
   <script src="imageupload.js"></script>
-  <script>
-    function openMapWindow() {
-      $('#mapwindow').addClass('is-visible');
-      $('.modal-mask').addClass('is-visible');
-      return false;
-    }
-  </script>
 
   <link rel="stylesheet" href="global.css" />
   <link rel="stylesheet" href="trail.css" />
@@ -86,7 +79,7 @@
         <textarea class="editor" placeholder="Description" id="editdescription"></textarea>
       </div>
       <div id="map">
-        <a href="">
+        <a href="javascript:void(0)" onclick="openMapWindow();">
           <div id="add_map">          
             <span id="add_map_plus">+</span><br>
             Add map          

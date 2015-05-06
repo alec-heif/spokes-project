@@ -304,6 +304,12 @@ window.onbeforeunload = function(){
 };
 
 
+function openMapWindow() {
+    $('#mapwindow').addClass('is-visible');
+    $('.modal-mask').addClass('is-visible');
+    return false;
+}
+
 /*
 function submitNewTrail() {
 	var newTrail = {
