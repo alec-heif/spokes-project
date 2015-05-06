@@ -39,16 +39,10 @@ $(function() {
 
 
 		$("#author_name").text(trail["explorer"]);
-		$("#distance").text(trail["length"] + " miles");
 
-		//should this go inside the block?
     	var coords = trail.coords;
-
         update_map_preview(coords);
-
-		//$("#cover_image").attr("src", /*"content/images/" +*/ trail["images"][trail["images"].keys()[0]]);
-		
-		//$("#trail_map").attr("src", "content/images/" + trail["images"][trail["images"].length - 1]);
+        update_length(trail);
 
 		
 		for(var i in trail["comments"]) {
@@ -327,6 +321,7 @@ function on_map_done() {
       trailRef.child('city').set(city);
       trailRef.child('state').set(state);
       trailRef.child('length').set(length);
+    update_length(trail);
     });
     // Save the coords to the database.
     trailRef.child('coords').set(routeCoords, function() {
@@ -366,9 +361,24 @@ function is_trail_editable(trail) {
 }
 
 function update_map_preview(coords) {
-    var url = getMapImage(coords);
-    $('#map_div').css({'background-image': 'url(' + url + ')', 'background-repeat': 'no-repeat', 'background-size': '100%'});
+    if (coords) {
+        var url = getMapImage(coords);
+        $('#map_div').css({'background-image': 'url(' + url + ')', 'background-repeat': 'no-repeat', 'background-size': '100%'});
+        $('#map_edit_link_text').text('Edit map');
+    }
+    else {
+        $('#map_edit_link_text').text('Add map');
+    }
+}
 
+function update_length(trail) {
+    console.log("length " + trail["length"]);
+    if(trail["length"]) {
+        $("#distance").text(trail["length"].toFixed(2) + " miles");
+    }
+    else {
+        $("#distance").text("Length unknown");
+    }
 }
 /*
 function submitNewTrail() {
