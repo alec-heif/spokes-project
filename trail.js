@@ -302,7 +302,12 @@ function openMapWindow() {
     $('#mapwindow').addClass('is-visible');
     $('.modal-mask').addClass('is-visible');
 
+    // Look up the trail object
+    var trail = get_trail_by_id(thisTrailID);
 
+    // Get the route coordinates from the trail object and put them on the map.
+    routeCoords = trail.coords;
+    
     return false;
 }
 
