@@ -15,11 +15,12 @@ html, body {
   top: 0;
   /*z-index: 1000;*/
   height: 60px;
-  background-color: #9DC9AC;
+  background-color: #556270;
   width: 100%;
   margin-left: 0;
   margin-right: 0;
   z-index: 15000;
+  box-shadow: 0 2px 5px #222;
 }
 
 
@@ -41,9 +42,10 @@ html, body {
   float: left;
 }
 
-#topbar .username {
+#topbar .username, .pseudotopbar .username {
   float: right;
   line-height: 60px;
+  color: #e9eaed;
 }
 
 #topbar .topbar_main {
@@ -54,7 +56,7 @@ html, body {
 
 .pseudotopbar {
   height: 60px;
-  background-color: rgba(157, 201, 172, 0.7);
+  background-color: rgba(89, 98, 112, 0.7);
 }
 
 .pseudotopbar .pseudotopbar_main {
@@ -293,9 +295,9 @@ img {
 }
 
 
-.bold, .bold:hover {
+#topbar .bold, #topbar .bold:hover, .pseudotopbar .bold, .pseudotopbar .bold:hover  {
   font-weight: bold;
-  color: black;
+  color: #e9eaed;
   cursor: default;
 }
 
@@ -331,7 +333,7 @@ a {
 }
 
 #attributes {
-  background-color: #f6f7f8;
+  background-color: rgba(89, 98, 112, 0.5);
   height: 2em;
   position: relative;
   border-top: 1px solid #888;
@@ -344,6 +346,11 @@ a {
   position: relative;
   top: -0.5em;
 }
+
+#distance input, #difficulty input, #terrain input, #scenery input {
+
+}
+
 
 div.vertical-rule {
   display: inline-block;
@@ -438,4 +445,34 @@ div.vertical-rule {
   border: 1px solid #888;
   text-align: center;
   margin: 10px;
+}
+
+
+.author_name {
+  font-style: normal;
+  color: black;
+}
+
+#description textarea {
+  width: 90%;
+  height: 100%;
+}
+
+#save_block {
+  position: absolute;
+  left: 1%;
+  top: 20%;
+  width: 10%;
+  background-color: rgba(245, 98, 24, 0.2);
+  border: 1px solid #888;
+  pointer-events: auto;
+  padding: 1%;
+}
+
+#save_block .button {
+  margin: 10%;
+}
+
+.editor {
+  display: none;
 }

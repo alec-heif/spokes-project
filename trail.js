@@ -5,6 +5,11 @@ $(function() {
 
 
 		var trail_name = getQueryVariable("trail");
+        if (trail_name == "create") {
+            create_populate();
+            return;
+        }
+
 		document.title = trail_name + " | Spokes";
 		routes = data["routes"];
 		var trail;
@@ -15,7 +20,7 @@ $(function() {
 			}
 		}
 		if(trail == undefined){
-			window.location = "create.html";
+			//window.location = "create.html";
 		}
 		thisTrail = trail;
 		$("#trail_name").text(trail["name"]);
@@ -43,9 +48,9 @@ $(function() {
 			comment_author_div.className = "author";
 			comment_author_div.innerHTML = 
 				moment.unix(comment["timestamp"]).fromNow() + 
-				' by <a class="author_name" href="">'
+				' by <span class="author_name" href="">'
 				+ comment["creator"]
-				+ '</a>';
+				+ '</span>';
 			var comment_image = document.createElement('img');
 			comment_image.src = "content/icons/avatar_default.png";
 			comment_image.className = "comment_author_image";
@@ -172,4 +177,8 @@ function submitComment() {
 	})
 }
 
-
+function create_populate() {
+    document.title = "Create a new Trail | Spokes";
+    console.log("trail.js > create");
+    $(".editor").show();   
+}
