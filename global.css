@@ -100,17 +100,22 @@ a.button {
   text-align: center;
   padding-top: 12px;
   padding-bottom: 12px;
-  border: 1px solid #F56218;
+  border: 2px solid #F56218;
   max-height: 30px;
   border-radius: 30px;
+  background-color: white;
+}
+a.button:hover {
+  border: 2px solid #FF9D2E;
 }
 
 a.button.disabled {
-  border: 1px solid #eee;
+  border: 1px solid rgba(89, 98, 112, 0.5);
+  padding: 13px;
   cursor: default;
 }
 .disabled, .disabled:hover {
-  color: #ccc;
+  color: rgba(89, 98, 112, 0.5);
 }  
 
 
@@ -239,6 +244,8 @@ img {
   z-index: 20000;
   transition: opacity 1s 0, visibility 0 1s;
   border: 1px solid black;
+  box-shadow: 0px 0px 10px #000;
+  /*background-color: #e9eaed;*/
   background-color: white;
   border-radius: 10px;
 }
@@ -260,8 +267,8 @@ img {
   width: 100%;
   height: 100%;
   z-index: 19999;
-  background-color: #e9eaed;
-  opacity: 0.75;
+  background-color: white;
+  opacity: 0.85;
   display: none;
 }
 .modal-mask.is-visible {
@@ -270,13 +277,13 @@ img {
 
 .modal .xbutton, .modal .xbutton a {
   text-align: right;
-  color: #888;
+  color: rgba(89, 98, 112, 0.5);
   font-size: 24pt;
   margin-top: -10px;
 }
 
 .modal .xbutton a:hover {
-  color: #ccc;
+  color: rgba(89, 98, 112, 1);
 }
 
 .modal input[type="text"], .modal input[type="password"], .modal button {
@@ -288,13 +295,18 @@ img {
   border-radius: 10px;
   margin-bottom: 10px;
   text-align: center;
-  border: 1px solid #888;
+  background-color: white;
+  /*border: 1px solid #888;
   border-bottom: 1px solid #000;
-  border-right: 1px solid #000;
+  border-right: 1px solid #000;*/
 }
+
+
 
 .modal-wrapper {
   padding: 15px;
+  background-color:#eee;
+  border-radius: 10px;
 }
 
 
@@ -427,7 +439,8 @@ div.vertical-rule {
 }
 
 #myimg {
-  border: 1px solid #ccc;
+  border: 1px solid rgba(89, 98, 112, 0.5);
+  background-color: white;
 }
 
 .trail_image {
@@ -467,8 +480,8 @@ div.vertical-rule {
   left: 1%;
   top: 76px; /* 20% */
   width: 10.5%;
-  background-color: rgba(245, 98, 24, 0.2);
-  border: 1px solid #888;
+  background-color: rgba(245, 98, 24, 0.1);/*rgba(245, 98, 24, 0.2);*/
+  border: 1px solid #F56218;
   pointer-events: auto;
   padding: 1%;
   border-radius: 10px;
