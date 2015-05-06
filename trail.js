@@ -213,10 +213,13 @@ function submitDummyTrail() {
 		//name: "Untitled",
 		publicity: "private"
 	};
+
 	var trailsRef = new Firebase('https://spokes-project.firebaseio.com/routes');
 	var newRef = trailsRef.push(newTrail);
 	thisTrailID = newRef.key();
 	newRef.child("id").set(thisTrailID);
+	newTrail.id = thisTrailID;
+	data["routes"][thisTrailID] = newTrail;
 }
 
 function submitEditedTrail() {
@@ -310,6 +313,9 @@ function on_map_done() {
     var trail = get_trail_by_id(thisTrailID);
     // Set the trail's coordinates to the coordinates which were just drawn on the map.
     trail.coords = routeCoords;
+    if (routeCoords.length) {
+    	dummy = false;
+    }
     var trailRef = new Firebase('https://spokes-project.firebaseio.com/routes/'+thisTrailID);
     getRouteCityState(routeCoords, function(result) {
       var length = getRouteLength(routeCoords).toFixed(2);
