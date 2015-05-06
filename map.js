@@ -145,9 +145,10 @@ function initialize() {
       lineDrawn = polyline;
       drawingManager.setMap(null);
       resetStartEndMarkers();
+      dragMode();
       google.maps.event.addListener(polyline, 'mouseover', function(evt) {
         if (evt.vertex !== undefined && eraser && isCreateMode) {
-          map.setOptions({ draggableCursor: 'url(eraser_copy.png) 24 24, auto', draggable: false});
+          map.setOptions({ draggableCursor: 'url(eraser_copy.png) , auto', draggable: false});
         }
       });
       google.maps.event.addListener(lineDrawn, 'mousemove', function(evt) {
@@ -156,7 +157,7 @@ function initialize() {
     });
     function makeMarker(vertex, i, length) {
       var color = '#fff';
-      var cursor = 'url(eraser_copy.png) 24 24, auto';
+      var cursor = 'url(eraser_copy.png) , auto';
       if (!isCreateMode) cursor = null;
       var marker = new google.maps.Marker({
         position: vertex,
@@ -227,6 +228,7 @@ function initialize() {
       });
       markers = [];
     }
+    var buttons;
     function dragMode() {
       destroyMarkers();
       drawingManager.setMap(null);
@@ -234,10 +236,16 @@ function initialize() {
       lineDrawn && lineDrawn.setOptions({editable: true, clickable: true});
       resetStartEndMarkers();
       eraser = false;
+      if (isCreateMode) {
+        buttons[0].style.backgroundColor = '#F56218';
+        buttons[1].style.backgroundColor = '#fff';
+        buttons[2].style.backgroundColor = '#fff';
+      }
     }
     if (isCreateMode) {
       var images = ['cursor.png', 'pencil.png', 'eraser.png', 'zoom_in.png', 'zoom_out.png'];
       var buttons = images.map(createButton);
+      var actual_buttons = buttons.map(function(c) {return c.firstChild;});
       buttons.forEach(function(button) { zoomControlWrapper.appendChild(button); });
       google.maps.event.addDomListener(buttons[0], 'click', function() {
         dragMode();
@@ -250,14 +258,20 @@ function initialize() {
           drawingManager.setMap(map);
           map.setOptions({ draggableCursor: 'crosshair', draggable: true});
           eraser = false;
+          buttons[0].style.backgroundColor = '#fff';
+          buttons[1].style.backgroundColor = '#F56218';
+          buttons[2].style.backgroundColor = '#fff';
         }
       });
       google.maps.event.addDomListener(buttons[2], 'click', function() {
-        map.setOptions({ draggableCursor: 'url(eraser_copy.png) 24 24, auto', draggable: false});
+        map.setOptions({ draggableCursor: 'url(eraser_copy.png), auto', draggable: true});
         eraser = true;
         if(lineDrawn) {
           markers = createMarkers();
           lineDrawn.setOptions({clickable: false, editable: false});
+          buttons[0].style.backgroundColor = '#fff';
+          buttons[1].style.backgroundColor = '#fff';
+          buttons[2].style.backgroundColor = '#F56218';
         }
       });
       google.maps.event.addDomListener(buttons[3], 'click', function() {
@@ -313,8 +327,14 @@ function initialize() {
         strokeOpacity: 1,
         strokeWeight: 5
       });
+      if (isCreateMode) {
+        lineDrawn.setOptions({editable: true});
+      }
+      else {
+        createMarkers();
+      }
       lineDrawn.setMap(map);
-      createMarkers();
+      resetStartEndMarkers();
     }
   }, "jsonp");
 }
