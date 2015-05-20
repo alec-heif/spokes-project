@@ -18,17 +18,17 @@
 
     <link rel="stylesheet" href="global.css" />
 	<script src="topbar.js"></script>
+	<script src="login.js"></script>
+	<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+
+	<script src="firebase-local.js"></script>
 	<script src="explore.js"></script>
 
-	<script src="data.json"></script>
+	<!--<script src="data.json"></script>-->
 
 	<title>Find a Ride | Spokes</title>
 
-	<style>
-	div {
-		border: 1px solid lime !important;
-	}
-	</style>
+
 </head>
 <body>
 
@@ -36,70 +36,74 @@
 
 	<div id="content" class="content"></div>
 
+	<div class="sidebar-container">
+		<div class="panel panel-default sidebar">
 
-	<div class="panel panel-default sidebar">
+			<div id="search" class="panel-sub">
+				<img id="search_img" src="search.png">
+				<input id="search_field" type="text" placeholder="search keyword"><br>
+			</div>
 
-		<div id="search" class="panel-sub">
-			<img id="search_img" src="search.png">
-			<input id="search_field" type="text" placeholder="search keyword"><br>
-			<button class="btn btn-default" id="search_button">SEARCH</button>
-		</div>
+			<div id="length" class="panel-sub">
+				<h1>Length:</h1>
+				<p id="length_display"></p>
+				<div id="length_slider"></div>
+			</div>
 
-		<div id="length" class="panel-sub">
-			<h1>Length:</h1>
-			<p id="length_display"></p>
-			<div id="length_slider"></div>
-		</div>
+			<div id="attractions" class="panel-sub" style="display:none">
+				<h1 style="display:inline-block">Attractions:</h1>
+				<div class="match_attractions">
+					<div class="checkbox_div"><label><input type="radio" name="match_attractions" value="match_all" checked> Match All</label></div>
+					<div class="checkbox_div"><label><input type="radio" name="match_attractions" value="match_any"> Match Any</label></div>
+				</div>
 
-		<div id="attractions" class="panel-sub">
-			<h1>Attractions:</h1>
-			<div class="checkbox_div"><input type="checkbox" name="attractions" value="food"> Food</div>
-			<div class="checkbox_div"><input type="checkbox" name="attractions" value="shop"> Bike Shop</div>
-			<div class="checkbox_div"><input type="checkbox" name="attractions" value="park"> Park</div>
-			<div class="checkbox_div"><input type="checkbox" name="attractions" value="drugstore"> Drugstore</div>
-			<div class="checkbox_div"><input type="checkbox" name="attractions" value="campsite"> Campsite</div>	
-		</div>
+				<div class="checkbox_div"><label><input type="checkbox" name="attractions" value="food"> Food</label></div>
+				<div class="checkbox_div"><label><input type="checkbox" name="attractions" value="shop"> Bike Shop</label></div>
+				<div class="checkbox_div"><label><input type="checkbox" name="attractions" value="park"> Park</label></div>
+				<div class="checkbox_div"><label><input type="checkbox" name="attractions" value="drugstore"> Drugstore</label></div>
+				<div class="checkbox_div"><label><input type="checkbox" name="attractions" value="campsite"> Campsite</label></div>	
+			</div>
 
-		<div id="scenery" class="panel-sub">
-			<h1>Scenery:</h1>
-			<div class="checkbox_div"><input type="checkbox" name="scenery" value="nature"> Nature</div>
-			<div class="checkbox_div"><input type="checkbox" name="scenery" value="urban"> Urban</div>
-		</div>
+			<div id="scenery" class="panel-sub">
+				<h1>Scenery:</h1>
+				<div class="checkbox_div"><label><input type="radio" name="scenery" value="any" checked> Any</label></div>
+				<div class="checkbox_div"><label><input type="radio" name="scenery" value="nature"> Nature</label></div>
+				<div class="checkbox_div"><label><input type="radio" name="scenery" value="urban"> Urban</label></div>
+			</div>
 
-		<div id="surface" class="panel-sub">
-			<h1>Surface:</h1>
-			<div class="checkbox_div"><input type="checkbox" name="surface" value="mountain"> Mountain</div>
-			<div class="checkbox_div"><input type="checkbox" name="surface" value="gravel"> Gravel</div>
-			<div class="checkbox_div"><input type="checkbox" name="surface" value="paved"> Paved</div>
-		</div>
+			<div id="terrain" class="panel-sub">
+				<h1>Terrain:</h1>
+				<div class="checkbox_div"><label><input type="radio" name="terrain" value="any" checked> Any</label></div>
+				<div class="checkbox_div"><label><input type="radio" name="terrain" value="mountain"> Mountain</label></div>
+				<div class="checkbox_div"><label><input type="radio" name="terrain" value="gravel"> Gravel</label></div>
+				<div class="checkbox_div"><label><input type="radio" name="terrain" value="paved"> Paved</label></div>
+			</div>
 
-		<div id="location" class="panel-sub">
-			<h1>Location:</h1>
-			<div>
-				<input type="checkbox" name="location">
-				Within
-				<select id="location_distance">
-				  <option value="5">5</option>
-				  <option value="50">50</option>
-				  <option value="500">500</option>
-				  <option value="5000">5000</option>
-				</select>
-				miles of 
-        <span id="location_span">
-          <span id="city"></span>
-          <span id="state"></span>
-        </span>
+			<div id="location" class="panel-sub" style="display:none">
+				<h1>Location:</h1>
+				<div>
+					<label><input type="checkbox" name="location">
+					Within</label>
+					<select id="location_distance">
+					  <option value="5">5</option>
+					  <option value="50">50</option>
+					  <option value="100">100</option>
+					  <option value="500">500</option>
+					</select>
+					miles of zip code 
+					<input type="text" id="zip"></input> 
+				</div>
+			</div>
+
+			<div id="difficulty" class="panel-sub">
+				<h1>Difficulty:</h1>
+				<div class="checkbox_div"><label><input type="radio" name="difficulty" value="any" checked> Any</label></div>
+				<div class="checkbox_div"><label><input type="radio" name="difficulty" value="easy"> Easy</label></div>
+				<div class="checkbox_div"><label><input type="radio" name="difficulty" value="medium"> Medium</label></div>
+				<div class="checkbox_div"><label><input type="radio" name="difficulty" value="hard"> Hard</label></div>
+				<div class="checkbox_div"><label><input type="radio" name="difficulty" value="veryhard"> Very Hard</label></div>
 			</div>
 		</div>
-
-		<div id="difficulty" class="panel-sub">
-			<h1>Difficulty:</h1>
-			<div class="checkbox_div"><input type="checkbox" name="difficulty" value="easy"> Easy</div>
-			<div class="checkbox_div"><input type="checkbox" name="difficulty" value="medium"> Medium</div>
-			<div class="checkbox_div"><input type="checkbox" name="difficulty" value="hard"> Hard</div>
-			<div class="checkbox_div"><input type="checkbox" name="difficulty" value="veryhard"> Very Hard</div>
-		</div>
-
 	</div>
 </div>
 </body>

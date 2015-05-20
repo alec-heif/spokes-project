@@ -24,7 +24,7 @@ html, body {
   text-align: center;
   height: 100%;
   padding-bottom: 20px;
-  background-color: rgba(157, 201, 172, 0.7);
+  background-color: rgba(89, 98, 112, 0.7);
 }
 
 #btn_find, #btn_create {
@@ -38,6 +38,8 @@ html, body {
 }
 
 /* Button from http://html5up.net/ Overflow*/    
+
+/*
 input[type="button"],
 input[type="submit"],
 input[type="reset"],
@@ -92,6 +94,8 @@ input[type="reset"].style2:hover,
   text-shadow: 0 0 0.5px rgba(255,255,255,0.25) !important;
 }
 
+*/
+
 .logo_image1 {
   height: 80px;
   width: 120px;
@@ -107,7 +111,7 @@ input[type="reset"].style2:hover,
   height: 110px;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: rgba(157, 201, 172, 0.7);
+  background-color: rgba(89, 98, 112, 0.7);
   /*background-color: rgba(157, 201, 172, 0.7);*/
   color: rgb(245, 98, 24);
   text-shadow: 0px 0px 4px #000;
@@ -117,5 +121,5 @@ input[type="reset"].style2:hover,
   position: relative;
   width: 100%;
   height: 15%;
-  background-color: rgba(157, 201, 172, 0.7);
+  background-color: rgba(89, 98, 112, 0.7);
 }

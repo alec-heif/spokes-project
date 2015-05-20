@@ -32,6 +32,7 @@ data = {
       "state":"Massachusetts",
       "length":9.7,
       "difficulty":"easy",
+      "attractions":[],
       "terrain":"paved",
       "scenery":"urban",
       "description":"A short, brisk ride through the Cambridge city streets",
@@ -54,6 +55,24 @@ data = {
           "creator":"aheifetz",
           "timestamp":1429087654,
           "text":"This was a beautiful route, nice find"
+        },
+        {
+          "id":4,
+          "creator":"aheifetz",
+          "timestamp":1429087954,
+          "text":"The bike lanes are well separated from traffic."
+        },
+        {
+          "id":5,
+          "creator":"mvernacc",
+          "timestamp":1429089654,
+          "text":"Best in the spring"
+        },
+        {
+          "id":6,
+          "creator":"aheifetz",
+          "timestamp":1429089954,
+          "text":"There's a bike shop nearby"
         }
       ],
       "images": [
@@ -69,6 +88,7 @@ data = {
       "state":"Massachusetts",
       "length":12.5,
       "difficulty":"easy",
+      "attractions":[],
       "terrain":"paved",
       "scenery":"nature",
       "description":"A leisurly, scenic route around the banks of the Oakerville River. Hear the croaking of the frogs as you ride.",
@@ -100,6 +120,7 @@ data = {
       "state":"Massachusetts",
       "length":25.8,
       "difficulty":"hard",
+      "attractions":[],
       "terrain":"mountain",
       "scenery":"nature",
       "description":"A treacherous ride up Mount Simmons, but one with amazing views at the top. Not for beginners.",
@@ -126,6 +147,7 @@ data = {
       "state":"Massachusetts",
       "length":15.2,
       "difficulty":"medium",
+      "attractions":[],
       "terrain":"paved",
       "scenery":"urban",
       "description":"Take the Freedom Trail ride through Boston. Lots of hills and busy streets, make sure to be careful and steer clear of cars.",
@@ -151,6 +173,7 @@ data = {
       "state":"Massachusetts",
       "length":2.3,
       "difficulty":"easy",
+      "attractions":[],
       "terrain":"mountain",
       "scenery":"nature",
       "description":"Hardly worth being called a mountain, this hill is a nice gateway to the world of mountain biking. Very mild, easy to do in a early afternoon.",
@@ -167,6 +190,45 @@ data = {
         "bike5.jpg",
         "nature4.jpg",
         "map5.png"
+      ]
+    },
+    {
+      "id":6,
+      "name":"Sherman's March to the Sea",
+      "city":"Atlanta",
+      "state":"Georgia",
+      "length":240,
+      "difficulty":"very hard",
+      "attractions":[],
+      "terrain":"gravel",
+      "scenery":"nature",
+      "description":"We are not only fighting armies, but a hostile people, and must make old and young, rich and poor, feel the hard hand of war, as well as their organized armies.",
+      "explorer":"William T Sherman",
+      "comments": [        
+        {
+          "id":2,
+          "creator":"Robert E Lee",
+          "timestamp":-3316105246,
+          "text":"The South shall rise again!"
+        },
+        {
+          "id":3,
+          "creator":"William T Sherman",
+          "timestamp":-3316105246,
+          "text":"We rode out of Atlanta by the Decatur road, filled by the marching troops and wagons of the Fourteenth Corps; and reaching the hill, just outside of the old rebel works, we naturally paused to look back upon the scenes of our past battles. We stood upon the very ground whereon was fought the bloody battle of July 22d, and could see the copse of wood where McPherson fell. Behind us lay Atlanta, smouldering and in ruins, the black smoke rising high in air, and hanging like a pall over the ruined city. Away off in the distance, on the McDonough road, was the rear of Howard's column, the gun-barrels glistening in the sun, the white-topped wagons stretching away to the south; and right before us the Fourteenth Corps, marching steadily and rapidly, with a cheery look and swinging pace, that made light of the thousand miles that lay between us and Richmond. Some band, by accident, struck up the anthem of John Brown's soul goes marching on; the men caught up the strain, and never before or since have I heard the chorus of Glory, glory, hallelujah! done with more spirit, or in better harmony of time and place."
+        },
+        {
+          "id":1,
+          "creator":"Marcel Williams",
+          "timestamp":1429187654,
+          "text":"I would recommend seeing Savannah instead, it is less burnt."
+        }
+      ],
+      "images": [
+        "sherman1.jpg",
+        "sherman2.jpg",
+        "sherman3.jpg",
+        "sherman_map.png"
       ]
     }
   ]

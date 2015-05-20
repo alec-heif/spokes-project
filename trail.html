@@ -1,100 +1,125 @@
 <!DOCTYPE html>
-
 <head>
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   <script src="topbar.js"></script>
-  
+  <script src="login.js"></script>
+  <!--<script src="data.json"></script>-->
+  <script src="moment.js"></script>
+  <script src="jquery.bxslider/jquery.bxslider.min.js"></script>
+  <link href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  <script src="firebase-local.js"></script>
+  <link rel="stylesheet" href="magnific-popup/magnific-popup.css"> 
+  <script src="magnific-popup/jquery.magnific-popup.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?js?v=3.exp&libraries=drawing"></script>
+  <link rel="stylesheet" href="map.css" />
+  <script src="map.js"></script>
+  <script src="trail.js"></script>
+  <script src="imageupload.js"></script>
+
   <link rel="stylesheet" href="global.css" />
   <link rel="stylesheet" href="trail.css" />
-  <title>Red Road Trail | Spokes</title>
 </head>
-
 <body>
-<div class="main">
-  <div class="map left_col">
-    <img src="content/images/map.png"/>
+<div class="modal" id="mapwindow">
+  <div id="map_instructions" class="editor">
+    Double-click to end the route
   </div>
-
-  <div class="right_col">
-    <div class="trail_name">Red Road Trail</div>
-    <div class="distance">24.7 miles</div>
-    <div class="attributes">
-      easy &middot; paved &middot; nature
-    </div>
-    <div style="clear:both"></div>
-    <div class="description">
-      <p>A leisurely, scenic route around the banks of the Oakerville River. Hear the croaking of the frogs as you ride.</p>
-      <p>This is a second paragraph. Odd Future asymmetrical dreamcatcher Kickstarter blog Vice. Post-ironic four loko bespoke butcher, Pitchfork photo booth hella lumbersexual. Etsy hashtag skateboard, roof party Thundercats pickled blog semiotics synth. Brooklyn Carles bespoke American Apparel tilde.</p>
-    </div>
-
-    <div class="author">
-      explored by <a class="author_name" href="">Jeff</a>
-    </div>
-
-    
-    <!--<hr/>
-    <div class="thumbnails">
-      <div class="thumbnail" style="background: url('content/images/77_mass_ave.jpg')"></div>
-    </div>-->
-  </div>
-  <div style="clear:both"></div>
-  <hr/>
-
-  <div class="images left_col">
-    <div class="subheading">photos</div>
-    <img class="trail_image" src="content/images/77_mass_ave.jpg"/>
-    <img class="trail_image" src="content/images/faneuil_hall.jpg"/>
-    <a class="button" href="">upload photos</a>
-  </div>
-
-
-  <div class="comments right_col">
-    <div class="subheading">comments</div>
-    <div class="comment">
-      <img class="comment_author_image" src="content/icons/avatar_default.png">
-      <div class="comment_text">
-        Really fun!
-      </div>
-      <div class="author">
-        3 days ago by <a class="author_name" href="">Alice</a>
-      </div>
-    </div>
-    <div class="comment">
-      <img class="comment_author_image" src="content/icons/avatar_default.png">
-      <div class="comment_text">
-        pretty sweet, chill, dank, totally non-heinous
-      </div>
-      <div class="author">
-        2 weeks ago by <a class="author_name" href="">Bob</a>
-      </div>
-    </div>
-    <div class="comment">
-      <img class="comment_author_image" src="content/icons/hipster.jpg">
-      <div class="comment_text">
-        This is a long comment. American Apparel tilde yr +1 distillery, pour-over next level cold-pressed YOLO dreamcatcher selvage Brooklyn flexitarian butcher. Heirloom bespoke kogi, Portland butcher 8-bit kitsch swag. Kale chips VHS Tumblr fanny pack. Semiotics scenester 3 wolf moon bicycle rights. Hoodie cornhole flexitarian Echo Park Truffaut, DIY YOLO gastropub McSweeney's 90's Kickstarter. Drinking vinegar aesthetic lumbersexual locavore dreamcatcher, Vice organic cred. Four loko artisan put a bird on it, fashion axe iPhone you probably haven't heard of them raw denim 3 wolf moon paleo literally Wes Anderson keytar Schlitz. Lorem ipsum dolor sit amet, sed contra audentior ito.
-      </div>
-      <div class="author">
-        1 year ago by <a class="author_name" href="">3edgy5me</a>
-      </div>
-    </div>
-
-    <div class="blank comment">
-      <img class="comment_author_image" src="content/icons/avatar_default.png">
-      <div class="comment_text">
-        <textarea placeholder="Your comment..."></textarea>
-      </div>
-    </div>
-    <a class="button" href="">post comment</a>
-  </div>
-
-<div style="clear: both"></div>
-<hr/>
-
+  <!--<div class="modal-wrapper">-->
+    <div id="map-canvas"></div>
+  <!--</div>-->
 </div>
 
+    <div id="save_block" class="editor">
+      <a class="button disabled" href="javascript:void(0)" onclick="submitEditedTrail()" id="savebutton">Save</a>
+      <h3 style="display: inline">Visible to...</h3><br/>
+      <label><input type="radio" name="publicity" value="private" checked="checked" id="privateradio">only me</input></label><br/>
+      <label><input type="radio" name="publicity" value="published" id="publishedradio"/><span id="publishedradiolabel">everyone</span></label><br/>
+      <div id="whyyoucantpublish" style="display:none">Make sure to complete all information before publishing!</div>
+      
+    </div>
+
+  <div id="fixed_elements">
+
+    <div id="trail_info_block">
+      <div id="cover">
+        <img id="cover_image"/>
+        <div id="trail_name" class="trail_name">
+          <input class="editor" placeholder="Trail Name" id="edittrailname"></input>
+        </div>
+      </div>
+      <div id="attributes">
+        <span id="distance"><label class="editor" size="8" placeholder="Distance"></label></span >
+        <div class="vertical-rule"></div>
+        <span id="difficulty"><select class="editor" id="editdifficulty" name="difficulty">
+          <option value="">(difficulty)</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+          <option value="very_hard">Very Hard</option>
+        </select></span>
+        <div class="vertical-rule"></div>
+        <span id="terrain">
+          <select class="editor" id="editterrain" name="terrain">
+            <option value="">(terrain)</option>
+            <option value="paved">Paved</option>
+            <option value="gravel">Gravel</option>
+            <option value="mountain">Mountain</option>
+          </select>
+        </span>
+        <div class="vertical-rule"></div>
+        <span id="scenery">
+          <select class="editor" id="editscenery" name="scenery">
+            <option value="">(scenery)</option>
+            <option value="urban">Urban</option>
+            <option value="nature">Nature</option>
+          </select>
+        </span>
+      </div>
+      <div id="description">
+        <textarea class="editor" placeholder="Description" id="editdescription"></textarea>
+      </div>
+      <!--<div id="explorer">asdf</div>-->
+      <div id="map">
+        <a href="javascript:void(0)" onclick="openMapWindow();">
+          <div id="map_div">       
+            <div id="add_map" class="editor">   
+              <span id="add_map_plus">+</span><br>
+              <span id="map_edit_link_text">Add map</span>          
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div id="trail_images">
+      <div class="left_col">       
+      </div>
+      <div class="images right_col">
+        <div id="images_list"></div>
+        <a class="button" href="javascript:void(0)" onclick="openImageWindow();">Upload photos</a>
+      </div>      
+    </div>
+
+
+
+  </div>
+
+  <div id="scrolling_elements">
+    <div class="comments left_col">
+       <div id="comments_list"></div>  
+        <div class="blank comment">
+          <img class="comment_author_image" src="content/icons/avatar_default.png">
+          <div class="comment_text">
+            <textarea placeholder="Your comment..." id="yourcomment"></textarea>
+          </div>
+        </div>
+        <a class="button" href="javascript:void(0)" id="postcommentbutton">Post comment</a>
+    </div>
+    <div class="right_col"></div>
+  </div>
 
 </body>
 </html>
-<!-- </div> -->

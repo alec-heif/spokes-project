@@ -1,0 +1,27 @@
+#map-div{
+  width: 600px;
+  height: 600px;
+}
+#map-canvas {
+  height: 400px;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 10px;
+}
+
+.gmnoprint a, .gmnoprint span {
+  display:none;
+  }
+
+.gmnoprint div {
+  !important;
+}
+
+img[src="http://maps.gstatic.com/mapfiles/api-3/images/google_white2.png"], a[href^="http://maps.google.com/maps"]{
+  display:none !important;
+}
+
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[title^="Click to see this area on Google Maps"]{display:none !important}
+
